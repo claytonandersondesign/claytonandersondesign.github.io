@@ -5,104 +5,135 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">    
+    <!-- Theme: prevent flash of wrong theme -->
+    <script>
+      if (localStorage.getItem('theme') === 'dark' ||
+          (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: '#006c4d',
+              secondary: '#4c6358',
+              dark: '#21352c',
+              tan: '#f8f3f0',
+              muted: '#6f7973',
+              'muted-hover': '#404944',
+              body: '#1b1b1b',
+              'dark-bg': '#1a1a1a',
+              'dark-surface': '#2d2d2d',
+              'dark-text': '#e5e5e5',
+            },
+            fontFamily: {
+              heading: ['"Bebas Neue"', 'sans-serif'],
+              body: ['Lato', 'sans-serif'],
+            },
+          }
+        }
+      }
+    </script>
+
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="custom.css">
+    <!-- Favicons -->
     <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
 
     <title>claytonanderson.design</title>
   </head>
-  <body>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="sidebar-1 d-none d-md-block col-md-2 pt-5">
-          <div class="logo sticky-top">
-            <a href="index.html"><img src="img/logo.svg" height=75></a>
-            <p class="pt-2 mb-0">Clayton Anderson</p>
-            <p class="pt-1">UX Designer</p>
-          </div>
-        </div>
-        <div class="content col-12 col-md-9">
-          <div class="header">
-            <nav class="navbar navbar-expand-md navbar-light bg-light py-5 g-0">
-              <div class="container">
-                <a href="index.html"><img class="logo d-md-none" src="img/logo.svg" height=75></a>
-                <p class="d-block d-md-none me-auto unstyled pt-3 ps-2">Clayton Anderson <br> UX Designer</p>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav ms-auto">
-                    <li class="nav-item ms-auto">
-                      <a class="nav-link" href="index.html">Work</a>
-                    </li>
-                    <li class="nav-item ms-auto">
-                      <a class="nav-link active" aria-current="page" href="about.html">About</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </nav>
-          </div>
-          <div class="main">
-            <div class="row g-4 mt-3">
-              <div class="col-12 col-md-6">
-                <img class="img-fluid" src="img/bio.JPG">
-              </div>
-              <div class="col">
-                <h1>Hi, I'm Clayton</h1>
-                <p class="pt-4 thin">I'm a UX Designer with a background in web development and an education focused on understanding human relationships with the broader world.</p> 
-                  
-                <p class="thin">I'm passionate about creating products and solutions that improve the lives of people at large scales, that are supportive of people's health, and that integrate responsibly with the environment.</p> 
-                  
-                <p class="thin">I'm drawn to design because it requires a commitment to learning and thinking creatively about user needs and the innovative solutions that can meet them.</p>
-                  
-                <p class="thin">I'd love to hear from you!</p>
-                
-                <hr>
-                <h4>Contact</h4>
-                <a href="mailto:claytonanderson.work@gmail.com" target="_blank" class="d-flex align-items-center"><i class="bi bi-envelope pe-2"></i>claytonanderson.work@gmail.com</a>
-                <!-- <a href="tel:316-304-7789" class="d-flex align-items-center"><i class="bi bi-telephone pe-2"></i>316-304-7789</a> -->
-                <h4 class="pt-4">Connect</h4>
-                <ul class="list-inline">
-                  <li class="list-inline-item"><a href="https://www.linkedin.com/in/claytona/" target="_blank"><i class="bi bi-linkedin"></i></a></li>
-                  <li class="list-inline-item"><a href="https://www.instagram.com/claytonanderson.design/" target="_blank"><i class="bi bi-instagram"></i></a></li>
-                  <li class="list-inline-item"><a href="https://bsky.app/profile/claytonanderson.design" target="_blank"><i class="bi bi-bluesky"></i></a></li>
-                </ul>
-                <h4 class="pt-3">Resume</h4>
-                <a href="Clayton Anderson Resume.pdf" target="_blank"><img src="img/resume.png" style="height:300px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;"></a>
-                <p class="pt-3"><a class="btn btn-primary" href="Clayton Anderson Resume.pdf" target="_blank" style="font-size: 15px; letter-spacing:1.25px;" role="button">RESUME</a></p>
+
+  <body class="font-body text-body dark:text-dark-text text-[15px] tracking-[0.25px] bg-white dark:bg-dark-bg">
+    <div class="w-full">
+      <div class="flex flex-wrap">
+        <!-- Desktop Sidebar -->
+        <div id="sidebar-placeholder"></div>
+
+        <!-- Main Content -->
+        <div class="w-full xl:w-9/12 px-4 xl:pt-20">
+          <!-- Mobile Navbar -->
+          <div id="nav-placeholder"></div>
+
+          <!-- About Content -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-4">
+            <div class="max-w-lg mx-auto lg:max-w-none lg:mx-0">
+              <div class="grid grid-cols-2 gap-2 lg:pl-12">
+                <img src="img/about/bio.png" class="w-full aspect-square object-cover object-top" alt="Clayton Anderson">
+                <img src="img/about/bio2.jpeg" class="w-full aspect-square object-cover object-top" alt="Clayton at CONFIG">
+                <img src="img/about/bio3.jpeg" class="col-span-2 w-full aspect-video object-cover" alt="Clayton at the Golden Gate Bridge">
               </div>
             </div>
-          </div>
-          <div class="footer py-5 mb-5">
-              <ul class="list-inline d-flex">
-                <li class="list-inline-item"><a href="mailto:claytonanderson.work@gmail.com" target="_blank"><i class="bi bi-envelope"></i></a></li>
-                <li class="list-inline-item"><a href="https://www.linkedin.com/in/claytona/" target="_blank"><i class="bi bi-linkedin"></i></a></li>
-                <li class="list-inline-item"><a href="https://www.instagram.com/claytonanderson.design/" target="_blank"><i class="bi bi-instagram"></i></a></li>
-                <li class="list-inline-item"><a href="https://bsky.app/profile/claytonanderson.design" target="_blank"><i class="bi bi-bluesky"></i></a></li>
-                <li class="list-inline-item ms-auto"> &copy; Clayton Anderson 2025</li>
+            <div class="max-w-lg mx-auto lg:max-w-none lg:mx-0 lg:pl-8">
+              <h1 class="font-heading text-4xl">Hi, I'm Clayton</h1>
+              <div class="max-w-prose">
+                <p class="pt-4 font-light">I'm a Product Designer with a background in web development and an education focused on understanding human relationships with the broader world.</p>
+
+                <p class="pt-4 font-light">I'm passionate about creating products and solutions that improve the lives of people at large scales, that are supportive of people's health, and that integrate responsibly with the environment.</p>
+
+                <p class="pt-4 font-light">I'm drawn to design because it requires a commitment to learning and thinking creatively about user needs and the innovative solutions that can meet them.</p>
+
+                <p class="pt-4 font-light">I'd love to hear from you!</p>
+              </div>
+
+              <ul class="flex gap-4 pt-8">
+                <li>
+                  <a href="mailto:claytonanderson.work@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email" class="text-muted hover:text-muted-hover dark:text-gray-400 dark:hover:text-gray-300 transition-colors">
+                    <!-- Heroicons: envelope -->
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" class="w-8 h-8">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.linkedin.com/in/claytona/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="text-muted hover:text-muted-hover dark:text-gray-400 dark:hover:text-gray-300 transition-colors">
+                    <!-- Simple Icons: LinkedIn -->
+                    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://bsky.app/profile/claytonanderson.design" target="_blank" rel="noopener noreferrer" aria-label="Bluesky" class="text-muted hover:text-muted-hover dark:text-gray-400 dark:hover:text-gray-300 transition-colors">
+                    <!-- Simple Icons: Bluesky -->
+                    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.206-.659-.298-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8Z"/>
+                    </svg>
+                  </a>
+                </li>
               </ul>
+              <hr class="mt-6 mb-6">
+              <h4 class="font-heading text-xl">Resume</h4>
+              <a href="Clayton Anderson Resume.pdf" target="_blank" rel="noopener noreferrer">
+                <img src="img/about/resume.png" class="h-[300px] shadow-[rgba(0,0,0,0.35)_0px_5px_15px] mt-2" alt="Resume preview">
+              </a>
+              <p class="pt-3">
+                <a class="inline-block px-4 py-2 bg-secondary dark:bg-emerald-700 text-white text-[15px] tracking-[1.25px] hover:bg-muted-hover dark:hover:bg-emerald-600 transition-colors" href="Clayton Anderson Resume.pdf" target="_blank" rel="noopener noreferrer">RESUME</a>
+              </p>
+            </div>
           </div>
-          
+
+          <!-- Footer -->
+          <div class="pb-12 mb-12">
+            <div id="footer-icons-placeholder"></div>
+          </div>
         </div>
-        <div class="sidebar-2 d-none d-md-block col-md">
-          
-        </div>
+
+        <!-- Right Spacer -->
+        <div class="hidden xl:block xl:w-1/12"></div>
       </div>
     </div>
-    
 
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>

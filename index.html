@@ -11,129 +11,197 @@
     <meta property='og:description' content='UX Design Portfolio by Clayton Anderson'/>
     <meta property='og:url' content='https://www.claytonanderson.design'/>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">    
+    <!-- Theme: prevent flash of wrong theme -->
+    <script>
+      if (localStorage.getItem('theme') === 'dark' ||
+          (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
 
-   <!-- Google Font -->
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: '#006c4d',
+              secondary: '#4c6358',
+              dark: '#21352c',
+              tan: '#f8f3f0',
+              muted: '#6f7973',
+              'muted-hover': '#404944',
+              body: '#1b1b1b',
+              'dark-bg': '#1a1a1a',
+              'dark-surface': '#2d2d2d',
+              'dark-text': '#e5e5e5',
+            },
+            fontFamily: {
+              heading: ['"Bebas Neue"', 'sans-serif'],
+              body: ['Lato', 'sans-serif'],
+            },
+          }
+        }
+      }
+    </script>
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="custom.css">
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- Favicons -->
     <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
 
     <title>claytonanderson.design</title>
   </head>
-  
-  <body id="page-top">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="sidebar-1 d-none d-md-block col-md-2 pt-5">
-          <div class="logo sticky-top">
-            <a href="#page-top"><img src="img/logo.svg" class="primary" height=75></a>
-            <p class="pt-2 mb-0">Clayton Anderson</p>
-            <p class="pt-1">UX Designer</p>
-          </div>
-        </div>
-        <div class="content col-12 col-md-9">
-          <div class="header">
-            <nav class="navbar navbar-expand-md navbar-light bg-light py-5 g-0">
-              <div class="container">
-                <a href="#page-top"><img class="logo d-md-none" src="img/logo.svg" height=75></a>
-                <p class="d-block d-md-none me-auto unstyled pt-3 ps-2">Clayton Anderson <br> UX Designer</p>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav ms-auto">
-                    <li class="nav-item ms-auto">
-                      <a class="nav-link active" aria-current="page" href="index.html">Work</a>
-                    </li>
-                    <li class="nav-item ms-auto">
-                      <a class="nav-link" href="about.html">About</a>
-                    </li>
-                  </ul>
+
+  <body id="page-top" class="font-body text-body dark:text-dark-text text-[15px] tracking-[0.25px] min-h-screen flex flex-col bg-white dark:bg-dark-bg">
+    <div class="w-full flex-grow">
+      <div class="flex flex-wrap h-full">
+        <!-- Desktop Sidebar -->
+        <div id="sidebar-placeholder"></div>
+
+        <!-- Main Content -->
+        <div class="w-full xl:w-9/12 px-4 xl:pt-20">
+          <!-- Mobile Navbar -->
+          <div id="nav-placeholder"></div>
+
+          <!-- Project Cards -->
+          <div class="flex flex-col gap-6 max-w-4xl mx-auto w-full">
+            <!-- SnackOrdering -->
+            <a href="snackordering.html" class="group flex gap-8 items-center p-4 hover:bg-[#e8edf4] dark:hover:bg-dark-surface rounded-lg transition-colors">
+              <div class="w-56 h-36 flex-shrink-0 overflow-hidden rounded-lg shadow-md">
+                <img src="img/index/snackordering.png" class="w-full h-full object-cover" alt="SnackOrdering">
+              </div>
+              <div>
+                <h5 class="font-heading text-2xl group-hover:text-primary dark:group-hover:text-emerald-400 transition-colors">SnackOrdering</h5>
+                <p class="text-[12px] text-muted dark:text-gray-500 -mt-1 mb-1">Nov 2021–Apr 2022</p>
+                <p class="text-muted dark:text-gray-400 text-[15px]">Design a snack ordering app for a movie theater</p>
+                <div class="flex flex-wrap gap-2 mt-2">
+                  <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-muted dark:text-gray-400 rounded-full">Figma</span>
+                  <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-muted dark:text-gray-400 rounded-full">Google UX</span>
+                  <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-muted dark:text-gray-400 rounded-full">User Research</span>
+                  <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-muted dark:text-gray-400 rounded-full">Prototyping</span>
+                  <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-muted dark:text-gray-400 rounded-full">Mobile App</span>
                 </div>
               </div>
-            </nav>
-          </div>
-          <div class="main">
-            <div class="row row-cols-1 row-cols-md-2 g-4 mt-3">
-              <div class="col">
-                <a href="snackordering.html">
-                  <div class="card bg-dark text-white rounded-0">
-                    <img src="img/SnackOrdering.png" class="card-img rounded-0" alt="...">
-                    <div class="card-img-overlay">
-                      <h5 class="card-title">SnackOrdering</h5>
-                      <p class="card-text">Challenge: Design a snack ordering app for a movie theater</p>
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <div class="col">
-                <a href="wrf.html">
-                  <div class="card bg-dark text-white">
-                    <img src="img/WildfireRelief.png" class="card-img" alt="...">
-                    <div class="card-img-overlay">
-                      <h5 class="card-title">Wildfire Relief Fund</h5>
-                      <p class="card-text">Challenge: Design a user registration flow for a humanitarian organization</p>
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <div class="col offset-md-3">
-                <a href="bookeducation.html">
-                  <div class="card bg-dark text-white">
-                    <img src="img/BookEducation.png" class="card-img" alt="...">
-                    <div class="card-img-overlay">
-                      <h5 class="card-title">BookEducation</h5>
-                      <p class="card-text">Challenge: Design an app and responsive website to help adults learn new subjects</p>
-                    </div>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="footer py-5 mb-5">
-              <ul class="list-inline d-flex">
-                <li class="list-inline-item"><a href="mailto:claytonanderson.work@gmail.com" target="_blank"><i class="bi bi-envelope"></i></a></li>
-                <li class="list-inline-item"><a href="https://www.linkedin.com/in/claytona/" target="_blank"><i class="bi bi-linkedin"></i></a></li>
-                <li class="list-inline-item"><a href="https://www.instagram.com/claytonanderson.design/" target="_blank"><i class="bi bi-instagram"></i></a></li>
-                <li class="list-inline-item"><a href="https://bsky.app/profile/claytonanderson.design" target="_blank"><i class="bi bi-bluesky"></i></a></li>
-                <li class="list-inline-item ms-auto"> &copy; Clayton Anderson 2025</li>
-              </ul>
-          </div>
-        </div>
-        <div class="sidebar-2 d-none d-md-block col-md">
-          
-        </div>
-     </div>
-    </div>
-    <!-- Modal -->
-<div class="modal fade" id="qrModal" tabindex="-1" aria-labelledby="qrModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="qrModalLabel">Welcome & Thank You! 🙌</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>You found a secret corner of my design portfolio! It's great to see you here, and I truly appreciate that you've taken the time to scan my business card. Please take a moment to explore and get to know more about my work and vision.</p>
-        <p>If you have any questions or wish to collaborate, don't hesitate to reach out!</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-    
+            </a>
 
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="modal.js" defer></script>
+            <!-- Wildfire Relief Fund -->
+            <a href="wrf.html" class="group flex gap-8 items-center p-4 hover:bg-[#e8edf4] dark:hover:bg-dark-surface rounded-lg transition-colors">
+              <div class="w-56 h-36 flex-shrink-0 overflow-hidden rounded-lg shadow-md">
+                <img src="img/index/wildfirerelief.png" class="w-full h-full object-cover" alt="Wildfire Relief Fund">
+              </div>
+              <div>
+                <h5 class="font-heading text-2xl group-hover:text-primary dark:group-hover:text-emerald-400 transition-colors">Wildfire Relief Fund</h5>
+                <p class="text-[12px] text-muted dark:text-gray-500 -mt-1 mb-1">Apr 2022 - May 2022</p>
+                <p class="text-muted dark:text-gray-400 text-[15px]">Design a user registration flow for a humanitarian organization</p>
+                <div class="flex flex-wrap gap-2 mt-2">
+                  <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-muted dark:text-gray-400 rounded-full">Adobe XD</span>
+                  <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-muted dark:text-gray-400 rounded-full">Google UX</span>
+                  <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-muted dark:text-gray-400 rounded-full">Responsive Design</span>
+                  <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-muted dark:text-gray-400 rounded-full">User Research</span>
+                  <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-muted dark:text-gray-400 rounded-full">Information Architecture</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- BookEducation -->
+            <a href="bookeducation.html" class="group flex gap-8 items-center p-4 hover:bg-[#e8edf4] dark:hover:bg-dark-surface rounded-lg transition-colors">
+              <div class="w-56 h-36 flex-shrink-0 overflow-hidden rounded-lg shadow-md">
+                <img src="img/index/bookeducation.png" class="w-full h-full object-cover" alt="BookEducation">
+              </div>
+              <div>
+                <h5 class="font-heading text-2xl group-hover:text-primary dark:group-hover:text-emerald-400 transition-colors">BookEducation</h5>
+                <p class="text-[12px] text-muted dark:text-gray-500 -mt-1 mb-1">May 2022</p>
+                <p class="text-muted dark:text-gray-400 text-[15px]">Design an app and responsive website to help adults learn new subjects</p>
+                <div class="flex flex-wrap gap-2 mt-2">
+                  <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-muted dark:text-gray-400 rounded-full">Figma</span>
+                  <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-muted dark:text-gray-400 rounded-full">Google UX</span>
+                  <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-muted dark:text-gray-400 rounded-full">Cross-Platform</span>
+                  <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-muted dark:text-gray-400 rounded-full">User Research</span>
+                  <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-muted dark:text-gray-400 rounded-full">Prototyping</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- CreativeOne (Coming Soon) — hidden until ready -->
+            <!-- <div class="flex gap-8 items-center p-4 rounded-lg hover:bg-[#e8edf4] dark:hover:bg-dark-surface transition-colors">
+              <div class="w-56 h-36 flex-shrink-0 overflow-hidden rounded-lg shadow-md relative bg-gray-200 dark:bg-gray-700">
+                <img src="img/index/creativeone.png" class="w-full h-full object-cover" alt="CreativeOne">
+              </div>
+              <div>
+                <h5 class="font-heading text-2xl text-muted dark:text-gray-400">CreativeOne <span class="text-sm text-muted">(Under NDA)</span></h5>
+                <p class="text-[12px] text-muted dark:text-gray-500 -mt-1 mb-1">Dec 2022 - Present</p>
+                <p class="text-muted dark:text-gray-400 text-[15px]">Design a responsive web app for financial professionals</p>
+                <div class="flex flex-wrap gap-2 mt-2">
+                  <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-muted dark:text-gray-400 rounded-full">Tailwind</span>
+                  <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-muted dark:text-gray-400 rounded-full">Responsive Design</span>
+                  <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-muted dark:text-gray-400 rounded-full">User Research</span>
+                  <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-muted dark:text-gray-400 rounded-full">Prototyping</span>
+                </div>
+              </div>
+            </div> -->
+
+            <!-- Kaizen Tracker -->
+            <a href="kaizentracker.html" class="group flex gap-8 items-center p-4 hover:bg-[#e8edf4] dark:hover:bg-dark-surface rounded-lg transition-colors">
+              <div class="w-56 h-36 flex-shrink-0 overflow-hidden rounded-lg shadow-md relative bg-gray-200 dark:bg-gray-700">
+                <img src="img/index/kaizen.png" class="block dark:hidden w-full h-full object-cover" alt="Kaizen Tracker">
+                <img src="img/index/kaizen-dark.png" class="hidden dark:block w-full h-full object-cover" alt="Kaizen Tracker">
+              </div>
+              <div>
+                <h5 class="font-heading text-2xl group-hover:text-primary dark:group-hover:text-emerald-400 transition-colors">Kaizen Tracker</h5>
+                <p class="text-[12px] text-muted dark:text-gray-500 -mt-1 mb-1">Jan 2026 - Present</p>
+                <p class="text-muted dark:text-gray-400 text-[15px]">Designed a full-stack personal improvement tracker from idea to deployment</p>
+                <div class="flex flex-wrap gap-2 mt-2">
+                  <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-muted dark:text-gray-400 rounded-full">Next.js</span>
+                  <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-muted dark:text-gray-400 rounded-full">Supabase</span>
+                  <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-muted dark:text-gray-400 rounded-full">Tailwind</span>
+                  <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-muted dark:text-gray-400 rounded-full">Claude Code</span>
+                  <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-muted dark:text-gray-400 rounded-full">Vercel</span>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Footer -->
+          <div class="pb-12 mb-12">
+            <div id="footer-icons-placeholder"></div>
+          </div>
+        </div>
+
+        <!-- Right Spacer -->
+        <div class="hidden xl:block xl:w-1/12"></div>
+      </div>
+    </div>
+
+    <!-- QR Modal -->
+    <div id="qrModal" class="modal hidden fixed inset-0 z-50 flex items-center justify-center">
+      <div class="modal-backdrop absolute inset-0 bg-black/50"></div>
+      <div class="relative bg-white dark:bg-dark-surface max-w-lg w-full mx-4 z-10 shadow-lg">
+        <div class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+          <h4 class="font-heading text-xl">Welcome & Thank You!</h4>
+          <button data-modal-close class="text-gray-400 hover:text-gray-600 transition-colors" aria-label="Close">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+        <div class="p-4">
+          <p class="mb-4">You found a secret corner of my design portfolio! It's great to see you here, and I truly appreciate that you've taken the time to scan my business card. Please take a moment to explore and get to know more about my work and vision.</p>
+          <p>If you have any questions or wish to collaborate, don't hesitate to reach out!</p>
+        </div>
+        <div class="flex justify-end p-4 border-t border-gray-200 dark:border-gray-700">
+          <button data-modal-close class="px-4 py-2 bg-secondary dark:bg-emerald-700 text-white hover:bg-muted-hover dark:hover:bg-emerald-600 transition-colors">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>

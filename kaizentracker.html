@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Kaizen Tracker — Clayton Anderson">
+    <meta property="og:description" content="A full-stack personal improvement tracker built from concept to deployment using Next.js, Supabase, Tailwind CSS, and Claude Code.">
+
+    <!-- Theme: prevent flash of wrong theme -->
+    <script>
+      if (localStorage.getItem('theme') === 'dark' ||
+          (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: '#006c4d',
+              secondary: '#4c6358',
+              dark: '#21352c',
+              tan: '#f8f3f0',
+              muted: '#6f7973',
+              'muted-hover': '#404944',
+              body: '#1b1b1b',
+              'dark-bg': '#1a1a1a',
+              'dark-surface': '#2d2d2d',
+              'dark-text': '#e5e5e5',
+            },
+            fontFamily: {
+              heading: ['"Bebas Neue"', 'sans-serif'],
+              body: ['Lato', 'sans-serif'],
+            },
+          }
+        }
+      }
+    </script>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+
+    <title>Kaizen Tracker — Clayton Anderson</title>
+  </head>
+
+  <body class="font-body text-body dark:text-dark-text text-[15px] tracking-[0.25px] scroll-smooth bg-white dark:bg-dark-bg">
+    <div class="w-full">
+      <div class="flex flex-wrap">
+        <!-- Desktop Sidebar (Logo) -->
+        <div id="sidebar-placeholder"></div>
+
+        <!-- Main Content -->
+        <div class="w-full xl:w-9/12 px-4 xl:pt-20">
+          <!-- Mobile Navbar -->
+          <div id="nav-placeholder"></div>
+
+          <!-- Content wrapper with scrollspy -->
+          <div class="flex flex-wrap">
+            <div class="w-full xl:w-10/12">
+              <!-- Case Study Content -->
+              <div class="main pt-6 xl:pt-0">
+                <h1 class="font-heading text-4xl">Kaizen Tracker</h1>
+                <hr class="my-4 border-gray-300 dark:border-gray-700">
+
+                <!-- Mobile TOC Bar -->
+                <div id="mobile-toc" class="xl:hidden sticky top-0 z-50 bg-white dark:bg-dark-bg border-b border-gray-200 dark:border-gray-700 flex items-center justify-between px-4 py-3">
+                  <span id="mobile-toc-current" class="text-[13px] font-medium text-muted truncate">Overview</span>
+                  <button id="mobile-toc-btn" class="flex items-center gap-1 text-[13px] text-muted ml-2 shrink-0" aria-label="Jump to section">
+                    <span>Sections</span>
+                    <svg id="mobile-toc-chevron" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                  </button>
+                </div>
+                <!-- Mobile TOC Dropdown -->
+                <div id="mobile-toc-dropdown" class="xl:hidden hidden fixed left-4 right-0 z-40 bg-white dark:bg-dark-bg border-b border-gray-200 dark:border-gray-700 shadow-md">
+                  <a href="#list-item-1" class="mobile-toc-link block px-4 py-3 text-[13px] hover:bg-gray-100 dark:hover:bg-gray-800">Overview</a>
+                  <a href="#list-item-2" class="mobile-toc-link block px-4 py-3 text-[13px] hover:bg-gray-100 dark:hover:bg-gray-800">Design Approach</a>
+                  <a href="#list-item-3" class="mobile-toc-link block px-4 py-3 text-[13px] hover:bg-gray-100 dark:hover:bg-gray-800">The Stack</a>
+                  <a href="#list-item-4" class="mobile-toc-link block px-4 py-3 text-[13px] hover:bg-gray-100 dark:hover:bg-gray-800">Development Process</a>
+                  <a href="#list-item-5" class="mobile-toc-link block px-4 py-3 text-[13px] hover:bg-gray-100 dark:hover:bg-gray-800">Key Features</a>
+                  <a href="#list-item-6" class="mobile-toc-link block px-4 py-3 text-[13px] hover:bg-gray-100 dark:hover:bg-gray-800">Deployment</a>
+                  <a href="#list-item-7" class="mobile-toc-link block px-4 py-3 text-[13px] hover:bg-gray-100 dark:hover:bg-gray-800">Reflection</a>
+                </div>
+
+                <div class="pt-12">
+
+                  <!-- Section 1: Overview -->
+                  <section id="list-item-1" class="mb-12 py-12 px-3">
+                    <div class="flex flex-wrap items-center gap-8 max-w-4xl mx-auto">
+                      <div class="w-full sm:w-1/2 pt-4 sm:pt-0 order-2 sm:order-1">
+                        <h3 class="font-heading text-2xl mb-1">The Product</h3>
+                        <p class="text-xs text-muted dark:text-gray-500 mb-4 uppercase tracking-widest">Concept → Build → Ship</p>
+                        <p class="pt-2">Kaizen (改善) is a Japanese philosophy of continuous, incremental improvement. Kaizen Tracker is a personal app built on that idea — a tool for logging things worth changing in your life, tracking how they're going, and seeing whether they actually stick.</p>
+                        <p class="pt-4">I designed and built this solo from concept to deployed product. It's a live, working web app — not a prototype.</p>
+                        <p class="pt-4">
+                          <a href="https://kaizen-tracker.vercel.app/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-primary dark:text-emerald-400 hover:underline font-medium">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                            kaizen-tracker.vercel.app
+                          </a>
+                          <span class="text-xs text-muted dark:text-gray-500 ml-2">(login required — free to create an account)</span>
+                        </p>
+                        <!-- <p class="pt-2">
+                          <a href="#" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-primary dark:text-emerald-400 hover:underline font-medium">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.069A1 1 0 0121 8.882v6.236a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
+                            Watch a demo (Loom)
+                          </a>
+                        </p> -->
+                        <div class="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700 grid grid-cols-3 gap-4">
+                          <div>
+                            <p class="text-xs text-muted dark:text-gray-500 uppercase tracking-widest mb-1">Timeline</p>
+                            <p class="text-sm font-medium">Jan 2026 – Present</p>
+                          </div>
+                          <div>
+                            <p class="text-xs text-muted dark:text-gray-500 uppercase tracking-widest mb-1">Platform</p>
+                            <p class="text-sm font-medium">Responsive Web App</p>
+                          </div>
+                          <div>
+                            <p class="text-xs text-muted dark:text-gray-500 uppercase tracking-widest mb-1">Role</p>
+                            <p class="text-sm font-medium">Product Designer + Developer</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="w-full sm:w-5/12 order-1 sm:order-2 text-center">
+                        <button data-modal-open="imageModal" data-modal-img-src="img/kaizen/desktophome.png" data-modal-img-alt="Kaizen Tracker — Desktop home view" data-modal-maxw="max-w-6xl" class="block w-full cursor-pointer">
+                          <img src="img/kaizen/desktophome.png" alt="Kaizen Tracker desktop home view" class="max-w-full max-h-[420px] mx-auto object-contain rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                        </button>
+                        <p class="text-xs text-muted dark:text-gray-500 mt-2">Desktop home view — click to enlarge</p>
+                      </div>
+                    </div>
+                  </section>
+
+                  <!-- Section 2: Design Approach -->
+                  <section id="list-item-2" class="bg-zinc-100 dark:bg-dark-surface px-3 py-16">
+                    <div class="max-w-4xl mx-auto">
+                    <h2 class="font-heading text-3xl mb-2">Design Approach</h2>
+                    <p class="text-muted dark:text-gray-400 mb-8">Owning the full stack — design through deployment — meant every decision could be made with both user needs and technical reality in mind simultaneously. No handoffs, no context lost in translation.</p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      <div class="bg-white dark:bg-dark-bg p-5 rounded-lg shadow-sm">
+                        <h4 class="font-heading text-xl mb-2">Status Lifecycle</h4>
+                        <p class="text-[14px]"><span class="font-medium">Considering → Trying → Adopted / Abandoned.</span> The friction is intentional. Moving an improvement forward requires a deliberate tap — it prompts you to actually reflect on whether it's working, not just forget about it.</p>
+                      </div>
+                      <div class="bg-white dark:bg-dark-bg p-5 rounded-lg shadow-sm">
+                        <h4 class="font-heading text-xl mb-2">Impact & Effort Ratings</h4>
+                        <p class="text-[14px]">Every improvement gets rated 1–5 for impact and effort. The goal: surface quick wins (high impact, low effort) at a glance and help you sequence improvements in a realistic order.</p>
+                      </div>
+                      <div class="bg-white dark:bg-dark-bg p-5 rounded-lg shadow-sm">
+                        <h4 class="font-heading text-xl mb-2">Category Taxonomy</h4>
+                        <p class="text-[14px]">Eight categories — Health, Career, Mindset, Relationships, Finance, Learning, Productivity, Creativity — designed to cover life domains without becoming an overwhelming taxonomy that nobody uses.</p>
+                      </div>
+                      <div class="bg-white dark:bg-dark-bg p-5 rounded-lg shadow-sm">
+                        <h4 class="font-heading text-xl mb-2">Annual Goal Bar</h4>
+                        <p class="text-[14px]">A progress bar showing improvements adopted toward an annual goal (e.g. 10/100). Borrowed from habit research: visible progress toward a concrete target is a stronger motivator than open-ended streaks.</p>
+                      </div>
+                      <div class="bg-white dark:bg-dark-bg p-5 rounded-lg shadow-sm sm:col-span-2">
+                        <h4 class="font-heading text-xl mb-2">Mobile-First Layout</h4>
+                        <p class="text-[14px]">Most reflective journaling happens in small moments — on the couch, in line, right after a realization. The core flows are designed for one-handed mobile use first. Desktop gets a side-by-side panel layout for deeper review sessions.</p>
+                      </div>
+                    </div>
+
+                    <p class="mt-8 text-[14px] text-muted dark:text-gray-400">Process: I sketched rough flows on paper, then iterated directly in the browser using Tailwind. No Figma — building in the actual medium kept me honest about feasibility and forced real decisions faster.</p>
+                    </div>
+                  </section>
+
+                  <!-- Section 3: The Stack -->
+                  <section id="list-item-3" class="py-16 px-3">
+                    <div class="max-w-4xl mx-auto">
+                    <h2 class="font-heading text-3xl mb-2">The Stack</h2>
+                    <p class="text-muted dark:text-gray-400 mb-8">Choosing tools for a solo build that could actually ship — and scale if it needed to.</p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                      <div class="border border-gray-200 dark:border-gray-700 p-5 rounded-lg">
+                        <div class="flex items-center gap-3 mb-3">
+                          <div class="w-8 h-8 bg-black dark:bg-white rounded flex items-center justify-center flex-shrink-0">
+                            <svg class="w-5 h-5 text-white dark:text-black" viewBox="0 0 24 24" fill="currentColor"><path d="M18.665 21.978C16.758 23.255 14.465 24 12 24 5.377 24 0 18.623 0 12S5.377 0 12 0s12 5.377 12 12c0 3.583-1.574 6.801-4.067 9.001L9.219 7.2H7.2v9.596h1.615V9.041l7.85 12.937zM14.715 7.2v9.596h1.614V7.2h-1.614z"/></svg>
+                          </div>
+                          <h4 class="font-heading text-xl">Next.js</h4>
+                        </div>
+                        <p class="text-[13px] text-muted dark:text-gray-400">React framework with file-based routing and server components. Fast to build, easy to reason about, and deploys seamlessly to Vercel.</p>
+                      </div>
+
+                      <div class="border border-gray-200 dark:border-gray-700 p-5 rounded-lg">
+                        <div class="flex items-center gap-3 mb-3">
+                          <div class="w-8 h-8 bg-[#06B6D4] rounded flex items-center justify-center flex-shrink-0">
+                            <svg class="w-5 h-5 text-white" viewBox="0 0 54 33" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M27 0C19.8 0 15.3 3.6 13.5 10.8c2.7-3.6 5.85-4.95 9.45-4.05 2.054.514 3.522 2.004 5.147 3.653C30.744 13.09 33.808 16.2 40.5 16.2c7.2 0 11.7-3.6 13.5-10.8-2.7 3.6-5.85 4.95-9.45 4.05-2.054-.514-3.522-2.004-5.147-3.653C36.756 3.11 33.692 0 27 0zM13.5 16.2C6.3 16.2 1.8 19.8 0 27c2.7-3.6 5.85-4.95 9.45-4.05 2.054.514 3.522 2.004 5.147 3.653C17.244 29.29 20.308 32.4 27 32.4c7.2 0 11.7-3.6 13.5-10.8-2.7 3.6-5.85 4.95-9.45 4.05-2.054-.514-3.522-2.004-5.147-3.653C23.256 19.31 20.192 16.2 13.5 16.2z"/></svg>
+                          </div>
+                          <h4 class="font-heading text-xl">Tailwind CSS</h4>
+                        </div>
+                        <p class="text-[13px] text-muted dark:text-gray-400">Utility-first styling. Kept the design system consistent without writing custom CSS files. Ideal for iterating UI quickly without context switching.</p>
+                      </div>
+
+                      <div class="border border-gray-200 dark:border-gray-700 p-5 rounded-lg">
+                        <div class="flex items-center gap-3 mb-3">
+                          <div class="w-8 h-8 bg-[#3ECF8E] rounded flex items-center justify-center flex-shrink-0">
+                            <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M11.9 1.036c-.015-.986-1.26-1.41-1.874-.637L.764 12.05C.199 12.768.752 13.818 1.667 13.818h7.517l-.182 9.149c.015.986 1.26 1.41 1.874.637l9.262-11.652c.565-.718.012-1.768-.903-1.768H12.1l-.2-9.148z"/></svg>
+                          </div>
+                          <h4 class="font-heading text-xl">Supabase</h4>
+                        </div>
+                        <p class="text-[13px] text-muted dark:text-gray-400">Auth (email + password), PostgreSQL database, and row-level security — so each user's data stays private. Saved weeks vs. building auth from scratch.</p>
+                      </div>
+
+                      <div class="border border-gray-200 dark:border-gray-700 p-5 rounded-lg">
+                        <div class="flex items-center gap-3 mb-3">
+                          <div class="w-8 h-8 bg-black dark:bg-white rounded flex items-center justify-center flex-shrink-0">
+                            <svg class="w-5 h-5 text-white dark:text-black" viewBox="0 0 76 65" fill="currentColor"><path d="M37.5274 0L75.0548 65H0L37.5274 0Z"/></svg>
+                          </div>
+                          <h4 class="font-heading text-xl">Vercel</h4>
+                        </div>
+                        <p class="text-[13px] text-muted dark:text-gray-400">Hosting and serverless functions with automatic deployments on every push to main. Zero-config for Next.js projects.</p>
+                      </div>
+
+                      <div class="border border-gray-200 dark:border-gray-700 p-5 rounded-lg">
+                        <div class="flex items-center gap-3 mb-3">
+                          <div class="w-8 h-8 bg-[#24292e] rounded flex items-center justify-center flex-shrink-0">
+                            <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                          </div>
+                          <h4 class="font-heading text-xl">GitHub</h4>
+                        </div>
+                        <p class="text-[13px] text-muted dark:text-gray-400">Version control and the trigger for Vercel's CI/CD pipeline. Push to main, app deploys automatically — no manual steps.</p>
+                      </div>
+
+                      <div class="border border-gray-200 dark:border-gray-700 p-5 rounded-lg">
+                        <div class="flex items-center gap-3 mb-3">
+                          <div class="w-8 h-8 bg-[#d97706] rounded flex items-center justify-center flex-shrink-0">
+                            <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                          </div>
+                          <h4 class="font-heading text-xl">Claude Code</h4>
+                        </div>
+                        <p class="text-[13px] text-muted dark:text-gray-400">AI-assisted development partner. Used throughout the build to scaffold components, debug edge cases, and review patterns. More on this below.</p>
+                      </div>
+                    </div>
+                    </div>
+                  </section>
+
+                  <!-- Section 4: Development Process -->
+                  <section id="list-item-4" class="bg-zinc-100 dark:bg-dark-surface py-16 px-3">
+                    <div class="max-w-4xl mx-auto">
+                    <h2 class="font-heading text-3xl mb-2">Development Process</h2>
+                    <p class="text-muted dark:text-gray-400 mb-8">How I used Claude Code as a development partner — and why directing AI effectively is itself a design skill.</p>
+
+                    <div class="flex flex-wrap gap-8">
+                      <div class="w-full sm:w-7/12 mx-auto">
+                        <p class="mb-4">I used Claude Code throughout the build: scaffolding components, debugging tricky Supabase RLS policies, reviewing data model decisions, and working through edge cases in the status lifecycle logic. But the most important thing Claude Code can't do is <em>decide what to build</em> — that required constant UX judgment on my end.</p>
+
+                        <p class="mb-6">The iterative loop looked like this:</p>
+
+                        <div class="flex flex-col gap-3 mb-8">
+                          <div class="flex items-start gap-3">
+                            <div class="w-7 h-7 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">1</div>
+                            <div>
+                              <p class="font-medium text-sm">Idea</p>
+                              <p class="text-[13px] text-muted dark:text-gray-400">I'd identify a feature or UX problem — e.g., "users need to see their quick wins, not just a flat list"</p>
+                            </div>
+                          </div>
+                          <div class="flex items-start gap-3">
+                            <div class="w-7 h-7 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">2</div>
+                            <div>
+                              <p class="font-medium text-sm">Design Intent</p>
+                              <p class="text-[13px] text-muted dark:text-gray-400">Articulate the intent clearly — what problem this solves, what constraints exist, what "done" looks like</p>
+                            </div>
+                          </div>
+                          <div class="flex items-start gap-3">
+                            <div class="w-7 h-7 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">3</div>
+                            <div>
+                              <p class="font-medium text-sm">Prompt → Output</p>
+                              <p class="text-[13px] text-muted dark:text-gray-400">Claude Code scaffolds the implementation, suggests patterns, surfaces potential issues</p>
+                            </div>
+                          </div>
+                          <div class="flex items-start gap-3">
+                            <div class="w-7 h-7 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">4</div>
+                            <div>
+                              <p class="font-medium text-sm">Review & Refine</p>
+                              <p class="text-[13px] text-muted dark:text-gray-400">I evaluate the output against the original intent — does this actually solve the problem? Does it feel right in the browser?</p>
+                            </div>
+                          </div>
+                          <div class="flex items-start gap-3">
+                            <div class="w-7 h-7 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">5</div>
+                            <div>
+                              <p class="font-medium text-sm">Ship</p>
+                              <p class="text-[13px] text-muted dark:text-gray-400">Push to main, Vercel deploys, check it live on my phone</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="w-full sm:w-5/12 mx-auto">
+                        <blockquote class="border-l-4 border-primary dark:border-emerald-500 pl-5 py-4 bg-white dark:bg-dark-bg rounded-r-lg shadow-sm text-muted dark:text-gray-400 italic text-[14px] leading-relaxed">
+                          "Knowing how to direct AI effectively — giving it context, constraints, and clear intent — is itself a craft. The designers who learn this are going to outpace the ones who don't."
+                        </blockquote>
+                      </div>
+                    </div>
+                    </div>
+                  </section>
+
+                  <!-- Section 5: Key Features -->
+                  <section id="list-item-5" class="py-16 px-3">
+                    <div class="max-w-4xl mx-auto">
+                    <h2 class="font-heading text-3xl mb-2">Key Features</h2>
+                    <p class="text-muted dark:text-gray-400 mb-8">The app in action — a walkthrough of the core screens.</p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                      <div>
+                        <button data-modal-open="imageModal" data-modal-img-src="img/kaizen/homemock2.png" data-modal-img-alt="Improvement feed — status at a glance" data-modal-maxw="max-w-4xl" class="block w-full cursor-pointer">
+                          <img src="img/kaizen/homemock2.png" alt="Improvement feed" class="w-auto max-h-[360px] mx-auto rounded-lg shadow-md hover:shadow-xl transition-shadow object-contain">
+                        </button>
+                        <h4 class="font-heading text-lg mt-3 mb-1">Improvement Feed</h4>
+                        <p class="text-[13px] text-muted dark:text-gray-400">Designed for quick scanning. Status badges and category chips let you assess your full list without reading every entry. Sort and filter keep the signal high.</p>
+                      </div>
+
+                      <div>
+                        <button data-modal-open="imageModal" data-modal-img-src="img/kaizen/addimprovment.png" data-modal-img-alt="Log Improvement form — minimal fields, low friction" data-modal-maxw="max-w-4xl" class="block w-full cursor-pointer">
+                          <img src="img/kaizen/addimprovment.png" alt="Add improvement form" class="w-auto max-h-[360px] mx-auto rounded-lg shadow-md hover:shadow-xl transition-shadow object-contain">
+                        </button>
+                        <h4 class="font-heading text-lg mt-3 mb-1">Log Improvement</h4>
+                        <p class="text-[13px] text-muted dark:text-gray-400">Minimal required fields to reduce friction at the moment of insight. You can always add more detail later — but if logging is a chore, you won't do it.</p>
+                      </div>
+
+                      <div>
+                        <button data-modal-open="imageModal" data-modal-img-src="img/kaizen/categories.png" data-modal-img-alt="Status and category filters" data-modal-maxw="max-w-4xl" class="block w-full cursor-pointer">
+                          <img src="img/kaizen/categories.png" alt="Category and status filters" class="w-auto max-h-[360px] mx-auto rounded-lg shadow-md hover:shadow-xl transition-shadow object-contain">
+                        </button>
+                        <h4 class="font-heading text-lg mt-3 mb-1">Filter & Review</h4>
+                        <p class="text-[13px] text-muted dark:text-gray-400">Filter by category and status to find patterns: where do you abandon changes? What categories do you never touch? The data surfaces what you'd miss by scrolling.</p>
+                      </div>
+
+                      <div>
+                        <button data-modal-open="imageModal" data-modal-img-src="img/kaizen/login.png"
+                          data-modal-img-alt="Login screen — entry point to the app"
+                          data-modal-maxw="max-w-4xl" class="block w-full cursor-pointer">
+                          <img src="img/kaizen/login.png" alt="Login screen"
+                            class="w-auto max-h-[360px] mx-auto rounded-lg shadow-md hover:shadow-xl transition-shadow object-contain">
+                        </button>
+                        <h4 class="font-heading text-lg mt-3 mb-1">Entry Point</h4>
+                        <p class="text-[13px] text-muted dark:text-gray-400">The login screen sets the first impression — brand color on the primary action, no distractions. Auth is handled entirely by Supabase, so this screen's only job is to get you in cleanly.</p>
+                      </div>
+                    </div>
+                    </div>
+                  </section>
+
+                  <!-- Section 6: Deployment & CI/CD -->
+                  <section id="list-item-6" class="bg-zinc-100 dark:bg-dark-surface py-16 px-3">
+                    <div class="max-w-4xl mx-auto">
+                    <h2 class="font-heading text-3xl mb-2">Deployment</h2>
+                    <p class="text-muted dark:text-gray-400 mb-8">The full pipeline from local change to live app in under two minutes.</p>
+
+                    <div>
+                      <!-- Pipeline diagram -->
+                      <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-0 mb-8 flex-wrap">
+                        <div class="bg-white dark:bg-dark-bg border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 text-center min-w-[120px]">
+                          <p class="text-xs text-muted dark:text-gray-500 uppercase tracking-wider mb-1">Local</p>
+                          <p class="font-medium text-sm">Code Change</p>
+                        </div>
+                        <div class="sm:mx-2 text-muted dark:text-gray-500 text-xl font-light rotate-90 sm:rotate-0">→</div>
+                        <div class="bg-white dark:bg-dark-bg border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 text-center min-w-[120px]">
+                          <p class="text-xs text-muted dark:text-gray-500 uppercase tracking-wider mb-1">GitHub</p>
+                          <p class="font-medium text-sm">git push main</p>
+                        </div>
+                        <div class="sm:mx-2 text-muted dark:text-gray-500 text-xl font-light rotate-90 sm:rotate-0">→</div>
+                        <div class="bg-white dark:bg-dark-bg border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 text-center min-w-[120px]">
+                          <p class="text-xs text-muted dark:text-gray-500 uppercase tracking-wider mb-1">Vercel</p>
+                          <p class="font-medium text-sm">Auto Deploy</p>
+                        </div>
+                        <div class="sm:mx-2 text-muted dark:text-gray-500 text-xl font-light rotate-90 sm:rotate-0">→</div>
+                        <div class="bg-white dark:bg-dark-bg border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 text-center min-w-[120px]">
+                          <p class="text-xs text-muted dark:text-gray-500 uppercase tracking-wider mb-1">Live</p>
+                          <p class="font-medium text-sm">kaizen-tracker.vercel.app</p>
+                        </div>
+                      </div>
+
+                      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div class="bg-white dark:bg-dark-bg p-4 rounded-lg border border-gray-200 dark:border-gray-700">
+                          <h4 class="font-heading text-lg mb-2">Auth & Data</h4>
+                          <p class="text-[13px] text-muted dark:text-gray-400">Supabase handles email/password authentication and stores all improvement data in PostgreSQL. Row-level security (RLS) policies ensure every user can only read and write their own data.</p>
+                        </div>
+                        <div class="bg-white dark:bg-dark-bg p-4 rounded-lg border border-gray-200 dark:border-gray-700">
+                          <h4 class="font-heading text-lg mb-2">Serverless</h4>
+                          <p class="text-[13px] text-muted dark:text-gray-400">Next.js API routes run as serverless functions on Vercel. No server to manage or scale — it handles traffic spikes automatically and costs nothing at low volume.</p>
+                        </div>
+                        <div class="bg-white dark:bg-dark-bg p-4 rounded-lg border border-gray-200 dark:border-gray-700">
+                          <h4 class="font-heading text-lg mb-2">CI/CD</h4>
+                          <p class="text-[13px] text-muted dark:text-gray-400">Every push to the main branch triggers a Vercel build. Preview deployments are generated for branches, so I can check changes on a live URL before merging.</p>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                  </section>
+
+                  <!-- Section 7: Reflection -->
+                  <section id="list-item-7" class="py-16 px-3">
+                    <div class="max-w-4xl mx-auto">
+                    <h2 class="font-heading text-3xl mb-2">Reflection</h2>
+                    <p class="text-muted dark:text-gray-400 mb-8">What building this taught me — as a designer who writes code.</p>
+
+                    <div>
+                      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+                        <div>
+                          <h4 class="font-heading text-xl mb-2">Design ↔ Build Feedback Loop</h4>
+                          <p class="text-[14px] text-muted dark:text-gray-400">Designing and building simultaneously made every decision more grounded. When I knew I'd have to build it, I designed more realistically. When I was building, I made better design calls because I knew the product deeply.</p>
+                        </div>
+                        <div>
+                          <h4 class="font-heading text-xl mb-2">Constraints Drive Simplicity</h4>
+                          <p class="text-[14px] text-muted dark:text-gray-400">Implementation constraints turned into design virtues. The minimal log form exists partly because a simple form is easier to build — but it's also just better UX. Constraints forced me to prioritize what actually mattered.</p>
+                        </div>
+                        <div>
+                          <h4 class="font-heading text-xl mb-2">AI Amplifies Product Thinking</h4>
+                          <p class="text-[14px] text-muted dark:text-gray-400">Using Claude Code effectively requires strong product thinking. Vague prompts produce generic results. Clear intent, good context, and defined constraints produce output worth shipping. The quality bar is still yours to set.</p>
+                        </div>
+                      </div>
+
+                      <div class="border-t border-gray-200 dark:border-gray-700 pt-8">
+                        <h4 class="font-heading text-xl mb-3">Next Steps</h4>
+                        <ol class="list-decimal pl-5 text-[14px] text-muted dark:text-gray-400 space-y-2">
+                          <li>Native mobile app (React Native) — so logging a quick improvement feels as fast as a note</li>
+                          <li>Data visualizations — category breakdowns, adoption rates, effort/impact scatter plots</li>
+                          <li>Shared team improvements — extend the model to small teams tracking collective kaizen</li>
+                          <li>Export — CSV or PDF summaries for personal review or sharing with a coach/manager</li>
+                        </ol>
+                      </div>
+                    </div>
+                    </div>
+                  </section>
+
+                  <!-- Thank You Section -->
+                  <div class="flex items-center my-12 py-12 px-3">
+                    <div class="max-w-4xl mx-auto w-full">
+                      <h3 class="font-heading text-2xl">Thank you</h3>
+                      <p>Thank you for your time reviewing my work on Kaizen Tracker!</p>
+                      <p class="pt-4">If you'd like to get in touch, please say hi!</p>
+                      <a href="mailto:claytonanderson.work@gmail.com" target="_blank" class="flex items-center gap-2 text-primary dark:text-emerald-400 hover:underline">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                        </svg>
+                        claytonanderson.work@gmail.com
+                      </a>
+                    </div>
+                  </div>
+
+                  <hr class="my-4 border-gray-300 dark:border-gray-700">
+                </div>
+              </div>
+            </div>
+
+            <!-- Scrollspy Sidebar -->
+            <div class="hidden xl:block xl:w-2/12 pl-8 pt-20">
+              <nav class="sidebar-nav sticky top-12 text-[13px] text-muted dark:text-gray-400" id="case-study-list">
+                <div class="py-2 px-3"><h6 class="font-heading text-body dark:text-dark-text">Case Study</h6></div>
+                <a href="#list-item-1" class="block py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">Overview</a>
+                <a href="#list-item-2" class="block py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">Design Approach</a>
+                <a href="#list-item-3" class="block py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">The Stack</a>
+                <a href="#list-item-4" class="block py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">Development Process</a>
+                <a href="#list-item-5" class="block py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">Key Features</a>
+                <a href="#list-item-6" class="block py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">Deployment</a>
+                <a href="#list-item-7" class="block py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">Reflection</a>
+              </nav>
+            </div>
+          </div>
+
+          <!-- Footer -->
+          <div class="py-12 mb-12 xl:pr-[16.667%]">
+            <div class="max-w-4xl mx-auto">
+            <h2 class="font-heading text-3xl">Other Case Studies</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4 mb-12">
+              <div>
+                <a href="snackordering.html">
+                  <div class="group relative shadow-[0px_4px_4px_0_rgba(0,0,0,0.25)] overflow-hidden">
+                    <img src="img/index/snackordering.png" class="w-full" alt="SnackOrdering">
+                    <div class="absolute inset-0 bg-dark opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out flex flex-col justify-end p-4">
+                      <h5 class="font-heading text-white text-xl">SnackOrdering</h5>
+                      <p class="text-white text-[15px]">Challenge: Design a snack ordering app for a movie theater</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div>
+                <a href="wrf.html">
+                  <div class="group relative shadow-[0px_4px_4px_0_rgba(0,0,0,0.25)] overflow-hidden">
+                    <img src="img/index/wildfirerelief.png" class="w-full" alt="Wildfire Relief Fund">
+                    <div class="absolute inset-0 bg-dark opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out flex flex-col justify-end p-4">
+                      <h5 class="font-heading text-white text-xl">Wildfire Relief Fund</h5>
+                      <p class="text-white text-[15px]">Challenge: Design a user registration flow for a humanitarian organization</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <div id="footer-icons-placeholder"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Spacer -->
+        <div class="hidden xl:block xl:w-1/12"></div>
+      </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal hidden fixed inset-0 z-50 flex items-center justify-center">
+      <div class="modal-backdrop absolute inset-0 bg-black/50"></div>
+      <div id="imageModal-content" class="relative bg-white dark:bg-dark-surface max-w-4xl w-full mx-4 z-10 shadow-lg">
+        <div class="flex justify-end p-2">
+          <button data-modal-close class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-100 transition-colors" aria-label="Close">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+        <div class="p-4 text-center">
+          <img id="imageModal-img" class="max-w-full max-h-[75vh] w-auto mx-auto" src="" alt="">
+        </div>
+        <div class="flex justify-between items-center p-4 border-t dark:border-gray-700">
+          <div id="imageModal-footer-extra" class="hidden"></div>
+          <button data-modal-close class="px-4 py-2 bg-secondary dark:bg-emerald-700 text-white hover:bg-muted-hover dark:hover:bg-emerald-600 transition-colors ml-auto">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

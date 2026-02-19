@@ -1,0 +1,14 @@
+# Personal / workflow files
+CLAUDE.md
+todo.md
+
+# macOS metadata
+.DS_Store
+**/.DS_Store
+
+# Editor directories
+.vscode/
+.idea/
+
+# Dependency directories (precautionary)
+node_modules/

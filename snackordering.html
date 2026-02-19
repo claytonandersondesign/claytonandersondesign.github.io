@@ -5,473 +5,495 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">    
-    
+    <!-- Theme: prevent flash of wrong theme -->
+    <script>
+      if (localStorage.getItem('theme') === 'dark' ||
+          (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: '#006c4d',
+              secondary: '#4c6358',
+              dark: '#21352c',
+              tan: '#f8f3f0',
+              muted: '#6f7973',
+              'muted-hover': '#404944',
+              body: '#1b1b1b',
+              'dark-bg': '#1a1a1a',
+              'dark-surface': '#2d2d2d',
+              'dark-text': '#e5e5e5',
+            },
+            fontFamily: {
+              heading: ['"Bebas Neue"', 'sans-serif'],
+              body: ['Lato', 'sans-serif'],
+            },
+          }
+        }
+      }
+    </script>
+
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="custom.css">
+    <!-- Favicons -->
     <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
 
     <title>claytonanderson.design</title>
   </head>
-  <body data-bs-spy="scroll" data-bs-target="#case-study-list" data-bs-offset="150" tabindex="0">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="sidebar-1 d-none d-md-block col-md-2 pt-5">
-          <div class="sticky-top logo">
-            <a href="index.html"><img src="img/logo.svg" height=75></a>
-            <p class="pt-2 mb-0">Clayton Anderson</p>
-            <p class="pt-1">UX Designer</p>
+
+  <body class="font-body text-body dark:text-dark-text text-[15px] tracking-[0.25px] scroll-smooth bg-white dark:bg-dark-bg">
+    <div class="w-full">
+      <div class="flex flex-wrap">
+        <!-- Desktop Sidebar (Logo) -->
+        <div id="sidebar-placeholder"></div>
+
+        <!-- Main Content -->
+        <div class="w-full xl:w-9/12 px-4 xl:pt-20">
+          <!-- Mobile Navbar -->
+          <div id="nav-placeholder"></div>
+
+          <!-- Content wrapper with scrollspy -->
+          <div class="flex flex-wrap">
+            <div class="w-full xl:w-10/12">
+              <!-- Case Study Content -->
+              <div class="main pt-6 xl:pt-0">
+            <h1 class="font-heading text-4xl">SnackOrdering App Design</h1>
+            <hr class="my-4 border-gray-300 dark:border-gray-700">
+
+            <!-- Mobile TOC Bar (mobile only, sticks to top after scrolling past title) -->
+            <div id="mobile-toc" class="xl:hidden sticky top-0 z-50 bg-white dark:bg-dark-bg border-b border-gray-200 dark:border-gray-700 flex items-center justify-between px-4 py-3">
+              <span id="mobile-toc-current" class="text-[13px] font-medium text-muted truncate">Overview</span>
+              <button id="mobile-toc-btn" class="flex items-center gap-1 text-[13px] text-muted ml-2 shrink-0" aria-label="Jump to section">
+                <span>Sections</span>
+                <svg id="mobile-toc-chevron" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </button>
+            </div>
+            <!-- Mobile TOC Dropdown -->
+            <div id="mobile-toc-dropdown" class="xl:hidden hidden fixed left-4 right-0 z-40 bg-white dark:bg-dark-bg border-b border-gray-200 dark:border-gray-700 shadow-md">
+              <a href="#list-item-1" class="mobile-toc-link block px-4 py-3 text-[13px] hover:bg-gray-100 dark:hover:bg-gray-800">Overview</a>
+              <a href="#list-item-2" class="mobile-toc-link block px-4 py-3 text-[13px] hover:bg-gray-100 dark:hover:bg-gray-800">Project Goal</a>
+              <a href="#list-item-3" class="mobile-toc-link block px-4 py-3 text-[13px] hover:bg-gray-100 dark:hover:bg-gray-800">Research</a>
+              <a href="#list-item-4" class="mobile-toc-link block px-4 py-3 text-[13px] hover:bg-gray-100 dark:hover:bg-gray-800">Paper Wireframes</a>
+              <a href="#list-item-5" class="mobile-toc-link block px-4 py-3 text-[13px] hover:bg-gray-100 dark:hover:bg-gray-800">Digital Wireframes</a>
+              <a href="#list-item-6" class="mobile-toc-link block px-4 py-3 text-[13px] hover:bg-gray-100 dark:hover:bg-gray-800">Low-Fidelity Prototype</a>
+              <a href="#list-item-7" class="mobile-toc-link block px-4 py-3 text-[13px] hover:bg-gray-100 dark:hover:bg-gray-800">User Testing</a>
+              <a href="#list-item-8" class="mobile-toc-link block px-4 py-3 text-[13px] hover:bg-gray-100 dark:hover:bg-gray-800">Mockups</a>
+              <a href="#list-item-9" class="mobile-toc-link block px-4 py-3 text-[13px] hover:bg-gray-100 dark:hover:bg-gray-800">High-Fidelity Prototype</a>
+              <a href="#list-item-10" class="mobile-toc-link block px-4 py-3 text-[13px] hover:bg-gray-100 dark:hover:bg-gray-800">Conclusion</a>
+            </div>
+
+            <div class="pt-12">
+              <!-- Overview Section -->
+              <section id="list-item-1" class="mb-12 py-12 px-3">
+                <div class="flex flex-wrap items-center">
+                  <div class="w-full sm:w-1/2 pt-12 order-2 sm:order-1">
+                    <h3 class="font-heading text-2xl">The Product</h3>
+                    <p class="pt-3">SnackOrdering is an app designed to make the movie-going experience more convenient for users. It offers multiple ways to order snacks, with options like in-seat delivery and scheduled pick up from the snack counter.</p>
+                    <p class="pt-3"><strong>Timeline:</strong> November 2021 - April 2022</p>
+                    <p class="pt-3"><strong>Platform:</strong> Mobile App</p>
+                    <p class="pt-3"><strong>Role:</strong> UX Designer</p>
+                    <p class="pt-3"><strong>Responsibilities:</strong> Foundational research, conducting interviews, paper and digital wireframing, low and high-fidelity prototyping, usability testing, and iterating on designs</p>
+                  </div>
+                  <div class="w-full sm:w-1/2 order-1 sm:order-2 text-center">
+                    <button data-modal-open="imageModal" data-modal-img-src="img/snackordering/overview.png" data-modal-img-alt="Overview" data-modal-maxw="max-w-4xl" class="cursor-pointer">
+                      <img class="max-w-full max-h-[400px] mx-auto" src="img/snackordering/overview.png" alt="Overview">
+                    </button>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Problem/Goal Section -->
+              <section id="list-item-2" class="bg-zinc-100 dark:bg-dark-surface flex items-center px-3 min-h-[450px]">
+                <div class="flex flex-wrap">
+                  <div class="w-full sm:w-1/2 p-4">
+                    <h3 class="font-heading text-2xl">The problem</h3>
+                    <p>Busy moviegoers don't want to miss parts of their movie by waiting for movie concessions.</p>
+                  </div>
+                  <div class="w-full sm:w-1/2 p-4">
+                    <h3 class="font-heading text-2xl">The goal</h3>
+                    <p>Design a snack ordering app for a movie theater so that users can order snacks on their own schedule and enjoy their movie to the fullest.</p>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Research Section -->
+              <section id="list-item-3" class="my-12 py-12 px-3">
+                <h2 class="font-heading text-3xl mb-12 pb-12">Research</h2>
+                <div class="pb-12">
+                  <h3 class="font-heading text-2xl pb-3">User Interviews</h3>
+                  <p>I conducted user interviews and created empathy maps to identify the needs of the users I was designing for. A primary user group identified by the interviews were busy movie-goers who felt stressed by the time constraints of the movie-going process.</p>
+                </div>
+
+                <div class="my-12 py-12">
+                  <h3 class="font-heading text-2xl pb-3">User Personas</h3>
+                  <p>I created personas to help empathize with and understand the goals and frustrations of the primary user group. This helped me focus on designing an experience that addressed real user needs.</p>
+                  <div class="text-center mt-4">
+                    <img class="max-w-full mx-auto max-h-[400px] shadow-[rgba(0,0,0,0.35)_0px_5px_15px]" src="img/snackordering/persona1.png" alt="User Persona">
+                  </div>
+                </div>
+
+                <div class="my-12 py-12">
+                  <h3 class="font-heading text-2xl pb-3">User Journey Mapping</h3>
+                  <p>Mapping Tanner's user journey revealed how much stress and anxiety could be eliminated for users with a dedicated snack ordering app.</p>
+                  <div class="text-center mt-4">
+                    <button data-modal-open="imageModal" data-modal-img-src="img/snackordering/journeymap2.png" data-modal-img-alt="Journey Map" data-modal-maxw="max-w-6xl" class="cursor-pointer">
+                      <img class="max-w-full max-h-[500px] shadow-[rgba(0,0,0,0.35)_0px_5px_15px]" src="img/snackordering/journeymap2.png" alt="Journey Map">
+                    </button>
+                  </div>
+                </div>
+
+                <div class="my-12 py-12 min-h-[450px]">
+                  <h3 class="font-heading text-2xl pb-3">Competitive Analysis</h3>
+                  <p>I conducted a competitive analysis of direct and indirect competitors to identify strengths and weaknesses of their designs. I wanted to see how they addressed the pain points I had identified. This helped me ideate a better user experience when I started designing wireframes.</p>
+                  <button data-modal-open="imageModal" data-modal-img-src="img/snackordering/competitive.png" data-modal-img-alt="Competitive Analysis" data-modal-maxw="max-w-6xl" data-modal-footer-id="modal3-footer" class="cursor-pointer mt-4">
+                    <img class="max-w-full shadow-[rgba(0,0,0,0.35)_0px_5px_15px]" src="img/snackordering/competitive.png" alt="Competitive Analysis">
+                  </button>
+                </div>
+
+                <div class="my-12 py-12">
+                  <h3 class="font-heading text-2xl pb-3">Pain Points</h3>
+                  <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+                    <div>
+                      <h4 class="font-heading text-xl">Arriving</h4>
+                      <p>Users are often under a time crunch when arriving, needing to find seats, use restrooms, and get their snacks</p>
+                    </div>
+                    <div>
+                      <h4 class="font-heading text-xl">Ordering</h4>
+                      <p>Many competitors apps don't allow users to view snack menus without having already purchased a ticket</p>
+                    </div>
+                    <div>
+                      <h4 class="font-heading text-xl">Paying</h4>
+                      <p>Processing payments or counting change in the theater can distract users from the movie</p>
+                    </div>
+                    <div>
+                      <h4 class="font-heading text-xl">Waiting</h4>
+                      <p>Needing to wait for their order can cause users to miss parts of the movie, or prevent them from ordering snacks at all</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Paper Wireframes Section -->
+              <section id="list-item-4" class="bg-zinc-100 dark:bg-dark-surface my-12 py-12 px-3">
+                <div class="flex flex-wrap items-center pt-12">
+                  <div class="w-full sm:w-1/2">
+                    <h2 class="font-heading text-3xl pb-3">Paper Wireframes</h2>
+                    <p>Iterating on each screen of the app with paper wireframes allowed for quick experimentation to see what elements worked best. For the initial designs I wanted to keep things simple and focused on elements that would benefit the user based on feedback from the user research.</p>
+                  </div>
+                  <div class="w-full sm:w-1/2 text-center">
+                    <button data-modal-open="imageModal" data-modal-img-src="img/snackordering/paper.png" data-modal-img-alt="Paper Wireframes" data-modal-maxw="max-w-4xl" class="cursor-pointer">
+                      <img class="max-w-full max-h-[300px] shadow-[rgba(0,0,0,0.35)_0px_5px_15px]" src="img/snackordering/paper.png" alt="Paper Wireframes">
+                    </button>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Digital Wireframes Section -->
+              <section id="list-item-5" class="flex items-center my-12 py-12 px-3">
+                <div class="flex flex-wrap">
+                  <div class="w-full sm:w-1/2">
+                    <h2 class="font-heading text-3xl pb-3">Digital Wireframes</h2>
+                    <h3 class="font-heading text-2xl">Home Screen</h3>
+                    <p>For the home screen, I prioritized features that made creating a new order quick and easy.</p>
+                    <ul class="divide-y text-sm">
+                      <li class="py-2">A) The large hero image is an easy way for users to see what featured items are available to order</li>
+                      <li class="py-2">B) The snack menu section allows users to quickly view the full menu</li>
+                      <li class="py-2">C) The prominent 'New Order' Button provides a fast way for users to begin an order</li>
+                    </ul>
+                  </div>
+                  <div class="w-full sm:w-1/2 text-center mb-12 pb-12">
+                    <button data-modal-open="imageModal" data-modal-img-src="img/snackordering/digitalwireframes.png" data-modal-img-alt="Digital Wireframe Home" data-modal-maxw="max-w-4xl" class="cursor-pointer">
+                      <img class="max-w-full h-[400px] mx-auto" src="img/snackordering/digitalwireframes.png" alt="Digital Wireframe Home">
+                    </button>
+                    <p class="pl-4 pt-2 text-[13px] tracking-[0.4px]">Digital Wireframe of the Home Screen</p>
+                  </div>
+                  <div class="w-full sm:w-1/2">
+                    <h3 class="font-heading text-2xl">Order Screen</h3>
+                    <p>For the order screen, I focused on designing elements that would provide convenience to users throughout the ordering process.</p>
+                    <ul class="divide-y text-sm">
+                      <li class="py-2">D) Keeping the order details prominent allows users to review and edit their orders easily</li>
+                      <li class="py-2">E) The delivery instructions section allows users to select the method of delivery which suits their needs best</li>
+                    </ul>
+                  </div>
+                  <div class="w-full sm:w-1/2 text-center">
+                    <button data-modal-open="imageModal" data-modal-img-src="img/snackordering/digitalwireframes2.png" data-modal-img-alt="Digital Wireframe Order" data-modal-maxw="max-w-4xl" class="cursor-pointer">
+                      <img class="max-w-full h-[400px] mx-auto" src="img/snackordering/digitalwireframes2.png" alt="Digital Wireframe Order">
+                    </button>
+                    <p class="pl-4 pt-2 text-[13px] tracking-[0.4px]">Digital Wireframe of the Ordering Screen</p>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Low-Fidelity Prototype Section -->
+              <section id="list-item-6" class="bg-zinc-100 dark:bg-dark-surface my-12 py-12 px-3">
+                <div class="flex flex-wrap items-center">
+                  <div class="w-full sm:w-1/2">
+                    <h2 class="font-heading text-3xl pb-3">Low-Fidelity Prototype</h2>
+                    <p class="pr-4">Using digital wireframes for each step, I created a low-fidelity prototype. I connected the primary user flow of creating a snack order so that the prototype could be used in a usability study.</p>
+                  </div>
+                  <div class="w-full sm:w-1/2">
+                    <img class="max-w-full h-auto" src="img/snackordering/lowfidelity.png" alt="Low Fidelity Prototype">
+                  </div>
+                </div>
+              </section>
+
+              <!-- User Testing Section -->
+              <section id="list-item-7" class="flex items-center my-12 py-12 px-3">
+                <div>
+                  <div class="pb-12">
+                    <h2 class="font-heading text-3xl pb-3">User Testing</h2>
+                    <p>I conducted two rounds of usability studies. The first study was done with a low-fidelity prototype to see if users could complete the ordering process, and insights were used to iterate on the design. The second study was done with a high-fidelity prototype and revealed areas of the design that could be refined and enhanced.</p>
+                  </div>
+                  <div>
+                    <button data-modal-open="imageModal" data-modal-img-src="img/snackordering/affinitydiagram.png" data-modal-img-alt="Affinity Diagram" data-modal-maxw="max-w-6xl" class="cursor-pointer">
+                      <img class="max-w-full h-auto" src="img/snackordering/affinitydiagram.png" alt="Affinity Diagram">
+                    </button>
+                  </div>
+
+                  <div class="flex flex-wrap items-center my-12 py-12">
+                    <div class="w-full sm:w-4/12">
+                      <h3 class="font-heading text-2xl">Round 1</h3>
+                      <p>The first usability study revealed that users found the initial designs confusing to navigate and fully complete. To provide better structure I split the process into separate sections which users could complete in an ordered sequence. I also added a progress bar and buttons which would allow users to progress between steps.</p>
+                    </div>
+                    <div class="w-1/2 sm:w-4/12 text-center">
+                      <button data-modal-open="imageModal" data-modal-img-src="img/snackordering/usabilitystudy1before.png" data-modal-img-alt="Before Usability Study 1" data-modal-maxw="max-w-4xl" class="cursor-pointer">
+                        <img class="max-w-full max-h-[400px] mx-auto" src="img/snackordering/usabilitystudy1before.png" alt="Before Usability Study 1">
+                      </button>
+                      <p class="pt-2 text-[13px] tracking-[0.4px]">Before Usability Study</p>
+                    </div>
+                    <div class="w-1/2 sm:w-4/12 text-center">
+                      <button data-modal-open="imageModal" data-modal-img-src="img/snackordering/usabilitystudy1after.png" data-modal-img-alt="After Usability Study 1" data-modal-maxw="max-w-4xl" class="cursor-pointer">
+                        <img class="max-w-full max-h-[400px] mx-auto" src="img/snackordering/usabilitystudy1after.png" alt="After Usability Study 1">
+                      </button>
+                      <p class="pt-2 text-[13px] tracking-[0.4px]">After Usability Study</p>
+                    </div>
+                  </div>
+
+                  <div class="flex flex-wrap items-center my-12 py-12">
+                    <div class="w-full sm:w-4/12">
+                      <h3 class="font-heading text-2xl">Round 2</h3>
+                      <p>The second usability study revealed that users wanted more in-depth information when creating and completing their orders. From menu items, to delivery and payment options, I added additional context and relevant information.</p>
+                    </div>
+                    <div class="w-1/2 sm:w-4/12 text-center">
+                      <button data-modal-open="imageModal" data-modal-img-src="img/snackordering/usabilitystudy2before.png" data-modal-img-alt="Before Usability Study 2" data-modal-maxw="max-w-4xl" class="cursor-pointer">
+                        <img class="max-w-full max-h-[400px] mx-auto" src="img/snackordering/usabilitystudy2before.png" alt="Before Usability Study 2">
+                      </button>
+                      <p class="pt-2 text-[13px] tracking-[0.4px]">Before Usability Study 2</p>
+                    </div>
+                    <div class="w-1/2 sm:w-4/12 text-center">
+                      <button data-modal-open="imageModal" data-modal-img-src="img/snackordering/usabilitystudy2after.png" data-modal-img-alt="After Usability Study 2" data-modal-maxw="max-w-4xl" class="cursor-pointer">
+                        <img class="max-w-full max-h-[400px] mx-auto" src="img/snackordering/usabilitystudy2after.png" alt="After Usability Study 2">
+                      </button>
+                      <p class="pt-2 text-[13px] tracking-[0.4px]">After Usability Study 2</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Mockups Section -->
+              <section id="list-item-8" class="bg-zinc-100 dark:bg-dark-surface flex items-center my-12 py-12 px-3">
+                <div class="py-3 mx-auto">
+                  <h2 class="font-heading text-3xl pb-3">Mockups</h2>
+                  <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                    <div class="text-center">
+                      <button data-modal-open="imageModal" data-modal-img-src="img/snackordering/mockup1.png" data-modal-img-alt="Mockup 1" data-modal-maxw="max-w-4xl" class="cursor-pointer">
+                        <img class="max-w-full max-h-[400px] mx-auto" src="img/snackordering/mockup1.png" alt="Mockup 1">
+                      </button>
+                    </div>
+                    <div class="text-center pt-3 sm:pt-0">
+                      <button data-modal-open="imageModal" data-modal-img-src="img/snackordering/mockup2.png" data-modal-img-alt="Mockup 2" data-modal-maxw="max-w-4xl" class="cursor-pointer">
+                        <img class="max-w-full max-h-[400px] mx-auto" src="img/snackordering/mockup2.png" alt="Mockup 2">
+                      </button>
+                    </div>
+                    <div class="text-center pt-3 sm:pt-0">
+                      <button data-modal-open="imageModal" data-modal-img-src="img/snackordering/mockup3.png" data-modal-img-alt="Mockup 3" data-modal-maxw="max-w-4xl" class="cursor-pointer">
+                        <img class="max-w-full max-h-[400px] mx-auto" src="img/snackordering/mockup3.png" alt="Mockup 3">
+                      </button>
+                    </div>
+                    <div class="text-center pt-3 sm:pt-0">
+                      <button data-modal-open="imageModal" data-modal-img-src="img/snackordering/mockup4.png" data-modal-img-alt="Mockup 4" data-modal-maxw="max-w-4xl" class="cursor-pointer">
+                        <img class="max-w-full max-h-[400px] mx-auto" src="img/snackordering/mockup4.png" alt="Mockup 4">
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- High-Fidelity Prototype Section -->
+              <section id="list-item-9" class="my-12 py-12 px-3">
+                <div class="flex flex-wrap">
+                  <div class="w-full sm:w-1/2">
+                    <h2 class="font-heading text-3xl pb-3">High-Fidelity Prototype</h2>
+                    <p class="pr-4">The final high-fidelity prototype provided an intuitive flow for ordering and completing the checkout process. It also provided users with a simple way to specify their delivery options and keep track of their order progress.</p>
+                    <p class="pt-4">View the SnackOrdering <a href="https://www.figma.com/proto/yAX1tsZY2UOBduZWPgsg2P/SnackOrdering?node-id=801%3A3294&scaling=scale-down&page-id=801%3A1048&starting-point-node-id=801%3A2922" target="_blank" class="text-primary dark:text-emerald-400 hover:underline">high-fidelity prototype</a></p>
+                  </div>
+                  <div class="w-full sm:w-1/2">
+                    <img class="max-w-full h-auto" src="img/snackordering/highfidelity.png" alt="High Fidelity Prototype">
+                  </div>
+                </div>
+              </section>
+
+              <!-- Conclusion Section -->
+              <section id="list-item-10" class="bg-zinc-100 dark:bg-dark-surface flex items-center mt-12 pb-12 px-3">
+                <div>
+                  <h2 class="font-heading text-3xl my-8 py-8">Conclusion</h2>
+                  <div class="flex flex-wrap">
+                    <div class="w-full sm:w-1/2 pr-4">
+                      <h3 class="font-heading text-2xl">Result</h3>
+                      <p>SnackOrdering lets users order their snacks in a way that best fits their schedule. It helps them pay quickly, and keeps them updated on the status of their order so that no time is wasted waiting in line. The app makes users feel like they have more time and less stress when ordering their snacks at the theater.</p>
+                    </div>
+                    <div class="w-full sm:w-1/2 pl-0 sm:pl-4">
+                      <h3 class="font-heading text-2xl">What I Learned</h3>
+                      <p>While designing the SnackOrdering app, I learned about the importance of iteration during the design process. I also learned how valuable user testing and feedback can be and their importance when deciding what steps to take next.</p>
+                    </div>
+                    <div class="w-full sm:w-1/2 pt-12 pr-4">
+                      <h3 class="font-heading text-2xl">Possible Next Steps</h3>
+                      <ol class="list-decimal pl-5">
+                        <li><p>Follow-up usability study to see if updated designs have improved user experience and solved user pain points.</p></li>
+                        <li><p>Recruit users with disabilities to identify potential accessibility issues.</p></li>
+                        <li><p>For the next round of user testing, do a moderated in-person study in order to see how users interact with designs in person.</p></li>
+                      </ol>
+                    </div>
+                    <div class="w-full sm:w-1/2 text-center flex items-center pl-0 sm:pl-4 pt-8 sm:pt-0">
+                      <p><strong>A quote from feedback:</strong> "The app was super easy to use and I could see myself using it at the theater all the time. I wish it was real!"</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Thank You Section -->
+              <div class="flex items-center my-12 py-12 px-3">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                  <div>
+                    <h3 class="font-heading text-2xl">Thank you</h3>
+                    <p>Thank you for your time reviewing my work on the SnackOrdering app!</p>
+                    <p class="pt-4">If you'd like to get in touch, please say hi!</p>
+                    <a href="mailto:claytonanderson.work@gmail.com" target="_blank" class="flex items-center gap-2 text-primary dark:text-emerald-400 hover:underline">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                      </svg>
+                      claytonanderson.work@gmail.com
+                    </a>
+                  </div>
+                  <div class="pl-8">
+                    <h3 class="font-heading text-2xl">Appendix</h3>
+                    <ul class="divide-y text-[13px] text-muted dark:text-gray-400">
+                      <li class="py-2"><a href="https://jamboard.google.com/d/1uvVPvbTn0iOh2LNIVqieCKgD-OBRsC1itummnjW6FPY/edit?usp=sharing" target="_blank" class="hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">Affinity Diagram</a></li>
+                      <li class="py-2"><a href="https://docs.google.com/spreadsheets/d/1s8mgSa3DlXr5bSoTLWQSgTmZd4nAh5YuO2ovAl48Ys8/edit?usp=sharing" target="_blank" class="hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">Competitve Audit</a></li>
+                      <li class="py-2"><a href="https://docs.google.com/document/d/1iaiBjffhbdOBYaH7KMlCkfLhguNkf8C6yWcyLh1eYOg/edit?usp=sharing" target="_blank" class="hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">Competitive Audit Report</a></li>
+                      <li class="py-2"><a href="https://docs.google.com/document/d/1pcDQKsKDFwRcLEANmkge4V9_hYfsYpyqwDgIbDiyhZg/edit?usp=sharing" target="_blank" class="hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">Pattern Identification</a></li>
+                      <li class="py-2"><a href="https://www.figma.com/proto/yAX1tsZY2UOBduZWPgsg2P/SnackOrdering?node-id=275%3A1083&scaling=scale-down&page-id=275%3A2&starting-point-node-id=275%3A1083" target="_blank" class="hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">Low-Fidelity Prototype</a></li>
+                      <li class="py-2"><a href="https://docs.google.com/presentation/d/1EsHCOW-VGhzPl__BRA1wMVHl9qCReMK98kg_VOhfPPc/edit?usp=sharing" target="_blank" class="hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">User Journey Map</a></li>
+                      <li class="py-2"><a href="https://docs.google.com/spreadsheets/d/1bbEVt5LPybP_uW2PvZdRbPCAwnKmuaKV_q1awPMuRGY/edit?usp=sharing" target="_blank" class="hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">Usability Study Notes</a></li>
+                      <li class="py-2"><a href="https://docs.google.com/presentation/d/14-vDVXp4GL8_zPuGhbd55sJhKjMjOwJcXY-VJYcMrXs/edit?usp=sharing" target="_blank" class="hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">Usability Presentation 1</a></li>
+                      <li class="py-2"><a href="https://docs.google.com/presentation/d/10pmm26RsNAlRG719gW6EXCVWYFGEm2NRphJruzrRsb4/edit?usp=sharing" target="_blank" class="hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">Usability Presentation 2</a></li>
+                      <li class="py-2"><a href="https://docs.google.com/presentation/d/1LQUFck46J7R9f8xFcFORlwbOECZ8rrzf7vXf4gc2NFk/edit?usp=sharing" target="_blank" class="hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">Full Case Study Presentation</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <hr class="my-4 border-gray-300 dark:border-gray-700">
+            </div>
+          </div>
+            </div>
+            <!-- Scrollspy Sidebar -->
+            <div class="hidden xl:block xl:w-2/12 pl-8 pt-20">
+              <nav class="sidebar-nav sticky top-12 text-[13px] text-muted dark:text-gray-400" id="case-study-list">
+                <div class="py-2 px-3"><h6 class="font-heading text-body dark:text-dark-text">Case Study</h6></div>
+                <a href="#list-item-1" class="block py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">Overview</a>
+                <a href="#list-item-2" class="block py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">Project Goal</a>
+                <a href="#list-item-3" class="block py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">Research</a>
+                <a href="#list-item-4" class="block py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">Paper Wireframes</a>
+                <a href="#list-item-5" class="block py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">Digital Wireframes</a>
+                <a href="#list-item-6" class="block py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">Low-Fidelity Prototype</a>
+                <a href="#list-item-7" class="block py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">User Testing</a>
+                <a href="#list-item-8" class="block py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">Mockups</a>
+                <a href="#list-item-9" class="block py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">High-Fidelity Prototype</a>
+                <a href="#list-item-10" class="block py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">Conclusion</a>
+              </nav>
+            </div>
+          </div>
+
+          <!-- Footer -->
+          <div class="py-12 mb-12 xl:pr-[16.667%]">
+            <div class="max-w-4xl mx-auto">
+            <h2 class="font-heading text-3xl">Other Case Studies</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4 mb-12">
+              <div>
+                <a href="wrf.html">
+                  <div class="group relative shadow-[0px_4px_4px_0_rgba(0,0,0,0.25)] overflow-hidden">
+                    <img src="img/index/wildfirerelief.png" class="w-full" alt="Wildfire Relief Fund">
+                    <div class="absolute inset-0 bg-dark opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out flex flex-col justify-end p-4">
+                      <h5 class="font-heading text-white text-xl">Wildfire Relief Fund</h5>
+                      <p class="text-white text-[15px]">Challenge: Design a user registration flow for a humanitarian organization</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div>
+                <a href="bookeducation.html">
+                  <div class="group relative shadow-[0px_4px_4px_0_rgba(0,0,0,0.25)] overflow-hidden">
+                    <img src="img/index/bookeducation.png" class="w-full" alt="BookEducation">
+                    <div class="absolute inset-0 bg-dark opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out flex flex-col justify-end p-4">
+                      <h5 class="font-heading text-white text-xl">BookEducation</h5>
+                      <p class="text-white text-[15px]">Challenge: Design an app and responsive website to help adults learn new subjects</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <div id="footer-icons-placeholder"></div>
+            </div>
           </div>
         </div>
-        <div class="content col-12 col-md-9">
-          <div class="header">
-            <nav class="navbar navbar-expand-md navbar-light bg-light py-5 g-0">
-              <div class="container">
-                <a href="index.html"><img class="logo d-md-none" src="img/logo.svg" height=75></a>
-                <p class="d-block d-md-none me-auto unstyled pt-3 ps-2">Clayton Anderson <br> UX Designer</p>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav ms-auto">
-                    <li class="nav-item ms-auto">
-                      <a class="nav-link active" aria-current="page" href="index.html">Work</a>
-                    </li>
-                    <li class="nav-item ms-auto">
-                      <a class="nav-link" href="about.html">About</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </nav>
-          </div>
-          <div class="main">
-            <!--Main-->
-            <h1>SnackOrdering App Design</h1>
-            <hr>
-            <div class="row pt-5">
-                <div class="col-md-10">
-                    <div class="col-12 mb-5 py-5 px-3" id="list-item-1">
-                        <div class="row d-flex align-items-center">
-                            <div class="col-sm-6 pt-5 order-2 order-sm-1">
-                                <h3>The Product</h3>
-                                <p>SnackOrdering is an app designed to make the movie-going experience more convenient for users. It offers multiple ways to order snacks, with options like in-seat delivery and scheduled pick up from the snack counter.</p>
-                                
-                                <p><strong>Timeline:</strong> November 2021 - April 2022</p>
-                                <p><strong>Platform:</strong> Mobile App</p>
-                                <p><strong>Role:</strong> UX Designer</p>
-                                <p><strong>Responsibilities:</strong> Foundational research, conducting interviews, paper and digital wireframing, low and high-fidelity prototyping, usability testing, and iterating on designs</p>
-                            </div>
-                            <div class="col-sm-6 order-1 order-sm-2 text-center">
-                              <a class="btn magnify" data-bs-toggle="modal" data-bs-target="#Modal1">
-                                <img class="img-fluid" style="max-height:400px" src="img/snackordering/overview.png">
-                              </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 tan d-flex align-items-center px-3" id="list-item-2" style="height: 450px;">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <h3>The problem</h3>
-                                <p>Busy moviegoers don’t want to miss parts of their movie by waiting for movie concessions.</p>
-                            </div>
-                            <div class="col-sm-6">
-                                <h3>The goal</h3>
-                                <p>Design a snack ordering app for a movie theater so that users can order snacks on their own schedule and enjoy their movie to the fullest.</p>
-                            </div>
-                        </div>
-                    </div>
-                      <div class="col-12 my-5 py-5 px-3" id="list-item-3">
-                        <div class="row">
-                          <div class="col-12">
-                            <h2 class="mb-5 pb-5">Research</h2>
-                          </div>
-                          <div class="col-12 pb-5">
-                            <h3 class="pb-3">User Interviews</h3>
-                            <p>I conducted user interviews and created empathy maps to identify the needs of the users I was designing for. A primary user group identified by the interviews were busy movie-goers who felt stressed by the time constraints of the movie-going process.</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-12 my-5 py-5 px-3" id="list-item-3">
-                        <div class="row">
-                          <h3 class="pb-3">User Personas</h3>
-                          <div class="col-12">
-                            <p>I created personas to help empathize with and understand the goals and frustrations of the primary user group. This helped me focus on designing an experience that addressed real user needs. </p>
-                          </div>
-                          <div class="col-12 text-center">
-                            <img class="img-fluid boxshadow" src="img/snackordering/persona1.png" style="max-height: 400px;">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-12 my-5 py-5 px-3" id="list-item-3">
-                        <div class="row">
-                          <h3 class="pb-3">User Journey Mapping</h3>
-                          <div class="col-12">
-                            <p>Mapping Tanner’s user journey revealed how much stress and anxiety could be eliminated for users with a dedicated snack ordering app.</p>
-                          </div>
-                          <div class="col-12 text-center">
-                            <a class="btn magnify" data-bs-toggle="modal" data-bs-target="#Modal2">
-                              <img class="img-fluid boxshadow" src="img/snackordering/journeymap2.png" style="max-height: 500px;">
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-12 my-5 py-5 px-3" id="list-item-3" style="height: 450px;">
-                        <div class="row">
-                          <div class="col-12">
-                            <h3 class="pb-3">Competitive Analysis</h3>
-                            <p>I conducted a competitive analysis of direct and indirect competitors to identify strengths and weaknesses of their designs. I wanted to see how they addressed the pain points I had identified. This helped me ideate a better user experience when I started designing wireframes.</p>
-                            <a class="btn magnify" data-bs-toggle="modal" data-bs-target="#Modal3">
-                              <img class="img-fluid boxshadow" src="img/snackordering/competitive.png">
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-12 my-5 py-5 px-3" id="list-item-3">
-                        <div class="row">
-                          <div class="col-12"><h3 class="pb-3">Pain Points</h3></div>
-                          <div class="col-sm-3">
-                            <h4>Arriving</h4>
-                            <p>Users are often under a time crunch when arriving, needing to find seats, use restrooms, and get their snacks</p>
-                          </div>
-                          <div class="col-sm-3">
-                            <h4>Ordering</h4>
-                            <p>Many competitors apps don’t allow users to view snack menus without having already purchased a ticket</p>
-                          </div>
-                          <div class="col-sm-3">
-                            <h4>Paying</h4>
-                            <p>Processing payments or counting change in the theater can distract users from the movie</p>
-                          </div>
-                          <div class="col-sm-3">
-                            <h4>Waiting</h4>
-                            <p>Needing to wait for their order can cause users to miss parts of the movie, or prevent them from ordering snacks at all</p>
-                          </div>
-                        </div>
-                      </div>
-                    <div class="col-12 tan my-5 py-5 px-3" id="list-item-4">
-                      <div class="row pt-5 d-flex align-items-center">
-                        <div class="col-sm-6"> 
-                          <h2 class="pb-3">Paper Wireframes</h2>
-                          <p>Iterating on each screen of the app with paper wireframes allowed for quick experimentation to see what elements worked best. For the initial designs I wanted to keep things simple and focused on elements that would benefit the user based on feedback from the user research.</p>
-                        </div>
-                        <div class="col-sm-6 text-center">
-                          <a class="btn magnify" data-bs-toggle="modal" data-bs-target="#Modal4">
-                            <img class="img-fluid boxshadow" src="img/snackordering/paper.png" style="max-height: 300px;">
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-12 d-flex align-items-center my-5 py-5 px-3" id="list-item-5">
-                      <div class="row">
-                        <div class="col-sm-6">
-                          <h2 class="pb-3">Digital Wireframes</h2>
-                          <h3>Home Screen</h3>
-                          <p>For the home screen, I prioritized features that made creating a new order quick and easy.</p>
-                          <ul class="list-group list-group-flush" style="font-size: 14px;">
-                            <li class="list-group-item">A) The large hero image is an easy way for users to see what featured items are available to order</li>
-                            <li class="list-group-item">B) The snack menu section allows users to quickly view the full menu</li>
-                            <li class="list-group-item">C) The prominent ‘New Order’ Button provides a fast way for users to begin an order</li>
-                          </ul>
-                        </div>
-                        <div class="col-sm-6 text-center mb-5 pb-5">
-                          <img class="img-fluid" src="img/snackordering/digitalwireframes.png" style="height: 400px;">
-                          <p class="ps-4 pt-2 caption">Digital Wireframe of the Home Screen</p>
-                        </div>
-                        <div class="col-sm-6">
-                          <h3>Order Screen</h3>
-                          <p>For the order screen, I focused on designing elements that would provide convenience to users throughout the ordering process.</p>
-                          <ul class="list-group list-group-flush" style="font-size: 14px;">
-                            <li class="list-group-item">D) Keeping the order details prominent allows users to review and edit their orders easily</li>
-                            <li class="list-group-item">E) The delivery instructions section allows users to select the method of delivery which suits their needs best</li>
-                          </ul>
-                        </div>
-                        <div class="col-sm-6 text-center">
-                          <img class="img-fluid" src="img/snackordering/digitalwireframes2.png" style="height: 400px;">
-                          <p class="ps-4 pt-2 caption">Digital Wireframe of the Ordering Screen</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-12 tan my-5 py-5 px-3" id="list-item-6">
-                      <div class="row d-flex align-items-center">
-                        <div class="col-sm-6">
-                          <h2 class="pb-3">Low-Fidelity Prototype</h2>
-                          <p>Using digital wireframes for each step, I created a low-fidelity prototype. I connected the primary user flow of creating a snack order so that the prototype could be used in a usability study.</p>
-                        </div>
-                        <div class="col-sm-6">
-                          <img class="img-fluid" src="img/snackordering/lowfidelity.png">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-12 d-flex align-items-center my-5 py-5 px-3" id="list-item-7">
-                      <div class="row">
-                        <div class="col-12 pb-5">
-                          <h2 class="pb-3">User Testing</h2>
-                          <p>I conducted two rounds of usability studies. The first study was done with a low-fidelity prototype to see if users could complete the ordering process, and insights were used to iterate on the design. The second study was done with a high-fidelity prototype and revealed areas of the design that could be refined and enhanced.</p>
-                        </div>
-                        <div class="col-12">
-                          <a class="btn magnify" data-bs-toggle="modal" data-bs-target="#Modal5">
-                            <img class="img-fluid" src="img/snackordering/affinitydiagram.png">
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-12 my-5 py-5 px-3" id="list-item-7">
-                      <div class="row d-flex align-items-center">
-                        <div class="col-12 col-sm-4">
-                          <h3>Round 1</h3>
-                          <p>The first usability study revealed that users found the initial designs confusing to navigate and fully complete. To provide better structure I split the process into separate sections which users could complete in an ordered sequence. I also added a progress bar and buttons which would allow users to progress between steps.</p>
-                        </div>
-                        <div class="col-6 col-sm-4 text-center">
-                          <img class="img-fluid" src="img/snackordering/usabilitystudy1before.png" style="max-height: 400px;">
-                          <p class="pt-2 caption">Before Usability Study</p>
-                        </div>
-                        <div class="col-6 col-sm-4 text-center">
-                          <img class="img-fluid" src="img/snackordering/usabilitystudy1after.png" style="max-height: 400px;">
-                          <p class="pt-2 caption">After Usability Study</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-12 my-5 py-5 px-3" id="list-item-7">
-                      <div class="row d-flex align-items-center">
-                        <div class="col-12 col-sm-4">
-                          <h3>Round 2</h3>
-                          <p>The second usability study revealed that users wanted more in-depth information when creating and completing their orders. From menu items, to delivery and payment options, I added additional context and relevant information.</p>
-                        </div>
-                        <div class="col-6 col-sm-4 text-center">
-                          <img class="img-fluid" src="img/snackordering/usabilitystudy2before.png" style="max-height: 400px;">
-                          <p class="pt-2 caption">Before Usability Study 2</p>
-                        </div>
-                        <div class="col-6 col-sm-4 text-center">
-                          <img class="img-fluid" src="img/snackordering/usabilitystudy2after.png" style="max-height: 400px;">
-                          <p class="pt-2 caption">After Usability Study 2</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-12 tan d-flex align-items-center my-5 py-5 px-3" id="list-item-8">
-                      <div class="row py-3">
-                        <h2 class="pb-3">Mockups</h2>
-                        <div class="col-sm-3 text-center"><img class="img-fluid" src="img/snackordering/mockup1.png" style="max-height: 400px;"></div>
-                        <div class="col-sm-3 text-center pt-3 pt-sm-0"><img class="img-fluid" src="img/snackordering/mockup2.png" style="max-height: 400px;"></div>
-                        <div class="col-sm-3 text-center pt-3 pt-sm-0"><img class="img-fluid" src="img/snackordering/mockup3.png" style="max-height: 400px;"></div>
-                        <div class="col-sm-3 text-center pt-3 pt-sm-0"><img class="img-fluid" src="img/snackordering/mockup4.png" style="max-height: 400px;"></div>
-                      </div>
-                    </div>
-                    <div class="col-12 my-5 py-5 px-3" id="list-item-9">
-                      <div class="row">
-                        <div class="col-sm-6">
-                          <h2 class="pb-3">High-Fidelity Prototype</h2>
-                          <p>The final high-fidelity prototype provided an intuitive flow for ordering and completing the checkout process. It also provided users with a simple way to specify their delivery options and keep track of their order progress.</p>
-                          <p>View the SnackOrdering <a href="https://www.figma.com/proto/yAX1tsZY2UOBduZWPgsg2P/SnackOrdering?node-id=801%3A3294&scaling=scale-down&page-id=801%3A1048&starting-point-node-id=801%3A2922" target="_blank">high-fidelity prototype</a></p>
-                        </div>
-                        <div class="col-sm-6">
-                          <img class="img-fluid" src="img/snackordering/highfidelity.png">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-12 tan d-flex align-items-center mt-5 pb-5 px-3" id="list-item-10">
-                      <div class="row">
-                        <h2 class="my-4 py-4">Conclusion</h2>
-                        <div class="col-sm-6">
-                          <h3>Result</h3>
-                          <p>SnackOrdering lets users order their snacks in a way that best fits their schedule. It helps them pay quickly, and keeps them updated on the status of their order so that no time is wasted waiting in line. The app makes users feel like they have more time and less stress when ordering their snacks at the theater. </p> 
-                        </div>
-                        <div class="col-sm-6">
-                          <h3>What I Learned</h3>
-                          <p>While designing the SnackOrdering app, I learned about the importance of iteration during the design process. I also learned how valuable user testing and feedback can be and their importance when deciding what steps to take next.</p>
-                        </div>
-                        <div class="col-sm-6 pt-5">
-                          <h3>Possible Next Steps</h3>
-                          <ol>
-                          <li>
-                            <p>Follow-up usability study to see if updated designs have improved user experience and solved user pain points.</p>
-                          </li>
-                          <li>
-                            <p>Recruit users with disabilities to identify potential accessibility issues.</p>
-                          </li>  
-                          <li>
-                            <p>For the next round of user testing, do a moderated in-person study in order to see how users interact with designs in person.</p>
-                          </li> 
-                          </ol>
-                        </div>
-                        <div class="col-sm-6 text-center d-flex align-items-center">
-                          <p><strong>A quote from feedback:</strong> “The app was super easy to use and I could see myself using it at the theater all the time. I wish it was real!”</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-12 d-flex align-items-center my-5 py-5 px-3">
-                      <div class="row just">
-                          <div class="col-sm-6">
-                              <h3>Thank you</h3>
-                              <p>Thank you for your time reviewing my work on the SnackOrdering app!</p>
-                              <p>If you’d like to get in touch, please say hi!</p>
-                              <a href="mailto:claytonanderson.work@gmail.com" target="_blank" class="d-flex align-items-center"><i class="bi bi-envelope pe-2"></i>claytonanderson.work@gmail.com</a>
-                          </div>
-                          <div class="col-sm-6 mt-5 pt-5 pt-sm-0 mt-sm-0">
-                            <h3 class="ps-sm-3">Appendix</h3>
-                            <ul class="list-group list-group-flush sidebar">
-                              <li class="list-group-item"><a href="https://jamboard.google.com/d/1uvVPvbTn0iOh2LNIVqieCKgD-OBRsC1itummnjW6FPY/edit?usp=sharing" target="_blank">Affinity Diagram</a></li>
-                              <li class="list-group-item"><a href="https://docs.google.com/spreadsheets/d/1s8mgSa3DlXr5bSoTLWQSgTmZd4nAh5YuO2ovAl48Ys8/edit?usp=sharing" target="_blank">Competitve Audit</a></li>
-                              <li class="list-group-item"><a href="https://docs.google.com/document/d/1iaiBjffhbdOBYaH7KMlCkfLhguNkf8C6yWcyLh1eYOg/edit?usp=sharing" target="_blank">Competitive Audit Report</a></li>
-                              <li class="list-group-item"><a href="https://docs.google.com/document/d/1pcDQKsKDFwRcLEANmkge4V9_hYfsYpyqwDgIbDiyhZg/edit?usp=sharing" target="_blank">Pattern Identification</a></li>
-                              <li class="list-group-item"><a href="https://www.figma.com/proto/yAX1tsZY2UOBduZWPgsg2P/SnackOrdering?node-id=275%3A1083&scaling=scale-down&page-id=275%3A2&starting-point-node-id=275%3A1083" target="_blank">Low-Fidelity Prototype</a></li>
-                              <li class="list-group-item"><a href="https://docs.google.com/presentation/d/1EsHCOW-VGhzPl__BRA1wMVHl9qCReMK98kg_VOhfPPc/edit?usp=sharing" target="_blank">User Journey Map</a></li>
-                              <li class="list-group-item"><a href="https://docs.google.com/spreadsheets/d/1bbEVt5LPybP_uW2PvZdRbPCAwnKmuaKV_q1awPMuRGY/edit?usp=sharing" target="_blank">Usability Study Notes</a></li>
-                              <li class="list-group-item"><a href="https://docs.google.com/presentation/d/14-vDVXp4GL8_zPuGhbd55sJhKjMjOwJcXY-VJYcMrXs/edit?usp=sharing" target="_blank">Usability Presentation 1</a></li>
-                              <li class="list-group-item"><a href="https://docs.google.com/presentation/d/10pmm26RsNAlRG719gW6EXCVWYFGEm2NRphJruzrRsb4/edit?usp=sharing" target="_blank">Usability Presentation 2</a></li>
-                              <li class="list-group-item"><a href="https://docs.google.com/presentation/d/1LQUFck46J7R9f8xFcFORlwbOECZ8rrzf7vXf4gc2NFk/edit?usp=sharing" target="_blank">Full Case Study Presentation</a></li>
-                            </ul>
-                          </div>
-                      </div>
-                  </div>
 
-                <!-- Modal Images -->
-                <div class="modal fade" id="Modal1" tabindex="-1" aria-labelledby="ModalLabel1" aria-hidden="true">
-                  <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body text-center">
-                        <img class="img-fluid modal-img" src="img/snackordering/overview.png">
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="modal fade" id="Modal2" tabindex="-1" aria-labelledby="ModalLabel2" aria-hidden="true">
-                  <div class="modal-dialog modal-xl">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body text-center">
-                        <img class="img-fluid modal-img" src="img/snackordering/journeymap2.png">
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="modal fade" id="Modal3" tabindex="-1" aria-labelledby="ModalLabel3" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered modal-xl">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body text-center">
-                        <img class="img-fluid modal-img" src="img/snackordering/competitive.png">
-                      </div>
-                      <div class="modal-footer">
-                        <p class="me-auto">View the full <a href="https://docs.google.com/spreadsheets/d/1s8mgSa3DlXr5bSoTLWQSgTmZd4nAh5YuO2ovAl48Ys8/edit?usp=sharing" target="_blank">competitive analysis</a> and <a href="https://docs.google.com/document/d/1iaiBjffhbdOBYaH7KMlCkfLhguNkf8C6yWcyLh1eYOg/edit?usp=sharing" target="_blank">report</a></p>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="modal fade" id="Modal4" tabindex="-1" aria-labelledby="ModalLabel4" aria-hidden="true">
-                  <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body text-center">
-                        <img class="img-fluid modal-img" src="img/snackordering/paper.png">
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="modal fade" id="Modal5" tabindex="-1" aria-labelledby="ModalLabel5" aria-hidden="true">
-                  <div class="modal-dialog modal-xl">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body text-center">
-                        <img class="img-fluid modal-img" src="img/snackordering/affinitydiagram.png">
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
+        <!-- Right Spacer -->
+        <div class="hidden xl:block xl:w-1/12"></div>
+      </div>
+    </div>
 
-                </div>
-                <div class="d-none d-md-block col-md-2 me-0 pe-0 ge-0 sidebar">
-                    <ul class="list-group list-group-flush sticky-top" id="case-study-list">
-                        <li class="list-group-item"><h6>Case Study</h6></li>
-                        <a class="list-group-item list-group-item-action" href="#list-item-1">Overview</a>
-                        <a class="list-group-item list-group-item-action" href="#list-item-2">Project Goal</a>
-                        <a class="list-group-item list-group-item-action" href="#list-item-3">Research</a>
-                        <a class="list-group-item list-group-item-action" href="#list-item-4">Paper Wireframes</a>
-                        <a class="list-group-item list-group-item-action" href="#list-item-5">Digital Wireframes</a>
-                        <a class="list-group-item list-group-item-action" href="#list-item-6">Low-Fidelity Prototype</a>
-                        <a class="list-group-item list-group-item-action" href="#list-item-7">User Testing</a>
-                        <a class="list-group-item list-group-item-action" href="#list-item-8">Mockups</a>
-                        <a class="list-group-item list-group-item-action" href="#list-item-9">High-Fidelity Prototype</a>
-                        <a class="list-group-item list-group-item-action" href="#list-item-10">Conclusion</a>
-                    </ul>
-                </div>
-                <hr>
-            </div>            
-          </div>
-          <div class="footer py-5 mb-5">
-            <h2>Other Case Studies</h2>
-            <div class="row row-cols-1 row-cols-sm-2 g-4 mt-3 mb-5">
-                <div class="col">
-                  <a href="wrf.html">
-                    <div class="card bg-dark text-white">
-                      <img src="img/WildfireRelief.png" class="card-img" alt="...">
-                      <div class="card-img-overlay">
-                        <h5 class="card-title">Wildfire Relief Fund</h5>
-                        <p class="card-text">Challenge: Design a user registration flow for a humanitarian organization</p>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-                <div class="col">
-                  <a href="bookeducation.html">
-                    <div class="card bg-dark text-white">
-                      <img src="img/BookEducation.png" class="card-img" alt="...">
-                      <div class="card-img-overlay">
-                        <h5 class="card-title">BookEducation</h5>
-                        <p class="card-text">Challenge: Design an app and responsive website to help adults learn new subjects</p>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-              </div>
-              <ul class="list-inline d-flex">
-                <li class="list-inline-item"><a href="mailto:claytonanderson.work@gmail.com" target="_blank"><i class="bi bi-envelope"></i></a></li>
-                <li class="list-inline-item"><a href="https://www.linkedin.com/in/claytona/" target="_blank"><i class="bi bi-linkedin"></i></a></li>
-                <li class="list-inline-item"><a href="https://www.instagram.com/claytonanderson.design/" target="_blank"><i class="bi bi-instagram"></i></a></li>
-                <li class="list-inline-item"><a href="https://bsky.app/profile/claytonanderson.design" target="_blank"><i class="bi bi-bluesky"></i></a></li>
-                <li class="list-inline-item ms-auto"> &copy; Clayton Anderson 2025</li>
-              </ul>
-          </div>
-          
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal hidden fixed inset-0 z-50 flex items-center justify-center">
+      <div class="modal-backdrop absolute inset-0 bg-black/50"></div>
+      <div id="imageModal-content" class="relative bg-white dark:bg-dark-surface max-w-4xl w-full mx-4 z-10 shadow-lg">
+        <div class="flex justify-end p-2">
+          <button data-modal-close class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-100 transition-colors" aria-label="Close">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+        <div class="p-4 text-center">
+          <img id="imageModal-img" class="max-w-full max-h-[75vh] w-auto mx-auto" src="" alt="">
+        </div>
+        <div class="flex justify-between items-center p-4 border-t dark:border-gray-700">
+          <div id="imageModal-footer-extra" class="hidden"></div>
+          <button data-modal-close class="px-4 py-2 bg-secondary dark:bg-emerald-700 text-white hover:bg-muted-hover dark:hover:bg-emerald-600 transition-colors ml-auto">Close</button>
         </div>
       </div>
     </div>
 
+    <template id="modal3-footer">
+      <p class="text-sm">View the full <a href="https://docs.google.com/spreadsheets/d/1s8mgSa3DlXr5bSoTLWQSgTmZd4nAh5YuO2ovAl48Ys8/edit?usp=sharing" target="_blank" class="text-primary dark:text-emerald-400 hover:underline">competitive analysis</a> and <a href="https://docs.google.com/document/d/1iaiBjffhbdOBYaH7KMlCkfLhguNkf8C6yWcyLh1eYOg/edit?usp=sharing" target="_blank" class="text-primary dark:text-emerald-400 hover:underline">report</a></p>
+    </template>
 
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>
