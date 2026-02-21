@@ -133,7 +133,8 @@
     progressStyle.textContent =
       '#reading-progress{background-color:#006c4d}' +
       'html.dark #reading-progress{background-color:#34d399}' +
-      '@media(prefers-reduced-motion:no-preference){#reading-progress{transition:width 80ms ease-out}}';
+      '@media(prefers-reduced-motion:no-preference){#reading-progress{transition:width 80ms ease-out}}' +
+      '@media(min-width:640px){.compare-wrap{max-height:480px}}';
     document.head.appendChild(progressStyle);
 
     var progressBar = document.createElement('div');
