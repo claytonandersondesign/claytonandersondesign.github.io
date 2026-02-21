@@ -301,17 +301,12 @@
                   <h3 class="font-heading text-2xl">Account Creation</h3>
                   <p>Based on insights from the usability study, I made changes to improve the site's registration flow. One of the changes I made was limiting the number of inputs or choices per screen to 2-3. I also showed password constraints upfront, and included a show/hide password feature. Lastly, I included options to sign up either via Google or Facebook. These choices reduced the friction that users had in completing the account creation process, improving ease of use and clarity, and limiting confusion and frustration.</p>
                   <div class="flex flex-wrap mt-4">
-                    <div class="w-full sm:w-1/2 text-center p-2">
-                      <button data-modal-open="imageModal" data-modal-img-src="img/wrf/usabilitybefore.png" data-modal-img-alt="Before Usability Study" data-modal-maxw="max-w-4xl" class="cursor-pointer">
-                        <img class="max-w-full max-h-[400px] mx-auto shadow-[rgba(0,0,0,0.35)_0px_5px_15px]" src="img/wrf/usabilitybefore.png" alt="Before">
-                      </button>
-                      <p class="pt-3 text-[13px] tracking-[0.4px]">Before Usability Study</p>
-                    </div>
-                    <div class="w-full sm:w-1/2 text-center p-2">
-                      <button data-modal-open="imageModal" data-modal-img-src="img/wrf/usabilityafter.png" data-modal-img-alt="After Usability Study" data-modal-maxw="max-w-4xl" class="cursor-pointer">
-                        <img class="max-w-full max-h-[400px] mx-auto shadow-[rgba(0,0,0,0.35)_0px_5px_15px]" src="img/wrf/usabilityafter.png" alt="After">
-                      </button>
-                      <p class="pt-3 text-[13px] tracking-[0.4px]">After Usability Study</p>
+                    <div class="w-full"
+                         data-compare
+                         data-before="img/wrf/usabilitybefore.png"
+                         data-after="img/wrf/usabilityafter.png"
+                         data-before-label="Before Usability Study"
+                         data-after-label="After Usability Study">
                     </div>
                   </div>
                 </div>
@@ -320,17 +315,12 @@
                   <h3 class="font-heading text-2xl">Confirmation Screen</h3>
                   <p>Initially I had the registration flow move right into the donation flow. After the usability study I observed this process confused users who only wanted to create an account and not donate at that time. I created an account creation confirmation screen to remedy this confusion, that still retained the option of moving on to the donation flow for those that wanted it. This change improved clarity of the registration flow and gave users more freedom in their choices.</p>
                   <div class="flex flex-wrap mt-4">
-                    <div class="w-full sm:w-1/2 text-center p-2">
-                      <button data-modal-open="imageModal" data-modal-img-src="img/wrf/usabilitybefore2.png" data-modal-img-alt="Before Usability Study 2" data-modal-maxw="max-w-4xl" class="cursor-pointer">
-                        <img class="max-w-full max-h-[400px] mx-auto shadow-[rgba(0,0,0,0.35)_0px_5px_15px]" src="img/wrf/usabilitybefore2.png" alt="Before 2">
-                      </button>
-                      <p class="pt-3 text-[13px] tracking-[0.4px]">Before Usability Study</p>
-                    </div>
-                    <div class="w-full sm:w-1/2 text-center p-2">
-                      <button data-modal-open="imageModal" data-modal-img-src="img/wrf/usabilityafter2.png" data-modal-img-alt="After Usability Study 2" data-modal-maxw="max-w-4xl" class="cursor-pointer">
-                        <img class="max-w-full max-h-[400px] mx-auto shadow-[rgba(0,0,0,0.35)_0px_5px_15px]" src="img/wrf/usabilityafter2.png" alt="After 2">
-                      </button>
-                      <p class="pt-3 text-[13px] tracking-[0.4px]">After Usability Study</p>
+                    <div class="w-full"
+                         data-compare
+                         data-before="img/wrf/usabilitybefore2.png"
+                         data-after="img/wrf/usabilityafter2.png"
+                         data-before-label="Before Usability Study"
+                         data-after-label="After Usability Study">
                     </div>
                   </div>
                 </div>

@@ -114,6 +114,102 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', updateProgress, { passive: true });
   }
 
+  // Before/after comparison sliders
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  document.querySelectorAll('[data-compare]').forEach(el => {
+    const beforeSrc   = el.dataset.before;
+    const afterSrc    = el.dataset.after;
+    const beforeLabel = el.dataset.beforeLabel || 'Before';
+    const afterLabel  = el.dataset.afterLabel  || 'After';
+
+    let currentPct = 50;
+    let dragging   = false;
+
+    el.innerHTML =
+      '<div class="compare-wrap" style="position:relative;overflow:hidden;cursor:col-resize;touch-action:pan-y;user-select:none;-webkit-user-select:none">' +
+        // After image — base layer, sets container height
+        '<img src="' + afterSrc + '" alt="' + afterLabel + '" style="display:block;width:100%;height:auto">' +
+        // Before image — absolute, clipped by clip-path
+        '<img src="' + beforeSrc + '" alt="' + beforeLabel + '" class="compare-before" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;clip-path:inset(0 50% 0 0)">' +
+        // Corner labels
+        '<span style="position:absolute;bottom:8px;left:8px;font-size:11px;background:rgba(0,0,0,0.55);color:#fff;padding:2px 8px;border-radius:2px;pointer-events:none">' + beforeLabel + '</span>' +
+        '<span style="position:absolute;bottom:8px;right:8px;font-size:11px;background:rgba(0,0,0,0.55);color:#fff;padding:2px 8px;border-radius:2px;pointer-events:none">' + afterLabel  + '</span>' +
+        // Handle
+        '<div class="compare-handle" tabindex="0" role="slider" aria-label="Before/after comparison" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="position:absolute;top:0;left:50%;height:100%;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;cursor:grab">' +
+          '<div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:2px;height:100%;background:rgba(255,255,255,0.9)"></div>' +
+          '<div style="position:relative;width:36px;height:36px;border-radius:50%;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;font-size:14px;color:#444;z-index:1">⇔</div>' +
+        '</div>' +
+        // Drag hint — fades out on first interaction
+        '<div class="compare-hint" style="position:absolute;top:10px;left:50%;transform:translateX(-50%);font-size:11px;background:rgba(0,0,0,0.55);color:#fff;padding:3px 10px;border-radius:99px;pointer-events:none;white-space:nowrap;transition:opacity 0.3s ease">↔ Drag to compare</div>' +
+      '</div>';
+
+    const wrap     = el.querySelector('.compare-wrap');
+    const beforeImg = el.querySelector('.compare-before');
+    const handle   = el.querySelector('.compare-handle');
+    const hint     = el.querySelector('.compare-hint');
+
+    const setPos = (pct, animate) => {
+      currentPct = Math.max(0, Math.min(100, pct));
+      const t = animate ? 'clip-path 350ms ease-out' : 'none';
+      beforeImg.style.transition  = t;
+      beforeImg.style.clipPath    = `inset(0 ${100 - currentPct}% 0 0)`;
+      handle.style.transition     = animate ? 'left 350ms ease-out' : 'none';
+      handle.style.left           = currentPct + '%';
+      handle.setAttribute('aria-valuenow', Math.round(currentPct));
+    };
+
+    const getPct = clientX => {
+      const { left, width } = wrap.getBoundingClientRect();
+      return (clientX - left) / width * 100;
+    };
+
+    const dismissHint = () => {
+      hint.style.opacity      = '0';
+      hint.style.pointerEvents = 'none';
+    };
+
+    // Mouse
+    wrap.addEventListener('mousedown', e => {
+      dragging = true;
+      handle.style.cursor = wrap.style.cursor = 'grabbing';
+      dismissHint();
+      setPos(getPct(e.clientX), false);
+    });
+    window.addEventListener('mouseup', () => {
+      if (!dragging) return;
+      dragging = false;
+      handle.style.cursor = 'grab';
+      wrap.style.cursor   = 'col-resize';
+    });
+    window.addEventListener('mousemove', e => { if (dragging) setPos(getPct(e.clientX), false); });
+
+    // Touch
+    wrap.addEventListener('touchstart', e => { dismissHint(); setPos(getPct(e.touches[0].clientX), false); }, { passive: true });
+    wrap.addEventListener('touchmove',  e => { setPos(getPct(e.touches[0].clientX), false); }, { passive: true });
+
+    // Keyboard
+    handle.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); setPos(currentPct - 5, false); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); setPos(currentPct + 5, false); }
+    });
+
+    // Auto-nudge on first scroll-into-view
+    if (!prefersReducedMotion) {
+      let nudged = false;
+      const nudgeObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting || nudged) return;
+          nudged = true;
+          nudgeObserver.unobserve(wrap);
+          setTimeout(() => setPos(30, true),  400);
+          setTimeout(() => setPos(50, true),  950);
+        });
+      }, { threshold: 0.6 });
+      nudgeObserver.observe(wrap);
+    }
+  });
+
   // Mobile TOC dropdown
   const mobileTocBtn = document.getElementById('mobile-toc-btn');
   const mobileTocDropdown = document.getElementById('mobile-toc-dropdown');
