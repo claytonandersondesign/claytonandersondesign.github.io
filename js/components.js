@@ -126,4 +126,24 @@
 
   var footerEl = document.getElementById('footer-icons-placeholder');
   if (footerEl) footerEl.outerHTML = footerHTML;
+
+  // Reading progress bar — case study pages only
+  if (!isIndex && !isAbout) {
+    var progressStyle = document.createElement('style');
+    progressStyle.textContent =
+      '#reading-progress{background-color:#006c4d}' +
+      'html.dark #reading-progress{background-color:#34d399}' +
+      '@media(prefers-reduced-motion:no-preference){#reading-progress{transition:width 80ms ease-out}}';
+    document.head.appendChild(progressStyle);
+
+    var progressBar = document.createElement('div');
+    progressBar.id = 'reading-progress';
+    progressBar.setAttribute('role', 'progressbar');
+    progressBar.setAttribute('aria-valuenow', '0');
+    progressBar.setAttribute('aria-valuemin', '0');
+    progressBar.setAttribute('aria-valuemax', '100');
+    progressBar.setAttribute('aria-label', 'Reading progress');
+    progressBar.style.cssText = 'position:fixed;top:0;left:0;height:3px;width:0%;z-index:9999;';
+    document.body.insertAdjacentElement('afterbegin', progressBar);
+  }
 })();

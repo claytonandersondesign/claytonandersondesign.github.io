@@ -101,6 +101,19 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach(s => observer.observe(s));
   }
 
+  // Reading progress bar
+  const readingProgress = document.getElementById('reading-progress');
+  if (readingProgress) {
+    const updateProgress = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) : 0;
+      readingProgress.style.width = pct + '%';
+      readingProgress.setAttribute('aria-valuenow', Math.round(pct));
+    };
+    window.addEventListener('scroll', updateProgress, { passive: true });
+  }
+
   // Mobile TOC dropdown
   const mobileTocBtn = document.getElementById('mobile-toc-btn');
   const mobileTocDropdown = document.getElementById('mobile-toc-dropdown');
