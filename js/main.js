@@ -117,6 +117,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // Before/after comparison sliders
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  if (!document.getElementById('compare-label-style')) {
+    const s = document.createElement('style');
+    s.id = 'compare-label-style';
+    s.textContent = '.compare-label{color:#4c6358}.dark .compare-label{color:#9ca3af}';
+    document.head.appendChild(s);
+  }
+
   document.querySelectorAll('[data-compare]').forEach(el => {
     const beforeSrc   = el.dataset.before;
     const afterSrc    = el.dataset.after;
@@ -127,14 +134,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let dragging   = false;
 
     el.innerHTML =
-      '<div class="compare-wrap" style="position:relative;overflow:hidden;cursor:col-resize;touch-action:pan-y;user-select:none;-webkit-user-select:none">' +
+      '<div class="compare-wrap" style="position:relative;cursor:col-resize;touch-action:pan-y;user-select:none;-webkit-user-select:none">' +
         // After image — base layer, sets container height
-        '<img src="' + afterSrc + '" alt="' + afterLabel + '" style="display:block;width:100%;height:auto">' +
+        '<img src="' + afterSrc + '" alt="' + afterLabel + '" class="compare-after">' +
         // Before image — absolute, clipped by clip-path
         '<img src="' + beforeSrc + '" alt="' + beforeLabel + '" class="compare-before" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;clip-path:inset(0 50% 0 0)">' +
-        // Corner labels
-        '<span style="position:absolute;bottom:8px;left:8px;font-size:11px;background:rgba(0,0,0,0.55);color:#fff;padding:2px 8px;border-radius:2px;pointer-events:none">' + beforeLabel + '</span>' +
-        '<span style="position:absolute;bottom:8px;right:8px;font-size:11px;background:rgba(0,0,0,0.55);color:#fff;padding:2px 8px;border-radius:2px;pointer-events:none">' + afterLabel  + '</span>' +
+        // Corner labels — both at bottom to avoid collision with top hint pill
+        '<span class="compare-label" style="position:absolute;bottom:-24px;left:0;font-size:11px;pointer-events:none;white-space:nowrap;max-width:50%;overflow:hidden;text-overflow:ellipsis">' + beforeLabel + '</span>' +
+        '<span class="compare-label" style="position:absolute;bottom:-24px;right:0;font-size:11px;pointer-events:none;white-space:nowrap;max-width:50%;overflow:hidden;text-overflow:ellipsis">' + afterLabel  + '</span>' +
         // Handle
         '<div class="compare-handle" tabindex="0" role="slider" aria-label="Before/after comparison" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="position:absolute;top:0;left:50%;height:100%;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;cursor:grab">' +
           '<div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:2px;height:100%;background:rgba(255,255,255,0.9)"></div>' +

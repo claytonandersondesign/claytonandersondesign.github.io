@@ -134,7 +134,10 @@
       '#reading-progress{background-color:#006c4d}' +
       'html.dark #reading-progress{background-color:#34d399}' +
       '@media(prefers-reduced-motion:no-preference){#reading-progress{transition:width 80ms ease-out}}' +
-      '@media(min-width:640px){.compare-wrap{max-height:480px}}';
+      '[data-compare]{display:flex;justify-content:center}' +
+      '.compare-wrap{display:inline-block}' +
+      '.compare-after{display:block;height:500px;width:auto}' +
+      '@media(max-width:639px){.compare-after{height:50vh}[data-compare]{margin-top:1.5rem}}';
     document.head.appendChild(progressStyle);
 
     var progressBar = document.createElement('div');
