@@ -26,7 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const content = document.getElementById('imageModal-content');
         const footerExtra = document.getElementById('imageModal-footer-extra');
 
-        img.src = btn.dataset.modalImgSrc;
+        const isDark = document.documentElement.classList.contains('dark');
+        img.src = (isDark && btn.dataset.modalImgSrcDark) ? btn.dataset.modalImgSrcDark : btn.dataset.modalImgSrc;
         img.alt = btn.dataset.modalImgAlt;
 
         content.classList.remove('max-w-4xl', 'max-w-6xl');
