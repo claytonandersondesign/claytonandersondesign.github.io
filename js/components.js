@@ -14,8 +14,8 @@
     '<div class="pt-20">' +
     '<div class="text-center">' +
     '<a href="' + logoHref + '">' +
-    '<img class="mx-auto h-[75px] hidden dark:block" src="/img/logo_dark.svg" alt="Logo" />' +
-    '<img class="mx-auto h-[75px] block dark:hidden" src="/img/logo.svg" alt="Logo"/>' +
+    '<img class="mx-auto h-[75px] hidden dark:block" src="img/logo_dark.svg" alt="Logo" />' +
+    '<img class="mx-auto h-[75px] block dark:hidden" src="img/logo.svg" alt="Logo"/>' +
     '</a>' +
     '<p class="pt-4 mb-0 text-[13px] text-muted dark:text-gray-400">Clayton Anderson</p>' +
     '<p class="pt-2 text-[13px] text-muted dark:text-gray-400">Product Designer</p>' +
@@ -69,8 +69,8 @@
   var navHTML = '<nav class="xl:hidden bg-white dark:bg-dark-bg py-6">' +
     '<div class="flex items-center gap-4">' +
     '<a href="' + logoHref + '">' +
-    '<img class="h-[60px] hidden dark:block" src="/img/logo_dark.svg" alt="Logo" />' +
-    '<img class="h-[60px] block dark:hidden" src="/img/logo.svg" alt="Logo"/>' +
+    '<img class="h-[60px] hidden dark:block" src="img/logo_dark.svg" alt="Logo" />' +
+    '<img class="h-[60px] block dark:hidden" src="img/logo.svg" alt="Logo"/>' +
     '</a>' +
     '<p class="mr-auto text-[14px] text-muted dark:text-gray-400">Clayton Anderson<br>Product Designer</p>' +
     '<div class="flex items-end gap-6">' +
@@ -126,6 +126,93 @@
 
   var footerEl = document.getElementById('footer-icons-placeholder');
   if (footerEl) footerEl.outerHTML = footerHTML;
+
+  // Case studies carousel
+  var caseStudies = [
+    { slug: 'polaris', href: 'polaris.html', img: 'img/index/polaris.png', imgDark: 'img/index/polaris-dark.png', title: 'Polaris', desc: 'An agent-first company dashboard with contextual AI and local-first AI' },
+    { slug: 'kaizentracker', href: 'kaizentracker.html', img: 'img/index/kaizen.png', imgDark: 'img/index/kaizen-dark.png', title: 'Kaizen Tracker', desc: 'A full-stack personal improvement tracker from idea to deployment' },
+    { slug: 'snackordering', href: 'snackordering.html', img: 'img/index/snackordering.png', imgDark: null, title: 'SnackOrdering', desc: 'Design a snack ordering app for a movie theater' },
+    { slug: 'wrf', href: 'wrf.html', img: 'img/index/wildfirerelief.png', imgDark: null, title: 'Wildfire Relief Fund', desc: 'Design a user registration flow for a humanitarian organization' },
+    { slug: 'bookeducation', href: 'bookeducation.html', img: 'img/index/bookeducation.png', imgDark: null, title: 'BookEducation', desc: 'Redesign the user experience for a book education platform' },
+  ];
+
+  var carouselEl = document.getElementById('case-studies-carousel-placeholder');
+  if (carouselEl) {
+    var currentFile = path.split('/').pop() || 'index.html';
+    var filtered = caseStudies.filter(function (cs) { return cs.href !== currentFile; });
+    var startIndex = 0;
+
+    function buildCardHTML(cs) {
+      var imgHTML = cs.imgDark
+        ? '<img src="' + cs.img + '" class="block dark:hidden w-full" alt="' + cs.title + '">' +
+          '<img src="' + cs.imgDark + '" class="hidden dark:block w-full" alt="' + cs.title + '">'
+        : '<img src="' + cs.img + '" class="w-full" alt="' + cs.title + '">';
+      return '<div>' +
+        '<a href="' + cs.href + '">' +
+        '<div class="group relative shadow-[0px_4px_4px_0_rgba(0,0,0,0.25)] overflow-hidden">' +
+        imgHTML +
+        '<div class="absolute inset-0 bg-dark opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out flex flex-col justify-end p-4">' +
+        '<h5 class="font-heading text-white text-xl">' + cs.title + '</h5>' +
+        '<p class="text-white text-[15px]">' + cs.desc + '</p>' +
+        '</div></div></a></div>';
+    }
+
+    function renderCarousel() {
+      var a = filtered[startIndex % filtered.length];
+      var b = filtered[(startIndex + 1) % filtered.length];
+      var cardsHTML = buildCardHTML(a) + buildCardHTML(b);
+
+      var arrowBtn = 'inline-flex items-center justify-center w-10 h-10 rounded-full border border-gray-300 dark:border-gray-600 text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors';
+      var leftArrow = '<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"/></svg>';
+      var rightArrow = '<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>';
+
+      // Build carousel DOM safely using createElement
+      carouselEl.textContent = '';
+
+      var header = document.createElement('div');
+      header.className = 'flex items-center justify-between mb-4';
+
+      var heading = document.createElement('h2');
+      heading.className = 'font-heading text-3xl';
+      heading.textContent = 'Other Case Studies';
+
+      var navDiv = document.createElement('div');
+      navDiv.className = 'flex gap-2';
+
+      var prevBtn = document.createElement('button');
+      prevBtn.className = arrowBtn;
+      prevBtn.setAttribute('aria-label', 'Previous case studies');
+      prevBtn.innerHTML = leftArrow;
+
+      var nextBtn = document.createElement('button');
+      nextBtn.className = arrowBtn;
+      nextBtn.setAttribute('aria-label', 'Next case studies');
+      nextBtn.innerHTML = rightArrow;
+
+      navDiv.appendChild(prevBtn);
+      navDiv.appendChild(nextBtn);
+      header.appendChild(heading);
+      header.appendChild(navDiv);
+
+      var grid = document.createElement('div');
+      grid.className = 'grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12';
+      grid.innerHTML = cardsHTML;
+
+      carouselEl.appendChild(header);
+      carouselEl.appendChild(grid);
+
+      prevBtn.addEventListener('click', function () {
+        startIndex = (startIndex - 2 + filtered.length) % filtered.length;
+        renderCarousel();
+      });
+      nextBtn.addEventListener('click', function () {
+        startIndex = (startIndex + 2) % filtered.length;
+        renderCarousel();
+      });
+    }
+
+    renderCarousel();
+  }
 
   // Reading progress bar — case study pages only
   if (!isIndex && !isAbout) {

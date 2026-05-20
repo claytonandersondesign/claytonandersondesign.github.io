@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Polaris — Clayton Anderson">
+    <meta property="og:description" content="An agent-first company dashboard with contextual AI actions, company values encoded in code, and local-first AI — all inside a monorepo.">
+
+    <!-- Theme: prevent flash of wrong theme -->
+    <script>
+      if (localStorage.getItem('theme') === 'dark' ||
+          (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: '#006c4d',
+              secondary: '#4c6358',
+              dark: '#21352c',
+              tan: '#f8f3f0',
+              muted: '#6f7973',
+              'muted-hover': '#404944',
+              body: '#1b1b1b',
+              'dark-bg': '#1a1a1a',
+              'dark-surface': '#2d2d2d',
+              'dark-text': '#e5e5e5',
+            },
+            fontFamily: {
+              heading: ['"Bebas Neue"', 'sans-serif'],
+              body: ['Lato', 'sans-serif'],
+            },
+          }
+        }
+      }
+    </script>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+
+    <title>Polaris — Clayton Anderson</title>
+  </head>
+
+  <body class="font-body text-body dark:text-dark-text text-[15px] tracking-[0.25px] scroll-smooth bg-white dark:bg-dark-bg">
+    <div class="w-full">
+      <div class="flex flex-wrap">
+        <!-- Desktop Sidebar (Logo) -->
+        <div id="sidebar-placeholder"></div>
+
+        <!-- Main Content -->
+        <div class="w-full xl:w-9/12 px-4 xl:pt-20">
+          <!-- Mobile Navbar -->
+          <div id="nav-placeholder"></div>
+
+          <!-- Content wrapper with scrollspy -->
+          <div class="flex flex-wrap">
+            <div class="w-full xl:w-10/12">
+              <!-- Case Study Content -->
+              <div class="main pt-6 xl:pt-0">
+                <h1 class="font-heading text-4xl">Polaris</h1>
+                <hr class="my-4 border-gray-300 dark:border-gray-700">
+
+                <!-- Mobile TOC Bar -->
+                <div id="mobile-toc" class="xl:hidden sticky top-0 z-50 bg-white dark:bg-dark-bg border-b border-gray-200 dark:border-gray-700 flex items-center justify-between px-4 py-3">
+                  <span id="mobile-toc-current" class="text-[13px] font-medium text-muted truncate">Overview</span>
+                  <button id="mobile-toc-btn" class="flex items-center gap-1 text-[13px] text-muted ml-2 shrink-0" aria-label="Jump to section">
+                    <span>Sections</span>
+                    <svg id="mobile-toc-chevron" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                  </button>
+                </div>
+                <!-- Mobile TOC Dropdown -->
+                <div id="mobile-toc-dropdown" class="xl:hidden hidden fixed left-4 right-0 z-40 bg-white dark:bg-dark-bg border-b border-gray-200 dark:border-gray-700 shadow-md">
+                  <a href="#list-item-1" class="mobile-toc-link block px-4 py-3 text-[13px] hover:bg-gray-100 dark:hover:bg-gray-800">Overview</a>
+                  <a href="#list-item-2" class="mobile-toc-link block px-4 py-3 text-[13px] hover:bg-gray-100 dark:hover:bg-gray-800">The Problem</a>
+                  <a href="#list-item-3" class="mobile-toc-link block px-4 py-3 text-[13px] hover:bg-gray-100 dark:hover:bg-gray-800">The Stack</a>
+                  <a href="#list-item-4" class="mobile-toc-link block px-4 py-3 text-[13px] hover:bg-gray-100 dark:hover:bg-gray-800">Core Features</a>
+                  <a href="#list-item-5" class="mobile-toc-link block px-4 py-3 text-[13px] hover:bg-gray-100 dark:hover:bg-gray-800">More Features</a>
+                  <a href="#list-item-6" class="mobile-toc-link block px-4 py-3 text-[13px] hover:bg-gray-100 dark:hover:bg-gray-800">Contextual AI</a>
+                  <a href="#list-item-7" class="mobile-toc-link block px-4 py-3 text-[13px] hover:bg-gray-100 dark:hover:bg-gray-800">Agent-First Development</a>
+                  <a href="#list-item-8" class="mobile-toc-link block px-4 py-3 text-[13px] hover:bg-gray-100 dark:hover:bg-gray-800">Reflection</a>
+                </div>
+
+                <div class="pt-12">
+
+                  <!-- Section 1: Overview -->
+                  <section id="list-item-1" class="mb-12 py-12 px-3">
+                    <div class="flex flex-wrap items-center gap-8 max-w-4xl mx-auto">
+                      <div class="w-full sm:w-1/2 pt-4 sm:pt-0 order-2 sm:order-1">
+                        <h3 class="font-heading text-2xl mb-1">The Product</h3>
+                        <p class="text-xs text-muted dark:text-gray-500 mb-4 uppercase tracking-widest">Your north star — a company operating system built for humans and AI agents</p>
+                        <p class="pt-2">Polaris is an internal operating system for running a company. It replaces the patchwork of spreadsheets, Notion pages, Slack channels, and scattered markdown files with a single dashboard where everything — goals, metrics, updates, roadmap, and company values — lives in one place.</p>
+                        <p class="pt-4">What makes it different: both humans and AI agents read from the same source of truth. The AI runs locally on your machine, and the entire project lives in a monorepo so the agent always has full context.</p>
+                        <div class="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700 grid grid-cols-3 gap-4">
+                          <div>
+                            <p class="text-xs text-muted dark:text-gray-500 uppercase tracking-widest mb-1">Timeline</p>
+                            <p class="text-sm font-medium">Feb 2026 – Present</p>
+                          </div>
+                          <div>
+                            <p class="text-xs text-muted dark:text-gray-500 uppercase tracking-widest mb-1">Platform</p>
+                            <p class="text-sm font-medium">Internal Web App</p>
+                          </div>
+                          <div>
+                            <p class="text-xs text-muted dark:text-gray-500 uppercase tracking-widest mb-1">Role</p>
+                            <p class="text-sm font-medium">Product Designer + Developer</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="w-full sm:w-5/12 order-1 sm:order-2 text-center">
+                        <button data-modal-open="imageModal" data-modal-img-src="img/polaris/home.png" data-modal-img-src-dark="img/polaris/home-dark.png" data-modal-img-alt="Polaris — Home dashboard" data-modal-maxw="max-w-6xl" class="block w-full cursor-pointer">
+                          <img src="img/polaris/home.png" alt="Polaris home dashboard" class="block dark:hidden max-w-full max-h-[420px] mx-auto object-contain rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                          <img src="img/polaris/home-dark.png" alt="Polaris home dashboard" class="hidden dark:block max-w-full max-h-[420px] mx-auto object-contain rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                        </button>
+                        <p class="text-xs text-muted dark:text-gray-500 mt-2">Home dashboard — click to enlarge</p>
+                      </div>
+                    </div>
+                  </section>
+
+                  <!-- Section 2: The Problem -->
+                  <section id="list-item-2" class="bg-zinc-100 dark:bg-dark-surface px-3 py-16">
+                    <div class="max-w-4xl mx-auto">
+                    <h2 class="font-heading text-3xl mb-2">The Problem</h2>
+                    <p class="text-muted dark:text-gray-400 mb-8">Running a company — even a small one — means juggling a dozen tools that don't talk to each other. And none of them were built for a world where AI is part of the team.</p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      <div class="bg-white dark:bg-dark-bg p-5 rounded-lg shadow-sm">
+                        <h4 class="font-heading text-xl mb-2">Tool Sprawl</h4>
+                        <p class="text-[14px]">Goals in a spreadsheet, updates in Slack, metrics in a dashboard, docs in Notion, brand guidelines in a PDF. Every context switch costs time and fragments your understanding of the bigger picture.</p>
+                      </div>
+                      <div class="bg-white dark:bg-dark-bg p-5 rounded-lg shadow-sm">
+                        <h4 class="font-heading text-xl mb-2">Fragmented Knowledge</h4>
+                        <p class="text-[14px]">Company knowledge gets siloed across services. When you need to connect a goal to a metric to a roadmap initiative, you're stitching together three different tools manually.</p>
+                      </div>
+                      <div class="bg-white dark:bg-dark-bg p-5 rounded-lg shadow-sm">
+                        <h4 class="font-heading text-xl mb-2">AI Without Context</h4>
+                        <p class="text-[14px]">Most AI tools require you to copy-paste context into a chat window. The AI can't see your goals, your metrics, or your company values — so its suggestions are generic, not grounded.</p>
+                      </div>
+                      <div class="bg-white dark:bg-dark-bg p-5 rounded-lg shadow-sm">
+                        <h4 class="font-heading text-xl mb-2">Cloud Lock-In</h4>
+                        <p class="text-[14px]">Most dashboards require accounts, subscriptions, and sending your data to someone else's servers. For an early-stage company, that's overhead and risk you don't need.</p>
+                      </div>
+                    </div>
+
+                    <p class="mt-8 text-[14px] text-muted dark:text-gray-400">The thesis behind Polaris: what if your operating system was designed so that both you and your AI could read from the same source of truth? And what if the AI ran locally on your machine — no cloud dependency, no API costs, full privacy? Bring your own model via Ollama, or plug in an API key if you prefer.</p>
+                    </div>
+                  </section>
+
+                  <!-- Section 3: The Stack -->
+                  <section id="list-item-3" class="py-16 px-3">
+                    <div class="max-w-4xl mx-auto">
+                    <h2 class="font-heading text-3xl mb-2">The Stack</h2>
+                    <p class="text-muted dark:text-gray-400 mb-8">Deliberately opinionated — zero cloud dependencies for the core product. Everything runs on your machine.</p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                      <div class="border border-gray-200 dark:border-gray-700 p-5 rounded-lg">
+                        <div class="flex items-center gap-3 mb-3">
+                          <div class="w-8 h-8 bg-black dark:bg-white rounded flex items-center justify-center flex-shrink-0">
+                            <svg class="w-5 h-5 text-white dark:text-black" viewBox="0 0 24 24" fill="currentColor"><path d="M18.665 21.978C16.758 23.255 14.465 24 12 24 5.377 24 0 18.623 0 12S5.377 0 12 0s12 5.377 12 12c0 3.583-1.574 6.801-4.067 9.001L9.219 7.2H7.2v9.596h1.615V9.041l7.85 12.937zM14.715 7.2v9.596h1.614V7.2h-1.614z"/></svg>
+                          </div>
+                          <h4 class="font-heading text-xl">Next.js 16</h4>
+                        </div>
+                        <p class="text-[13px] text-muted dark:text-gray-400">App Router with React 19 and server components. Fast to build, easy to reason about, and the file-based routing maps cleanly to each dashboard tab.</p>
+                      </div>
+
+                      <div class="border border-gray-200 dark:border-gray-700 p-5 rounded-lg">
+                        <div class="flex items-center gap-3 mb-3">
+                          <div class="w-8 h-8 bg-[#003B57] rounded flex items-center justify-center flex-shrink-0">
+                            <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                          </div>
+                          <h4 class="font-heading text-xl">SQLite</h4>
+                        </div>
+                        <p class="text-[13px] text-muted dark:text-gray-400">Zero-config, single-file database. No cloud dependency, no connection strings, no managed service. Your data lives on your machine as a single file.</p>
+                      </div>
+
+                      <div class="border border-gray-200 dark:border-gray-700 p-5 rounded-lg">
+                        <div class="flex items-center gap-3 mb-3">
+                          <div class="w-8 h-8 bg-[#06B6D4] rounded flex items-center justify-center flex-shrink-0">
+                            <svg class="w-5 h-5 text-white" viewBox="0 0 54 33" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M27 0C19.8 0 15.3 3.6 13.5 10.8c2.7-3.6 5.85-4.95 9.45-4.05 2.054.514 3.522 2.004 5.147 3.653C30.744 13.09 33.808 16.2 40.5 16.2c7.2 0 11.7-3.6 13.5-10.8-2.7 3.6-5.85 4.95-9.45 4.05-2.054-.514-3.522-2.004-5.147-3.653C36.756 3.11 33.692 0 27 0zM13.5 16.2C6.3 16.2 1.8 19.8 0 27c2.7-3.6 5.85-4.95 9.45-4.05 2.054.514 3.522 2.004 5.147 3.653C17.244 29.29 20.308 32.4 27 32.4c7.2 0 11.7-3.6 13.5-10.8-2.7 3.6-5.85 4.95-9.45 4.05-2.054-.514-3.522-2.004-5.147-3.653C23.256 19.31 20.192 16.2 13.5 16.2z"/></svg>
+                          </div>
+                          <h4 class="font-heading text-xl">Tailwind CSS</h4>
+                        </div>
+                        <p class="text-[13px] text-muted dark:text-gray-400">Utility-first styling paired with JetBrains Mono for a monospace, retro-modern aesthetic. Dark mode as the default — because that's how developers actually work.</p>
+                      </div>
+
+                      <div class="border border-gray-200 dark:border-gray-700 p-5 rounded-lg">
+                        <div class="flex items-center gap-3 mb-3">
+                          <div class="w-8 h-8 bg-[#1a1a2e] rounded flex items-center justify-center flex-shrink-0">
+                            <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm-1-5h2v2h-2zm0-8h2v6h-2z"/></svg>
+                          </div>
+                          <h4 class="font-heading text-xl">Ollama + Gemma 3</h4>
+                        </div>
+                        <p class="text-[13px] text-muted dark:text-gray-400">Local AI inference via Ollama. No cloud API required — the model runs on your machine. Zero API costs, full privacy, and works offline.</p>
+                      </div>
+
+                      <div class="border border-gray-200 dark:border-gray-700 p-5 rounded-lg">
+                        <div class="flex items-center gap-3 mb-3">
+                          <div class="w-8 h-8 bg-black dark:bg-white rounded flex items-center justify-center flex-shrink-0">
+                            <svg class="w-5 h-5 text-white dark:text-black" viewBox="0 0 76 65" fill="currentColor"><path d="M37.5274 0L75.0548 65H0L37.5274 0Z"/></svg>
+                          </div>
+                          <h4 class="font-heading text-xl">Vercel AI SDK</h4>
+                        </div>
+                        <p class="text-[13px] text-muted dark:text-gray-400">Streaming responses with a provider abstraction. Swap between local models (Ollama) or bring your own API key — the interface stays the same.</p>
+                      </div>
+
+                      <div class="border border-gray-200 dark:border-gray-700 p-5 rounded-lg">
+                        <div class="flex items-center gap-3 mb-3">
+                          <div class="w-8 h-8 bg-primary rounded flex items-center justify-center flex-shrink-0">
+                            <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h18v18H3V3zm2 2v14h14V5H5zm2 2h10v2H7V7zm0 4h10v2H7v-2zm0 4h7v2H7v-2z"/></svg>
+                          </div>
+                          <h4 class="font-heading text-xl">Monorepo</h4>
+                        </div>
+                        <p class="text-[13px] text-muted dark:text-gray-400">App code, documentation, brand guidelines, and agent instructions — all in one repository. The AI development agent has full context across everything, always.</p>
+                      </div>
+                    </div>
+                    </div>
+                  </section>
+
+                  <!-- Section 4: Core Features -->
+                  <section id="list-item-4" class="bg-zinc-100 dark:bg-dark-surface py-16 px-3">
+                    <div class="max-w-4xl mx-auto">
+                    <h2 class="font-heading text-3xl mb-2">Core Features</h2>
+                    <p class="text-muted dark:text-gray-400 mb-8">Each tab in Polaris serves a specific purpose — no feature bloat, no empty dashboards. Every screen exists because the team actually uses it.</p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                      <div>
+                        <button data-modal-open="imageModal" data-modal-img-src="img/polaris/values.png" data-modal-img-src-dark="img/polaris/values-dark.png" data-modal-img-alt="Polaris — Values page" data-modal-maxw="max-w-4xl" class="block w-full cursor-pointer">
+                          <img src="img/polaris/values.png" alt="Values page" class="block dark:hidden w-auto max-h-[360px] mx-auto rounded-lg shadow-md hover:shadow-xl transition-shadow object-contain">
+                          <img src="img/polaris/values-dark.png" alt="Values page" class="hidden dark:block w-auto max-h-[360px] mx-auto rounded-lg shadow-md hover:shadow-xl transition-shadow object-contain">
+                        </button>
+                        <h4 class="font-heading text-lg mt-3 mb-1">Values</h4>
+                        <p class="text-[13px] text-muted dark:text-gray-400">Company identity rendered as interactive cards — brand voice, design language, color theory, vision. Not a static PDF buried in a drive folder. The AI reads from the same source, so its output is always on-brand.</p>
+                      </div>
+
+                      <div>
+                        <button data-modal-open="imageModal" data-modal-img-src="img/polaris/updates.png" data-modal-img-src-dark="img/polaris/updates-dark.png" data-modal-img-alt="Polaris — Updates page" data-modal-maxw="max-w-4xl" class="block w-full cursor-pointer">
+                          <img src="img/polaris/updates.png" alt="Updates page" class="block dark:hidden w-auto max-h-[360px] mx-auto rounded-lg shadow-md hover:shadow-xl transition-shadow object-contain">
+                          <img src="img/polaris/updates-dark.png" alt="Updates page" class="hidden dark:block w-auto max-h-[360px] mx-auto rounded-lg shadow-md hover:shadow-xl transition-shadow object-contain">
+                        </button>
+                        <h4 class="font-heading text-lg mt-3 mb-1">Updates</h4>
+                        <p class="text-[13px] text-muted dark:text-gray-400">Async standups that replace daily meetings. Structured fields — working on, blocked by, shipped today — with an AI draft button that pre-populates based on recent activity. A summarize button digests all updates into a single overview.</p>
+                      </div>
+
+                      <div>
+                        <button data-modal-open="imageModal" data-modal-img-src="img/polaris/goals.png" data-modal-img-src-dark="img/polaris/goals-dark.png" data-modal-img-alt="Polaris — Goals page" data-modal-maxw="max-w-4xl" class="block w-full cursor-pointer">
+                          <img src="img/polaris/goals.png" alt="Goals page" class="block dark:hidden w-auto max-h-[360px] mx-auto rounded-lg shadow-md hover:shadow-xl transition-shadow object-contain">
+                          <img src="img/polaris/goals-dark.png" alt="Goals page" class="hidden dark:block w-auto max-h-[360px] mx-auto rounded-lg shadow-md hover:shadow-xl transition-shadow object-contain">
+                        </button>
+                        <h4 class="font-heading text-lg mt-3 mb-1">Goals</h4>
+                        <p class="text-[13px] text-muted dark:text-gray-400">Quarterly and yearly goal tracking with visual progress bars. Goals are seeded from the company's identity document, so there's always alignment between what you say matters and what you're tracking.</p>
+                      </div>
+
+                      <div>
+                        <button data-modal-open="imageModal" data-modal-img-src="img/polaris/metrics.png" data-modal-img-src-dark="img/polaris/metrics-dark.png" data-modal-img-alt="Polaris — Metrics page" data-modal-maxw="max-w-4xl" class="block w-full cursor-pointer">
+                          <img src="img/polaris/metrics.png" alt="Metrics page" class="block dark:hidden w-auto max-h-[360px] mx-auto rounded-lg shadow-md hover:shadow-xl transition-shadow object-contain">
+                          <img src="img/polaris/metrics-dark.png" alt="Metrics page" class="hidden dark:block w-auto max-h-[360px] mx-auto rounded-lg shadow-md hover:shadow-xl transition-shadow object-contain">
+                        </button>
+                        <h4 class="font-heading text-lg mt-3 mb-1">Metrics</h4>
+                        <p class="text-[13px] text-muted dark:text-gray-400">Key business metrics with sparkline charts and trend indicators. Revenue, MRR, churn, activation rate — with support for custom metrics. Log entries with optional notes for context on why a number changed.</p>
+                      </div>
+                    </div>
+                    </div>
+                  </section>
+
+                  <!-- Section 5: More Features -->
+                  <section id="list-item-5" class="py-16 px-3">
+                    <div class="max-w-4xl mx-auto">
+                    <h2 class="font-heading text-3xl mb-2">More Features</h2>
+                    <p class="text-muted dark:text-gray-400 mb-8">The rest of the dashboard — planning, documentation, and a persistent AI conversation.</p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+                      <div>
+                        <button data-modal-open="imageModal" data-modal-img-src="img/polaris/roadmap.png" data-modal-img-src-dark="img/polaris/roadmap-dark.png" data-modal-img-alt="Polaris — Roadmap page" data-modal-maxw="max-w-4xl" class="block w-full cursor-pointer">
+                          <img src="img/polaris/roadmap.png" alt="Roadmap page" class="block dark:hidden w-auto max-h-[360px] mx-auto rounded-lg shadow-md hover:shadow-xl transition-shadow object-contain">
+                          <img src="img/polaris/roadmap-dark.png" alt="Roadmap page" class="hidden dark:block w-auto max-h-[360px] mx-auto rounded-lg shadow-md hover:shadow-xl transition-shadow object-contain">
+                        </button>
+                        <h4 class="font-heading text-lg mt-3 mb-1">Roadmap</h4>
+                        <p class="text-[13px] text-muted dark:text-gray-400">Initiatives grouped by quarter with status tracking. Link roadmap items to goals, assign owners, and generate PRDs with a single click — the AI has full context on what you're building and why.</p>
+                      </div>
+
+                      <div>
+                        <button data-modal-open="imageModal" data-modal-img-src="img/polaris/docs.png" data-modal-img-src-dark="img/polaris/docs-dark.png" data-modal-img-alt="Polaris — Docs page" data-modal-maxw="max-w-4xl" class="block w-full cursor-pointer">
+                          <img src="img/polaris/docs.png" alt="Docs page" class="block dark:hidden w-auto max-h-[360px] mx-auto rounded-lg shadow-md hover:shadow-xl transition-shadow object-contain">
+                          <img src="img/polaris/docs-dark.png" alt="Docs page" class="hidden dark:block w-auto max-h-[360px] mx-auto rounded-lg shadow-md hover:shadow-xl transition-shadow object-contain">
+                        </button>
+                        <h4 class="font-heading text-lg mt-3 mb-1">Docs</h4>
+                        <p class="text-[13px] text-muted dark:text-gray-400">Renders all markdown files from the monorepo's docs folder. Specs, ideas, brand guidelines — accessible without leaving the dashboard or opening a separate editor.</p>
+                      </div>
+
+                      <div>
+                        <button data-modal-open="imageModal" data-modal-img-src="img/polaris/ai-chat.png" data-modal-img-src-dark="img/polaris/ai-chat-dark.png" data-modal-img-alt="Polaris — AI Chat" data-modal-maxw="max-w-4xl" class="block w-full cursor-pointer">
+                          <img src="img/polaris/ai-chat.png" alt="AI Chat" class="block dark:hidden w-auto max-h-[360px] mx-auto rounded-lg shadow-md hover:shadow-xl transition-shadow object-contain">
+                          <img src="img/polaris/ai-chat-dark.png" alt="AI Chat" class="hidden dark:block w-auto max-h-[360px] mx-auto rounded-lg shadow-md hover:shadow-xl transition-shadow object-contain">
+                        </button>
+                        <h4 class="font-heading text-lg mt-3 mb-1">AI Chat</h4>
+                        <p class="text-[13px] text-muted dark:text-gray-400">A persistent AI conversation interface that runs locally. Ask questions about your goals, brainstorm roadmap ideas, or draft messages — the AI has access to everything in the dashboard.</p>
+                      </div>
+                    </div>
+                    </div>
+                  </section>
+
+                  <!-- Section 6: Contextual AI Actions -->
+                  <section id="list-item-6" class="bg-zinc-100 dark:bg-dark-surface py-16 px-3">
+                    <div class="max-w-4xl mx-auto">
+                    <h2 class="font-heading text-3xl mb-2">Contextual AI Actions</h2>
+                    <p class="text-muted dark:text-gray-400 mb-8">The feature that makes Polaris more than a dashboard — AI that acts on your data, not just displays it.</p>
+
+                    <div class="mb-8">
+                      <button data-modal-open="imageModal" data-modal-img-src="img/polaris/ai-actions.png" data-modal-img-src-dark="img/polaris/ai-actions-dark.png" data-modal-img-alt="Polaris — Contextual AI action menu" data-modal-maxw="max-w-6xl" class="block w-full cursor-pointer">
+                        <img src="img/polaris/ai-actions.png" alt="Contextual AI action menu" class="block dark:hidden max-w-full max-h-[420px] mx-auto rounded-lg shadow-md hover:shadow-xl transition-shadow object-contain">
+                        <img src="img/polaris/ai-actions-dark.png" alt="Contextual AI action menu" class="hidden dark:block max-w-full max-h-[420px] mx-auto rounded-lg shadow-md hover:shadow-xl transition-shadow object-contain">
+                      </button>
+                      <p class="text-xs text-muted dark:text-gray-500 mt-2 text-center">Hover over any entity to surface contextual AI actions — click to enlarge</p>
+                    </div>
+
+                    <p class="mb-6">Hover over or select any entity in Polaris — a goal, an update, a metric, a roadmap item — and a floating action button appears with AI-powered actions specific to that context. The AI doesn't just know what you're looking at; it knows the full state of your company.</p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                      <div class="bg-white dark:bg-dark-bg p-4 rounded-lg border border-gray-200 dark:border-gray-700">
+                        <h4 class="font-heading text-lg mb-2">Create Task</h4>
+                        <p class="text-[13px] text-muted dark:text-gray-400">Turn any piece of content — a blocked item, a goal milestone, a metric anomaly — into an actionable task with one click.</p>
+                      </div>
+                      <div class="bg-white dark:bg-dark-bg p-4 rounded-lg border border-gray-200 dark:border-gray-700">
+                        <h4 class="font-heading text-lg mb-2">Draft Message</h4>
+                        <p class="text-[13px] text-muted dark:text-gray-400">AI composes messages with full context — it knows who you're writing to, what they're working on, and what matters to the company right now.</p>
+                      </div>
+                      <div class="bg-white dark:bg-dark-bg p-4 rounded-lg border border-gray-200 dark:border-gray-700">
+                        <h4 class="font-heading text-lg mb-2">Generate PRD</h4>
+                        <p class="text-[13px] text-muted dark:text-gray-400">Draft a product requirements document directly from a roadmap item. The AI pulls in related goals, metrics, and company values to create a grounded spec.</p>
+                      </div>
+                      <div class="bg-white dark:bg-dark-bg p-4 rounded-lg border border-gray-200 dark:border-gray-700">
+                        <h4 class="font-heading text-lg mb-2">Summarize</h4>
+                        <p class="text-[13px] text-muted dark:text-gray-400">Digest complex content — a week of updates, a long doc, multiple metric entries — into a concise overview you can act on.</p>
+                      </div>
+                      <div class="bg-white dark:bg-dark-bg p-4 rounded-lg border border-gray-200 dark:border-gray-700">
+                        <h4 class="font-heading text-lg mb-2">Research</h4>
+                        <p class="text-[13px] text-muted dark:text-gray-400">Find related context across your workspace. Blocked on something? The AI searches your goals, docs, and updates to surface relevant information.</p>
+                      </div>
+                      <div class="bg-white dark:bg-dark-bg p-4 rounded-lg border border-gray-200 dark:border-gray-700">
+                        <h4 class="font-heading text-lg mb-2">Update Progress</h4>
+                        <p class="text-[13px] text-muted dark:text-gray-400">AI-assisted goal progress updates. The AI suggests a progress percentage based on recent activity, shipped items, and metric trends.</p>
+                      </div>
+                    </div>
+
+                    <div>
+                      <p class="text-xs text-muted dark:text-gray-500 mt-2 text-center">Different entity types surface different actions — the menu adapts to what you're working on</p>
+                    </div>
+                    </div>
+                  </section>
+
+                  <!-- Section 7: Agent-First Development -->
+                  <section id="list-item-7" class="py-16 px-3">
+                    <div class="max-w-4xl mx-auto">
+                    <h2 class="font-heading text-3xl mb-2">Agent-First Development</h2>
+                    <p class="text-muted dark:text-gray-400 mb-8">How building inside a monorepo changes the relationship between you and your AI development partner.</p>
+
+                    <div class="flex flex-wrap gap-8">
+                      <div class="w-full sm:w-7/12 mx-auto">
+                        <p class="mb-4">With Kaizen Tracker, I used Claude Code as a development assistant — I'd describe what I wanted, it would scaffold components, and I'd review the output. The relationship was prompt → response → refine.</p>
+
+                        <p class="mb-4">With Polaris, something shifted. Because the monorepo contains not just code but also the company's identity document, brand guidelines, product specs, and architectural decisions, the AI development agent has <em>full context</em> at all times. There's no "feeding context" step — no copying and pasting a brand guide into a chat window.</p>
+
+                        <p class="mb-4">When the agent writes a component, it already knows the color palette. When it generates a PRD, it already knows the company values. When it suggests a metric to track, it already knows the quarterly goals. The monorepo isn't just a developer convenience — it's an information architecture decision that makes the AI a genuine team member instead of a generic assistant.</p>
+
+                        <p class="mb-4">When you ask the agent to update a feature, it doesn't just change the code. Because everything lives in the monorepo, the agent also updates the documentation to reflect the change, revises the pitch deck and marketing copy with the new capability, and ensures everything stays aligned. One request, multiple artifacts updated coherently — no manual sync step, no "oh I forgot to update the docs."</p>
+                      </div>
+
+                      <div class="w-full sm:w-5/12 mx-auto">
+                        <blockquote class="border-l-4 border-primary dark:border-emerald-500 pl-5 py-4 bg-zinc-50 dark:bg-dark-surface rounded-r-lg shadow-sm text-muted dark:text-gray-400 italic text-[14px] leading-relaxed">
+                          "The monorepo isn't a developer convenience — it's an information architecture decision. When the AI agent reads the same docs, brand guidelines, and codebase that you do, you stop managing context and start collaborating."
+                        </blockquote>
+                      </div>
+                    </div>
+                    </div>
+                  </section>
+
+                  <!-- Section 8: Reflection -->
+                  <section id="list-item-8" class="bg-zinc-100 dark:bg-dark-surface py-16 px-3">
+                    <div class="max-w-4xl mx-auto">
+                    <h2 class="font-heading text-3xl mb-2">Reflection</h2>
+                    <p class="text-muted dark:text-gray-400 mb-8">What building Polaris taught me about designing for AI-augmented workflows.</p>
+
+                    <div>
+                      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+                        <div>
+                          <h4 class="font-heading text-xl mb-2">Opinionated > Flexible</h4>
+                          <p class="text-[14px] text-muted dark:text-gray-400">SQLite instead of Postgres. Localhost instead of cloud. Local AI instead of API calls. One repo instead of many. Every opinionated choice removed a category of complexity and made the system easier for both humans and AI agents to reason about.</p>
+                        </div>
+                        <div>
+                          <h4 class="font-heading text-xl mb-2">Values as Code</h4>
+                          <p class="text-[14px] text-muted dark:text-gray-400">Encoding company identity directly in the app — not as a reference document, but as a living, rendered page — changes how you think about alignment. The values aren't aspirational wall art. They're data the entire system reads from.</p>
+                        </div>
+                        <div>
+                          <h4 class="font-heading text-xl mb-2">Designing for Two Users</h4>
+                          <p class="text-[14px] text-muted dark:text-gray-400">Every information architecture decision in Polaris had to work for both humans and AI agents. Structured data, consistent naming, predictable locations — what makes an app navigable for people also makes it readable for machines.</p>
+                        </div>
+                      </div>
+
+                      <div class="border-t border-gray-200 dark:border-gray-700 pt-8">
+                        <h4 class="font-heading text-xl mb-3">Next Steps</h4>
+                        <ol class="list-decimal pl-5 text-[14px] text-muted dark:text-gray-400 space-y-2">
+                          <li>Multi-user team support — extending Polaris for small teams with shared goals and individual dashboards</li>
+                          <li>Mobile companion — quick updates and goal check-ins from your phone</li>
+                          <li>Plugin system — custom AI actions that teams can define for their specific workflows</li>
+                          <li>Webhook integrations — pull in external data (GitHub commits, revenue from Stripe) automatically</li>
+                        </ol>
+                      </div>
+                    </div>
+                    </div>
+                  </section>
+
+                  <!-- Thank You Section -->
+                  <div class="flex items-center my-12 py-12 px-3">
+                    <div class="max-w-4xl mx-auto w-full">
+                      <h3 class="font-heading text-2xl">Thank you</h3>
+                      <p>Thank you for your time reviewing my work on Polaris!</p>
+                      <p class="pt-4">If you'd like to get in touch, please say hi!</p>
+                      <a href="mailto:claytonanderson.work@gmail.com" target="_blank" class="flex items-center gap-2 text-primary dark:text-emerald-400 hover:underline">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                        </svg>
+                        claytonanderson.work@gmail.com
+                      </a>
+                    </div>
+                  </div>
+
+                  <hr class="my-4 border-gray-300 dark:border-gray-700">
+                </div>
+              </div>
+            </div>
+
+            <!-- Scrollspy Sidebar -->
+            <div class="hidden xl:block xl:w-2/12 pl-8 pt-20">
+              <nav class="sidebar-nav sticky top-12 text-[13px] text-muted dark:text-gray-400" id="case-study-list">
+                <div class="py-2 px-3"><h6 class="font-heading text-body dark:text-dark-text">Case Study</h6></div>
+                <a href="#list-item-1" class="block py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">Overview</a>
+                <a href="#list-item-2" class="block py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">The Problem</a>
+                <a href="#list-item-3" class="block py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">The Stack</a>
+                <a href="#list-item-4" class="block py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">Core Features</a>
+                <a href="#list-item-5" class="block py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">More Features</a>
+                <a href="#list-item-6" class="block py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">Contextual AI</a>
+                <a href="#list-item-7" class="block py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">Agent-First Development</a>
+                <a href="#list-item-8" class="block py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">Reflection</a>
+              </nav>
+            </div>
+          </div>
+
+          <!-- Footer -->
+          <div class="py-12 mb-12 xl:pr-[16.667%]">
+            <div class="max-w-4xl mx-auto">
+            <div id="case-studies-carousel-placeholder"></div>
+            <div id="footer-icons-placeholder"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Spacer -->
+        <div class="hidden xl:block xl:w-1/12"></div>
+      </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal hidden fixed inset-0 z-50 flex items-center justify-center">
+      <div class="modal-backdrop absolute inset-0 bg-black/50"></div>
+      <div id="imageModal-content" class="relative bg-white dark:bg-dark-surface max-w-4xl w-full mx-4 z-10 shadow-lg">
+        <div class="flex justify-end p-2">
+          <button data-modal-close class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-100 transition-colors" aria-label="Close">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+        <div class="p-4 text-center">
+          <img id="imageModal-img" class="max-w-full max-h-[75vh] w-auto mx-auto" src="" alt="">
+        </div>
+        <div class="flex justify-between items-center p-4 border-t dark:border-gray-700">
+          <div id="imageModal-footer-extra" class="hidden"></div>
+          <button data-modal-close class="px-4 py-2 bg-secondary dark:bg-emerald-700 text-white hover:bg-muted-hover dark:hover:bg-emerald-600 transition-colors ml-auto">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
