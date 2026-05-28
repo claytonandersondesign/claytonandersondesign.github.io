@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Theme: prevent flash of wrong theme -->
+    <script>
+      if (localStorage.getItem('theme') === 'dark' ||
+          (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: '#006c4d',
+              secondary: '#4c6358',
+              dark: '#21352c',
+              tan: '#f8f3f0',
+              muted: '#6f7973',
+              'muted-hover': '#404944',
+              body: '#1b1b1b',
+              'dark-bg': '#1a1a1a',
+              'dark-surface': '#2d2d2d',
+              'dark-text': '#e5e5e5',
+            },
+            fontFamily: {
+              heading: ['"Bebas Neue"', 'sans-serif'],
+              body: ['Lato', 'sans-serif'],
+            },
+          }
+        }
+      }
+    </script>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+
+    <title>claytonanderson.design</title>
+  </head>
+
+  <body class="font-body text-body dark:text-dark-text text-[15px] tracking-[0.25px] scroll-smooth bg-white dark:bg-dark-bg">
+    <div class="w-full">
+      <div class="flex flex-wrap">
+        <!-- Desktop Sidebar (Logo) -->
+        <div id="sidebar-placeholder"></div>
+
+        <!-- Main Content -->
+        <div class="w-full xl:w-9/12 px-4 xl:pt-20">
+          <!-- Mobile Navbar -->
+          <div id="nav-placeholder"></div>
+
+          <!-- Content wrapper with scrollspy -->
+          <div class="flex flex-wrap">
+            <div class="w-full xl:w-10/12">
+              <!-- Case Study Content -->
+              <div class="main pt-6 xl:pt-0">
+            <h1 class="font-heading text-4xl">PromptCheck</h1>
+            <hr class="my-4 border-gray-300 dark:border-gray-700">
+
+            <!-- Mobile TOC Bar -->
+            <div id="mobile-toc" class="xl:hidden sticky top-0 z-50 bg-white dark:bg-dark-bg border-b border-gray-200 dark:border-gray-700 flex items-center justify-between px-4 py-3">
+              <span id="mobile-toc-current" class="text-[13px] font-medium text-muted truncate">Overview</span>
+              <button id="mobile-toc-btn" class="flex items-center gap-1 text-[13px] text-muted ml-2 shrink-0" aria-label="Jump to section">
+                <span>Sections</span>
+                <svg id="mobile-toc-chevron" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </button>
+            </div>
+            <!-- Mobile TOC Dropdown -->
+            <div id="mobile-toc-dropdown" class="xl:hidden hidden fixed left-4 right-0 z-40 bg-white dark:bg-dark-bg border-b border-gray-200 dark:border-gray-700 shadow-md">
+              <a href="#list-item-1" class="mobile-toc-link block px-4 py-3 text-[13px] hover:bg-gray-100 dark:hover:bg-gray-800">Overview</a>
+              <a href="#list-item-2" class="mobile-toc-link block px-4 py-3 text-[13px] hover:bg-gray-100 dark:hover:bg-gray-800">Problem & Goal</a>
+              <a href="#list-item-3" class="mobile-toc-link block px-4 py-3 text-[13px] hover:bg-gray-100 dark:hover:bg-gray-800">Problem Space</a>
+              <a href="#list-item-4" class="mobile-toc-link block px-4 py-3 text-[13px] hover:bg-gray-100 dark:hover:bg-gray-800">Exploration & Decision</a>
+              <a href="#list-item-5" class="mobile-toc-link block px-4 py-3 text-[13px] hover:bg-gray-100 dark:hover:bg-gray-800">Prototype & Handoff</a>
+              <a href="#list-item-6" class="mobile-toc-link block px-4 py-3 text-[13px] hover:bg-gray-100 dark:hover:bg-gray-800">New Workflow</a>
+              <a href="#list-item-7" class="mobile-toc-link block px-4 py-3 text-[13px] hover:bg-gray-100 dark:hover:bg-gray-800">Conclusion</a>
+            </div>
+
+            <div class="pt-12">
+              <!-- Section 1: Overview -->
+              <section id="list-item-1" class="mb-12 py-12 px-3">
+                <div class="flex flex-wrap items-center">
+                  <div class="w-full sm:w-1/2 pt-12 order-2 sm:order-1">
+                    <h3 class="font-heading text-2xl">The Product</h3>
+                    <p class="pt-3">PromptCheck is a tool that reviews AI prompts for communication issues before they're sent — like spellcheck, but for how you talk to AI. It identifies vagueness, conflicting instructions, missing context, leading bias, and other patterns that lead to poor AI responses and wasted effort.</p>
+                    <p class="pt-3"><strong>Timeline:</strong> May 2026</p>
+                    <p class="pt-3"><strong>Platform:</strong> Browser Extension / Web Tool</p>
+                    <p class="pt-3"><strong>Role:</strong> Sr. Product Designer</p>
+                    <p class="pt-3"><strong>Tools:</strong> Claude, Claude Design, Claude Code</p>
+                    <p class="pt-3"><strong>Responsibilities:</strong> Problem definition, conversational research, rapid wireframing, pattern exploration, prototype iteration, handoff to code</p>
+                  </div>
+                  <div class="w-full sm:w-1/2 order-1 sm:order-2 text-center">
+                    <button data-modal-open="imageModal" data-modal-img-src="img/promptcheck/hero.png" data-modal-img-alt="PromptCheck Prototype" data-modal-maxw="max-w-4xl" class="cursor-pointer">
+                      <img class="max-w-full max-h-[400px] mx-auto" src="img/promptcheck/hero.png" alt="PromptCheck Prototype">
+                    </button>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Section 2: Problem & Goal -->
+              <section id="list-item-2" class="bg-zinc-100 dark:bg-dark-surface flex items-center px-3 min-h-[450px]">
+                <div class="flex flex-wrap">
+                  <div class="w-full sm:w-1/2 p-4">
+                    <h3 class="font-heading text-2xl">The Problem</h3>
+                    <p>Today's AI chat interfaces have a communication gap. Users make assumptions about what models can do and infer — writing prompts with vague language, conflicting instructions, assumed context, or leading bias. When results disappoint, they re-prompt repeatedly, wasting tokens and compute. The model, in turn, silently fills in gaps, making its own assumptions about unclear input. Neither side flags the disconnect.</p>
+                  </div>
+                  <div class="w-full sm:w-1/2 p-4">
+                    <h3 class="font-heading text-2xl">The Goal</h3>
+                    <p>Design a lightweight, non-intrusive tool that surfaces prompt communication issues inline — before the prompt is sent. Help users write clearer prompts without requiring prompt engineering expertise, reduce repeated prompting, and lower the cost of human-AI communication for both the user and the environment.</p>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Section 3: Problem Space -->
+              <section id="list-item-3" class="my-12 py-12 px-3">
+                <h2 class="font-heading text-3xl mb-12 pb-12">Defining the Problem Space</h2>
+
+                <div class="pb-12">
+                  <h3 class="font-heading text-2xl pb-3">Conversational Research with Claude</h3>
+                  <p>Rather than starting with traditional user interviews, the first step was a structured conversation with Claude about the problem space. This dialogue mapped out a taxonomy of prompt communication issues — specific, repeatable patterns where the way a prompt is written leads to suboptimal AI output. The conversation served as both a research method and a design brief.</p>
+                </div>
+
+                <div class="my-12 py-12">
+                  <h3 class="font-heading text-2xl pb-3">Mapping Prompt Issues</h3>
+                  <p>This research led to building a mockup that catalogued real examples of each issue type — color-coded by category, with annotated prompts showing exactly where each issue appears and why it matters. This artifact became the foundation for the design work that followed.</p>
+                  <div class="text-center mt-4">
+                    <button data-modal-open="imageModal" data-modal-img-src="img/promptcheck/problem-space.png" data-modal-img-alt="Prompt Issue Taxonomy" data-modal-maxw="max-w-6xl" class="cursor-pointer">
+                      <img class="max-w-full max-h-[500px] shadow-[rgba(0,0,0,0.35)_0px_5px_15px]" src="img/promptcheck/problem-space.png" alt="Prompt Issue Taxonomy">
+                    </button>
+                    <p class="pt-2 text-[13px] tracking-[0.4px]">Issue taxonomy mockup with annotated example prompts</p>
+                  </div>
+                </div>
+
+                <div class="my-12 py-12">
+                  <h3 class="font-heading text-2xl pb-3">Issue Categories</h3>
+                  <p class="pb-8">The research identified two families of prompt issues: patterns that <strong>skew</strong> the answer (bias) and patterns that <strong>degrade</strong> the answer (quality).</p>
+                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div>
+                      <h4 class="font-heading text-xl">Vagueness</h4>
+                      <p>Ambiguous terms like "a few," "recently," or "make it pop" that leave interpretation entirely to the model</p>
+                    </div>
+                    <div>
+                      <h4 class="font-heading text-xl">Conflicting Instructions</h4>
+                      <p>Contradictory demands like "concise but thorough" or "formal but conversational" that force the model to pick a middle ground</p>
+                    </div>
+                    <div>
+                      <h4 class="font-heading text-xl">Missing Context</h4>
+                      <p>References to "the last one" or "what we discussed" — information the model doesn't have access to</p>
+                    </div>
+                    <div>
+                      <h4 class="font-heading text-xl">Leading Bias</h4>
+                      <p>Framing like "why is X destroying Y" that treats a claim as settled, pushing the model to validate rather than evaluate</p>
+                    </div>
+                    <div>
+                      <h4 class="font-heading text-xl">Negation Traps</h4>
+                      <p>Telling the model what NOT to do — "don't be boring" seeds the concept of boring rather than describing the positive target</p>
+                    </div>
+                    <div>
+                      <h4 class="font-heading text-xl">Missing Audience / Format</h4>
+                      <p>No audience or output format specified — "explain quantum entanglement" to a physicist vs. a child are entirely different responses</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Section 4: Exploration & Decision -->
+              <section id="list-item-4" class="bg-zinc-100 dark:bg-dark-surface my-12 py-12 px-3">
+                <h2 class="font-heading text-3xl mb-12 pb-12">Exploration & Decision</h2>
+
+                <div class="pb-12">
+                  <h3 class="font-heading text-2xl pb-3">Rapid Wireframing with Claude Design</h3>
+                  <p>Instead of sketching on paper or building static mockups in Figma, I used Claude Design to rapidly generate wireframe variants on a single canvas. Each variant explored a different interaction pattern for surfacing prompt issues. The speed of this process — generating a full exploration canvas in minutes rather than hours — made it possible to explore more of the solution space before committing to a direction.</p>
+                  <div class="text-center mt-8">
+                    <button data-modal-open="imageModal" data-modal-img-src="img/promptcheck/wireframes-canvas.png" data-modal-img-alt="Claude Design Wireframe Canvas" data-modal-maxw="max-w-6xl" class="cursor-pointer">
+                      <img class="max-w-full max-h-[500px] shadow-[rgba(0,0,0,0.35)_0px_5px_15px]" src="img/promptcheck/wireframes-canvas.png" alt="Claude Design Wireframe Canvas">
+                    </button>
+                    <p class="pt-2 text-[13px] tracking-[0.4px]">~8 wireframe variants explored on a single Claude Design canvas</p>
+                  </div>
+                </div>
+
+                <div class="my-12 py-12">
+                  <h3 class="font-heading text-2xl pb-3">Variants Explored</h3>
+                  <p class="pb-8">Each variant represented a different trade-off between visibility, intrusiveness, and information density. One example prompt was threaded through all variants for apples-to-apples comparison.</p>
+
+                  <div class="flex flex-wrap items-center mb-12">
+                    <div class="w-full sm:w-5/12 pr-4">
+                      <h4 class="font-heading text-xl">Inline + Hover Tooltip</h4>
+                      <p>Issues are underlined directly in the prompt text. Hovering reveals a tooltip with the issue explanation and suggested fixes. Minimal visual disruption — the user stays in their writing flow.</p>
+                    </div>
+                    <div class="w-full sm:w-7/12 text-center">
+                      <button data-modal-open="imageModal" data-modal-img-src="img/promptcheck/variant-inline-tooltip.png" data-modal-img-alt="Inline Tooltip Variant" data-modal-maxw="max-w-4xl" class="cursor-pointer">
+                        <img class="max-w-full max-h-[300px] mx-auto shadow-[rgba(0,0,0,0.35)_0px_5px_15px]" src="img/promptcheck/variant-inline-tooltip.png" alt="Inline Tooltip Variant">
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="flex flex-wrap items-center mb-12">
+                    <div class="w-full sm:w-5/12 pr-4">
+                      <h4 class="font-heading text-xl">Stacked Cards</h4>
+                      <p>All issues listed as cards below the prompt. Clear and scannable, but separates the issue from its location in the text.</p>
+                    </div>
+                    <div class="w-full sm:w-7/12 text-center">
+                      <button data-modal-open="imageModal" data-modal-img-src="img/promptcheck/variant-stacked-cards.png" data-modal-img-alt="Stacked Cards Variant" data-modal-maxw="max-w-4xl" class="cursor-pointer">
+                        <img class="max-w-full max-h-[300px] mx-auto shadow-[rgba(0,0,0,0.35)_0px_5px_15px]" src="img/promptcheck/variant-stacked-cards.png" alt="Stacked Cards Variant">
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="flex flex-wrap items-center mb-12">
+                    <div class="w-full sm:w-5/12 pr-4">
+                      <h4 class="font-heading text-xl">Margin Gutter + Minimap</h4>
+                      <p>Issue indicators in a gutter alongside the prompt, like code editor lint markers. Familiar for developers, less intuitive for general users.</p>
+                    </div>
+                    <div class="w-full sm:w-7/12 text-center">
+                      <button data-modal-open="imageModal" data-modal-img-src="img/promptcheck/variant-margin-gutter.png" data-modal-img-alt="Margin Gutter Variant" data-modal-maxw="max-w-4xl" class="cursor-pointer">
+                        <img class="max-w-full max-h-[300px] mx-auto shadow-[rgba(0,0,0,0.35)_0px_5px_15px]" src="img/promptcheck/variant-margin-gutter.png" alt="Margin Gutter Variant">
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="flex flex-wrap items-center mb-12">
+                    <div class="w-full sm:w-5/12 pr-4">
+                      <h4 class="font-heading text-xl">Focus / Review Mode</h4>
+                      <p>A dedicated review screen entered after writing. Thorough, but adds friction — users must context-switch from writing to reviewing.</p>
+                    </div>
+                    <div class="w-full sm:w-7/12 text-center">
+                      <button data-modal-open="imageModal" data-modal-img-src="img/promptcheck/variant-focus-mode.png" data-modal-img-alt="Focus Mode Variant" data-modal-maxw="max-w-4xl" class="cursor-pointer">
+                        <img class="max-w-full max-h-[300px] mx-auto shadow-[rgba(0,0,0,0.35)_0px_5px_15px]" src="img/promptcheck/variant-focus-mode.png" alt="Focus Mode Variant">
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="flex flex-wrap items-center mb-12">
+                    <div class="w-full sm:w-5/12 pr-4">
+                      <h4 class="font-heading text-xl">Browser Extension Popover</h4>
+                      <p>A floating popover anchored to any AI chat composer. Platform-agnostic, but disconnected from the prompt text itself.</p>
+                    </div>
+                    <div class="w-full sm:w-7/12 text-center">
+                      <button data-modal-open="imageModal" data-modal-img-src="img/promptcheck/variant-browser-extension.png" data-modal-img-alt="Browser Extension Variant" data-modal-maxw="max-w-4xl" class="cursor-pointer">
+                        <img class="max-w-full max-h-[300px] mx-auto shadow-[rgba(0,0,0,0.35)_0px_5px_15px]" src="img/promptcheck/variant-browser-extension.png" alt="Browser Extension Variant">
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="my-12 py-12">
+                  <h3 class="font-heading text-2xl pb-3">Choosing the Inline + Hover Tooltip</h3>
+                  <p>The inline tooltip pattern won because it satisfies three key design principles simultaneously:</p>
+                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-6">
+                    <div>
+                      <h4 class="font-heading text-xl">Non-Disruptive</h4>
+                      <p>The user stays in their writing flow. Issues are surfaced contextually rather than in a separate view or modal.</p>
+                    </div>
+                    <div>
+                      <h4 class="font-heading text-xl">Progressive Disclosure</h4>
+                      <p>Underlines provide a lightweight signal. The full explanation and fix options only appear on hover or click — detail on demand.</p>
+                    </div>
+                    <div>
+                      <h4 class="font-heading text-xl">Spatial Context</h4>
+                      <p>Each issue is anchored to the exact text that triggered it, making the feedback immediately actionable.</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Section 5: Prototype & Handoff -->
+              <section id="list-item-5" class="my-12 py-12 px-3">
+                <h2 class="font-heading text-3xl mb-12 pb-12">Prototype & Handoff</h2>
+
+                <div class="pb-12">
+                  <h3 class="font-heading text-2xl pb-3">From Claude Design to Claude Code</h3>
+                  <p>After selecting and iterating on the inline tooltip pattern in Claude Design, the design was handed directly to Claude Code for implementation as a working HTML/CSS/JS prototype. This handoff happened in a single conversation — no spec documents, no redlines, no design tokens file. The working prototype was generated in minutes.</p>
+                  <div class="text-center mt-8">
+                    <button data-modal-open="imageModal" data-modal-img-src="img/promptcheck/handoff.png" data-modal-img-alt="Claude Design to Claude Code Handoff" data-modal-maxw="max-w-4xl" class="cursor-pointer">
+                      <img class="max-w-full max-h-[400px] mx-auto shadow-[rgba(0,0,0,0.35)_0px_5px_15px]" src="img/promptcheck/handoff.png" alt="Claude Design to Claude Code Handoff">
+                    </button>
+                    <p class="pt-2 text-[13px] tracking-[0.4px]">Handoff from Claude Design to Claude Code</p>
+                  </div>
+                </div>
+
+                <div class="my-12 py-12">
+                  <h3 class="font-heading text-2xl pb-3">Working Prototype</h3>
+                  <p>The prototype demonstrates the full interaction flow: the user writes a prompt, clicks PromptCheck, issues are detected and underlined in-place, and hovering any mark reveals a tooltip with the issue explanation and quick-fix options. Applying a fix updates the prompt text in real time.</p>
+                  <div class="mt-8 rounded-lg overflow-hidden shadow-[rgba(0,0,0,0.35)_0px_5px_15px]">
+                    <iframe src="PromptCheck Prototype.html" class="w-full border-0" style="height: 680px;" title="PromptCheck Interactive Prototype" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+                  </div>
+                  <p class="pt-2 text-[13px] tracking-[0.4px]">Interactive prototype — <a href="PromptCheck Prototype.html" target="_blank" class="text-primary dark:text-emerald-400 hover:underline">open full screen</a></p>
+                </div>
+
+                <div class="my-12 py-12">
+                  <h3 class="font-heading text-2xl pb-3">Future Resolution Patterns</h3>
+                  <p class="pb-8">Beyond the inline tooltip quick-fixes, three additional resolution patterns were explored in Claude Design as future features — each offering a different level of control over how issues get resolved.</p>
+                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div class="text-center">
+                      <button data-modal-open="imageModal" data-modal-img-src="img/promptcheck/resolve-conversational.png" data-modal-img-alt="Conversational Fix" data-modal-maxw="max-w-4xl" class="cursor-pointer">
+                        <img class="max-w-full max-h-[300px] mx-auto shadow-[rgba(0,0,0,0.35)_0px_5px_15px]" src="img/promptcheck/resolve-conversational.png" alt="Conversational Fix">
+                      </button>
+                      <h4 class="font-heading text-xl mt-3">Conversational Fix</h4>
+                      <p class="text-[13px]">Guided questions that help the user clarify their intent before rewriting</p>
+                    </div>
+                    <div class="text-center">
+                      <button data-modal-open="imageModal" data-modal-img-src="img/promptcheck/resolve-diff.png" data-modal-img-alt="Diff Preview" data-modal-maxw="max-w-4xl" class="cursor-pointer">
+                        <img class="max-w-full max-h-[300px] mx-auto shadow-[rgba(0,0,0,0.35)_0px_5px_15px]" src="img/promptcheck/resolve-diff.png" alt="Diff Preview">
+                      </button>
+                      <h4 class="font-heading text-xl mt-3">Diff Preview</h4>
+                      <p class="text-[13px]">Side-by-side view of original vs. rewritten prompt with changes highlighted</p>
+                    </div>
+                    <div class="text-center">
+                      <button data-modal-open="imageModal" data-modal-img-src="img/promptcheck/resolve-rewrites.png" data-modal-img-alt="Three Rewrites" data-modal-maxw="max-w-4xl" class="cursor-pointer">
+                        <img class="max-w-full max-h-[300px] mx-auto shadow-[rgba(0,0,0,0.35)_0px_5px_15px]" src="img/promptcheck/resolve-rewrites.png" alt="Three Rewrites">
+                      </button>
+                      <h4 class="font-heading text-xl mt-3">Three Rewrites</h4>
+                      <p class="text-[13px]">Pick from alternative phrasings — tight, balanced, or deep dive</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Section 6: A New Design Workflow -->
+              <section id="list-item-6" class="bg-zinc-100 dark:bg-dark-surface my-12 py-12 px-3">
+                <h2 class="font-heading text-3xl mb-12 pb-12">A New Design Workflow</h2>
+
+                <div class="pb-12">
+                  <p class="text-lg">This project was designed entirely with AI-native tools — no Figma, no handoff specs, no waiting for engineering. Here's how the workflow looked:</p>
+                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-8">
+                    <div>
+                      <h4 class="font-heading text-xl">1. Conversation</h4>
+                      <p>Started with a dialogue with Claude to define the problem space, map issue categories, and generate example prompts. This replaced traditional desk research and stakeholder interviews — the conversation itself was the research artifact.</p>
+                    </div>
+                    <div>
+                      <h4 class="font-heading text-xl">2. Claude Design</h4>
+                      <p>Used Claude Design to rapidly explore ~8 wireframe variants on a single canvas. Evaluated trade-offs, selected a winner, and iterated on the details — all within the same tool, in a single session.</p>
+                    </div>
+                    <div>
+                      <h4 class="font-heading text-xl">3. Claude Code</h4>
+                      <p>Handed the refined design to Claude Code for a working prototype. The implementation happened in a conversation — no spec documents, no design tokens, no redlines. Minutes, not days.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="my-12 py-12 max-w-2xl mx-auto">
+                  <h3 class="font-heading text-2xl pb-3">The Bottleneck Has Shifted</h3>
+                  <p>With tools like Claude Code, the speed of engineering has increased so dramatically that implementation is no longer the bottleneck. When a working prototype can be generated in minutes, the constraint moves upstream — to ideas, solutions, and talking to users for feedback.</p>
+                  <p class="pt-4">Tools like Claude Design keep design aligned with this new pace. Prototypes are concrete, can be created rapidly, and can be interacted with almost immediately — by other designers, developers, and users. They reduce coordination overhead and let everyone move quickly.</p>
+                  <p class="pt-4">The design loop to compress: <strong>talk to users → design features → ship code → read feedback → repeat.</strong> The faster each step gets, the more cycles you can run — and the better the product becomes.</p>
+                </div>
+              </section>
+
+              <!-- Section 7: Conclusion -->
+              <section id="list-item-7" class="flex items-center mt-12 pb-12 px-3">
+                <div>
+                  <h2 class="font-heading text-3xl my-8 py-8">Conclusion</h2>
+                  <div class="flex flex-wrap">
+                    <div class="w-full sm:w-1/2 pr-4">
+                      <h3 class="font-heading text-2xl">Result</h3>
+                      <p>PromptCheck went from problem definition to a fully interactive prototype in a single design session using AI-native tools. The inline tooltip pattern provides non-disruptive, contextual feedback that helps users write better prompts — without needing to learn prompt engineering.</p>
+                    </div>
+                    <div class="w-full sm:w-1/2 pl-0 sm:pl-4">
+                      <h3 class="font-heading text-2xl">What I Learned</h3>
+                      <p>The biggest shift was not in any single tool but in the pace of iteration. When prototyping is nearly instant, the designer's most valuable skill becomes knowing which ideas to explore and when to move to user feedback. Speed without direction is just velocity; direction without speed is just a plan.</p>
+                    </div>
+                    <div class="w-full sm:w-1/2 pt-12 pr-4">
+                      <h3 class="font-heading text-2xl">Next Steps</h3>
+                      <ol class="list-decimal pl-5">
+                        <li><p>Conduct user testing with real prompt-writing sessions to validate whether inline detection improves prompt quality</p></li>
+                        <li><p>Test resolution patterns (conversational fix vs. diff vs. three rewrites) to determine which users prefer</p></li>
+                        <li><p>Explore integration points — browser extension, chat UI plugin, API service</p></li>
+                        <li><p>Investigate running the pre-check with a local model to further reduce data center usage</p></li>
+                      </ol>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Thank You Section -->
+              <div class="flex items-center my-12 py-12 px-3">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                  <div>
+                    <h3 class="font-heading text-2xl">Thank you</h3>
+                    <p>Thank you for your time reviewing my work on PromptCheck!</p>
+                    <p class="pt-4">If you'd like to get in touch, please say hi!</p>
+                    <a href="mailto:claytonanderson.work@gmail.com" target="_blank" class="flex items-center gap-2 text-primary dark:text-emerald-400 hover:underline">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                      </svg>
+                      claytonanderson.work@gmail.com
+                    </a>
+                  </div>
+                  <div class="pl-8">
+                    <h3 class="font-heading text-2xl">Appendix</h3>
+                    <ul class="divide-y text-[13px] text-muted dark:text-gray-400">
+                      <li class="py-2"><a href="PromptCheck Prototype.html" target="_blank" class="hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">Working Prototype</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <hr class="my-4 border-gray-300 dark:border-gray-700">
+            </div>
+          </div>
+            </div>
+            <!-- Scrollspy Sidebar -->
+            <div class="hidden xl:block xl:w-2/12 pl-8 pt-20">
+              <nav class="sidebar-nav sticky top-12 text-[13px] text-muted dark:text-gray-400" id="case-study-list">
+                <div class="py-2 px-3"><h6 class="font-heading text-body dark:text-dark-text">Case Study</h6></div>
+                <a href="#list-item-1" class="block py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">Overview</a>
+                <a href="#list-item-2" class="block py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">Problem & Goal</a>
+                <a href="#list-item-3" class="block py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">Problem Space</a>
+                <a href="#list-item-4" class="block py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">Exploration & Decision</a>
+                <a href="#list-item-5" class="block py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">Prototype & Handoff</a>
+                <a href="#list-item-6" class="block py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">New Workflow</a>
+                <a href="#list-item-7" class="block py-2 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-body dark:hover:text-dark-text transition-colors">Conclusion</a>
+              </nav>
+            </div>
+          </div>
+
+          <!-- Footer -->
+          <div class="py-12 mb-12 xl:pr-[16.667%]">
+            <div class="max-w-4xl mx-auto">
+            <div id="case-studies-carousel-placeholder"></div>
+            <div id="footer-icons-placeholder"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Spacer -->
+        <div class="hidden xl:block xl:w-1/12"></div>
+      </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal hidden fixed inset-0 z-50 flex items-center justify-center">
+      <div class="modal-backdrop absolute inset-0 bg-black/50"></div>
+      <div id="imageModal-content" class="relative bg-white dark:bg-dark-surface max-w-4xl w-full mx-4 z-10 shadow-lg">
+        <div class="flex justify-end p-2">
+          <button data-modal-close class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-100 transition-colors" aria-label="Close">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+        <div class="p-4 text-center">
+          <img id="imageModal-img" class="max-w-full max-h-[75vh] w-auto mx-auto" src="" alt="">
+        </div>
+        <div class="flex justify-between items-center p-4 border-t dark:border-gray-700">
+          <div id="imageModal-footer-extra" class="hidden"></div>
+          <button data-modal-close class="px-4 py-2 bg-secondary dark:bg-emerald-700 text-white hover:bg-muted-hover dark:hover:bg-emerald-600 transition-colors ml-auto">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

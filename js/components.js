@@ -129,7 +129,8 @@
 
   // Case studies carousel
   var caseStudies = [
-    { slug: 'polaris', href: 'polaris.html', img: 'img/index/polaris.png', imgDark: 'img/index/polaris-dark.png', title: 'Polaris', desc: 'An agent-first company dashboard with contextual AI and local-first AI' },
+    { slug: 'promptcheck', href: 'promptcheck.html', img: 'img/promptcheck/hero.png', imgDark: null, title: 'PromptCheck', desc: 'A prompt-quality tool that catches communication issues before you hit send' },
+    { slug: 'polaris', href: 'polaris.html', img: 'img/index/polaris.png', imgDark: null, title: 'Polaris', desc: 'An agent-first company dashboard with contextual AI and local-first AI' },
     { slug: 'kaizentracker', href: 'kaizentracker.html', img: 'img/index/kaizen.png', imgDark: 'img/index/kaizen-dark.png', title: 'Kaizen Tracker', desc: 'A full-stack personal improvement tracker from idea to deployment' },
     { slug: 'snackordering', href: 'snackordering.html', img: 'img/index/snackordering.png', imgDark: null, title: 'SnackOrdering', desc: 'Design a snack ordering app for a movie theater' },
     { slug: 'wrf', href: 'wrf.html', img: 'img/index/wildfirerelief.png', imgDark: null, title: 'Wildfire Relief Fund', desc: 'Design a user registration flow for a humanitarian organization' },
