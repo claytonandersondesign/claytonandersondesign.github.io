@@ -105,8 +105,8 @@
                       <div class="w-full sm:w-1/2 pt-4 sm:pt-0 order-2 sm:order-1">
                         <h3 class="font-heading text-2xl mb-1">The Product</h3>
                         <p class="text-xs text-muted dark:text-gray-500 mb-4 uppercase tracking-widest">Concept → Build → Ship</p>
-                        <p class="pt-2">Kaizen (改善) is a Japanese philosophy of continuous, incremental improvement. Kaizen Tracker is a personal app built on that idea — a tool for logging things worth changing in your life, tracking how they're going, and seeing whether they actually stick.</p>
-                        <p class="pt-4">I designed and built this solo from concept to deployed product. It's a live, working web app — not a prototype.</p>
+                        <p class="pt-2">Kaizen (改善) is a Japanese philosophy of continuous, incremental improvement. Kaizen Tracker is a personal app built on that idea — a place to log things you want to change in your life and follow whether they stick.</p>
+                        <p class="pt-4">I designed and built it solo from concept to deployed product. It's a live web app you can sign up for and use.</p>
                         <p class="pt-4">
                           <a href="https://kaizen-tracker.vercel.app/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-primary dark:text-emerald-400 hover:underline font-medium">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
@@ -148,12 +148,12 @@
                   <section id="list-item-2" class="bg-zinc-100 dark:bg-dark-surface px-3 py-16">
                     <div class="max-w-4xl mx-auto">
                     <h2 class="font-heading text-3xl mb-2">Design Approach</h2>
-                    <p class="text-muted dark:text-gray-400 mb-8">Owning the full stack — design through deployment — meant every decision could be made with both user needs and technical reality in mind simultaneously. No handoffs, no context lost in translation.</p>
+                    <p class="text-muted dark:text-gray-400 mb-8">Owning the full stack — design through deployment — meant I could weigh user needs and technical reality at the same time, without losing anything in a handoff between designer and engineer.</p>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div class="bg-white dark:bg-dark-bg p-5 rounded-lg shadow-sm">
                         <h4 class="font-heading text-xl mb-2">Status Lifecycle</h4>
-                        <p class="text-[14px]"><span class="font-medium">Considering → Trying → Adopted / Abandoned.</span> The friction is intentional. Moving an improvement forward requires a deliberate tap — it prompts you to actually reflect on whether it's working, not just forget about it.</p>
+                        <p class="text-[14px]"><span class="font-medium">Considering → Trying → Adopted / Abandoned.</span> Moving an item between statuses takes a deliberate tap, which gives you a small moment to reflect on whether it's working instead of just leaving it open.</p>
                       </div>
                       <div class="bg-white dark:bg-dark-bg p-5 rounded-lg shadow-sm">
                         <h4 class="font-heading text-xl mb-2">Impact & Effort Ratings</h4>
@@ -169,7 +169,7 @@
                       </div>
                       <div class="bg-white dark:bg-dark-bg p-5 rounded-lg shadow-sm sm:col-span-2">
                         <h4 class="font-heading text-xl mb-2">Mobile-First Layout</h4>
-                        <p class="text-[14px]">Most reflective journaling happens in small moments — on the couch, in line, right after a realization. The core flows are designed for one-handed mobile use first. Desktop gets a side-by-side panel layout for deeper review sessions.</p>
+                        <p class="text-[14px]">Most reflective journaling happens in small moments — on the couch, on the bus, right after a realization — so the core flows are designed for one-handed mobile use first. Desktop gets a side-by-side panel layout for longer review sessions.</p>
                       </div>
                     </div>
 
@@ -251,57 +251,49 @@
                   <section id="list-item-4" class="bg-zinc-100 dark:bg-dark-surface py-16 px-3">
                     <div class="max-w-4xl mx-auto">
                     <h2 class="font-heading text-3xl mb-2">Development Process</h2>
-                    <p class="text-muted dark:text-gray-400 mb-8">How I used Claude Code as a development partner — and why directing AI effectively is itself a design skill.</p>
+                    <p class="text-muted dark:text-gray-400 mb-8">How I used Claude Code as a development partner during the build.</p>
 
-                    <div class="flex flex-wrap gap-8">
-                      <div class="w-full sm:w-7/12 mx-auto">
-                        <p class="mb-4">I used Claude Code throughout the build: scaffolding components, debugging tricky Supabase RLS policies, reviewing data model decisions, and working through edge cases in the status lifecycle logic. But the most important thing Claude Code can't do is <em>decide what to build</em> — that required constant UX judgment on my end.</p>
+                    <div>
+                      <p class="mb-4">I used Claude Code throughout the build: scaffolding components, debugging tricky Supabase RLS policies, reviewing data model decisions, and working through edge cases in the status lifecycle logic. But the most important thing Claude Code can't do is <em>decide what to build</em> — that required constant UX judgment on my end.</p>
 
-                        <p class="mb-6">The iterative loop looked like this:</p>
+                      <p class="mb-6">The iterative loop looked like this:</p>
 
-                        <div class="flex flex-col gap-3 mb-8">
-                          <div class="flex items-start gap-3">
-                            <div class="w-7 h-7 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">1</div>
-                            <div>
-                              <p class="font-medium text-sm">Idea</p>
-                              <p class="text-[13px] text-muted dark:text-gray-400">I'd identify a feature or UX problem — e.g., "users need to see their quick wins, not just a flat list"</p>
-                            </div>
-                          </div>
-                          <div class="flex items-start gap-3">
-                            <div class="w-7 h-7 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">2</div>
-                            <div>
-                              <p class="font-medium text-sm">Design Intent</p>
-                              <p class="text-[13px] text-muted dark:text-gray-400">Articulate the intent clearly — what problem this solves, what constraints exist, what "done" looks like</p>
-                            </div>
-                          </div>
-                          <div class="flex items-start gap-3">
-                            <div class="w-7 h-7 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">3</div>
-                            <div>
-                              <p class="font-medium text-sm">Prompt → Output</p>
-                              <p class="text-[13px] text-muted dark:text-gray-400">Claude Code scaffolds the implementation, suggests patterns, surfaces potential issues</p>
-                            </div>
-                          </div>
-                          <div class="flex items-start gap-3">
-                            <div class="w-7 h-7 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">4</div>
-                            <div>
-                              <p class="font-medium text-sm">Review & Refine</p>
-                              <p class="text-[13px] text-muted dark:text-gray-400">I evaluate the output against the original intent — does this actually solve the problem? Does it feel right in the browser?</p>
-                            </div>
-                          </div>
-                          <div class="flex items-start gap-3">
-                            <div class="w-7 h-7 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">5</div>
-                            <div>
-                              <p class="font-medium text-sm">Ship</p>
-                              <p class="text-[13px] text-muted dark:text-gray-400">Push to main, Vercel deploys, check it live on my phone</p>
-                            </div>
+                      <div class="flex flex-col gap-3 mb-8">
+                        <div class="flex items-start gap-3">
+                          <div class="w-7 h-7 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">1</div>
+                          <div>
+                            <p class="font-medium text-sm">Idea</p>
+                            <p class="text-[13px] text-muted dark:text-gray-400">I'd identify a feature or UX problem — e.g., "users need to see their quick wins, not just a flat list"</p>
                           </div>
                         </div>
-                      </div>
-
-                      <div class="w-full sm:w-5/12 mx-auto">
-                        <blockquote class="border-l-4 border-primary dark:border-emerald-500 pl-5 py-4 bg-white dark:bg-dark-bg rounded-r-lg shadow-sm text-muted dark:text-gray-400 italic text-[14px] leading-relaxed">
-                          "Knowing how to direct AI effectively — giving it context, constraints, and clear intent — is itself a craft. The designers who learn this are going to outpace the ones who don't."
-                        </blockquote>
+                        <div class="flex items-start gap-3">
+                          <div class="w-7 h-7 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">2</div>
+                          <div>
+                            <p class="font-medium text-sm">Design Intent</p>
+                            <p class="text-[13px] text-muted dark:text-gray-400">Articulate the intent clearly — what problem this solves, what constraints exist, what "done" looks like</p>
+                          </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                          <div class="w-7 h-7 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">3</div>
+                          <div>
+                            <p class="font-medium text-sm">Prompt → Output</p>
+                            <p class="text-[13px] text-muted dark:text-gray-400">Claude Code scaffolds the implementation, suggests patterns, surfaces potential issues</p>
+                          </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                          <div class="w-7 h-7 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">4</div>
+                          <div>
+                            <p class="font-medium text-sm">Review & Refine</p>
+                            <p class="text-[13px] text-muted dark:text-gray-400">I evaluate the output against the original intent — does this actually solve the problem? Does it feel right in the browser?</p>
+                          </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                          <div class="w-7 h-7 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">5</div>
+                          <div>
+                            <p class="font-medium text-sm">Ship</p>
+                            <p class="text-[13px] text-muted dark:text-gray-400">Push to main, Vercel deploys, check it live on my phone</p>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     </div>
@@ -327,7 +319,7 @@
                           <img src="img/kaizen/addimprovment.png" alt="Add improvement form" class="w-auto max-h-[360px] mx-auto rounded-lg shadow-md hover:shadow-xl transition-shadow object-contain">
                         </button>
                         <h4 class="font-heading text-lg mt-3 mb-1">Log Improvement</h4>
-                        <p class="text-[13px] text-muted dark:text-gray-400">Minimal required fields to reduce friction at the moment of insight. You can always add more detail later — but if logging is a chore, you won't do it.</p>
+                        <p class="text-[13px] text-muted dark:text-gray-400">Minimal required fields so it's quick to capture an idea in the moment. You can always add more detail later.</p>
                       </div>
 
                       <div>
@@ -335,7 +327,7 @@
                           <img src="img/kaizen/categories.png" alt="Category and status filters" class="w-auto max-h-[360px] mx-auto rounded-lg shadow-md hover:shadow-xl transition-shadow object-contain">
                         </button>
                         <h4 class="font-heading text-lg mt-3 mb-1">Filter & Review</h4>
-                        <p class="text-[13px] text-muted dark:text-gray-400">Filter by category and status to find patterns: where do you abandon changes? What categories do you never touch? The data surfaces what you'd miss by scrolling.</p>
+                        <p class="text-[13px] text-muted dark:text-gray-400">Filter by category and status to find patterns in your own behavior — which categories you keep dropping, which ones you never touch.</p>
                       </div>
 
                       <div>
@@ -346,7 +338,7 @@
                             class="w-auto max-h-[360px] mx-auto rounded-lg shadow-md hover:shadow-xl transition-shadow object-contain">
                         </button>
                         <h4 class="font-heading text-lg mt-3 mb-1">Entry Point</h4>
-                        <p class="text-[13px] text-muted dark:text-gray-400">The login screen sets the first impression — brand color on the primary action, no distractions. Auth is handled entirely by Supabase, so this screen's only job is to get you in cleanly.</p>
+                        <p class="text-[13px] text-muted dark:text-gray-400">The login screen sets the first impression: brand color on the primary action, nothing else competing for attention. Supabase handles auth, so this screen's only job is to let you in.</p>
                       </div>
                     </div>
                     </div>
@@ -410,15 +402,15 @@
                       <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
                         <div>
                           <h4 class="font-heading text-xl mb-2">Design ↔ Build Feedback Loop</h4>
-                          <p class="text-[14px] text-muted dark:text-gray-400">Designing and building simultaneously made every decision more grounded. When I knew I'd have to build it, I designed more realistically. When I was building, I made better design calls because I knew the product deeply.</p>
+                          <p class="text-[14px] text-muted dark:text-gray-400">Designing and building at the same time made each decision more grounded. Knowing I'd have to implement a feature kept the designs honest, and knowing the product well made the build decisions easier.</p>
                         </div>
                         <div>
                           <h4 class="font-heading text-xl mb-2">Constraints Drive Simplicity</h4>
-                          <p class="text-[14px] text-muted dark:text-gray-400">Implementation constraints turned into design virtues. The minimal log form exists partly because a simple form is easier to build — but it's also just better UX. Constraints forced me to prioritize what actually mattered.</p>
+                          <p class="text-[14px] text-muted dark:text-gray-400">Some of the simplest design choices came out of build constraints. The minimal log form is partly there because a short form is faster to build — but it's also just better UX.</p>
                         </div>
                         <div>
-                          <h4 class="font-heading text-xl mb-2">AI Amplifies Product Thinking</h4>
-                          <p class="text-[14px] text-muted dark:text-gray-400">Using Claude Code effectively requires strong product thinking. Vague prompts produce generic results. Clear intent, good context, and defined constraints produce output worth shipping. The quality bar is still yours to set.</p>
+                          <h4 class="font-heading text-xl mb-2">AI Needs Direction</h4>
+                          <p class="text-[14px] text-muted dark:text-gray-400">Using Claude Code well takes strong product thinking. Vague prompts give vague results; clear intent and good context give you output worth shipping.</p>
                         </div>
                       </div>
 

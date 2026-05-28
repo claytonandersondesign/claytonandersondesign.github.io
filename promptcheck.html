@@ -119,11 +119,11 @@
                 <div class="flex flex-wrap">
                   <div class="w-full sm:w-1/2 p-4">
                     <h3 class="font-heading text-2xl">The Problem</h3>
-                    <p>Today's AI chat interfaces have a communication gap. Users make assumptions about what models can do and infer — writing prompts with vague language, conflicting instructions, assumed context, or leading bias. When results disappoint, they re-prompt repeatedly, wasting tokens and compute. The model, in turn, silently fills in gaps, making its own assumptions about unclear input. Neither side flags the disconnect.</p>
+                    <p>Today's AI chat interfaces have a communication gap. Users tend to assume models can do more or infer more than they actually can, and write prompts that are vague, contradictory, or missing context. When the result isn't what they wanted, they re-prompt and try again. The model meanwhile fills in the gaps silently, without telling the user where its guesses were.</p>
                   </div>
                   <div class="w-full sm:w-1/2 p-4">
                     <h3 class="font-heading text-2xl">The Goal</h3>
-                    <p>Design a lightweight, non-intrusive tool that surfaces prompt communication issues inline — before the prompt is sent. Help users write clearer prompts without requiring prompt engineering expertise, reduce repeated prompting, and lower the cost of human-AI communication for both the user and the environment.</p>
+                    <p>Design a lightweight tool that flags prompt issues inline before the prompt is sent. The goal is to help users write clearer prompts without needing to know prompt engineering, and cut down on the back-and-forth re-prompting that wastes time and compute.</p>
                   </div>
                 </div>
               </section>
@@ -262,7 +262,7 @@
 
                 <div class="my-12 py-12">
                   <h3 class="font-heading text-2xl pb-3">Choosing the Inline + Hover Tooltip</h3>
-                  <p>The inline tooltip pattern won because it satisfies three key design principles simultaneously:</p>
+                  <p>I chose the inline tooltip pattern because it does three things well at the same time:</p>
                   <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-6">
                     <div>
                       <h4 class="font-heading text-xl">Non-Disruptive</h4>
@@ -286,7 +286,7 @@
 
                 <div class="pb-12">
                   <h3 class="font-heading text-2xl pb-3">From Claude Design to Claude Code</h3>
-                  <p>After selecting and iterating on the inline tooltip pattern in Claude Design, the design was handed directly to Claude Code for implementation as a working HTML/CSS/JS prototype. This handoff happened in a single conversation — no spec documents, no redlines, no design tokens file. The working prototype was generated in minutes.</p>
+                  <p>Once I'd settled on the inline tooltip pattern in Claude Design, I handed it to Claude Code to build out as a working HTML/CSS/JS prototype. There were no spec documents or design tokens to write up — the handoff happened in a single conversation.</p>
                   <div class="text-center mt-8">
                     <button data-modal-open="imageModal" data-modal-img-src="img/promptcheck/handoff.png" data-modal-img-alt="Claude Design to Claude Code Handoff" data-modal-maxw="max-w-4xl" class="cursor-pointer">
                       <img class="max-w-full max-h-[400px] mx-auto shadow-[rgba(0,0,0,0.35)_0px_5px_15px]" src="img/promptcheck/handoff.png" alt="Claude Design to Claude Code Handoff">
@@ -306,7 +306,7 @@
 
                 <div class="my-12 py-12">
                   <h3 class="font-heading text-2xl pb-3">Future Resolution Patterns</h3>
-                  <p class="pb-8">Beyond the inline tooltip quick-fixes, three additional resolution patterns were explored in Claude Design as future features — each offering a different level of control over how issues get resolved.</p>
+                  <p class="pb-8">Beyond the inline tooltip quick-fixes, I explored three more resolution patterns in Claude Design as possible future features. Each gives the user a different level of control over how an issue gets fixed.</p>
                   <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div class="text-center">
                       <button data-modal-open="imageModal" data-modal-img-src="img/promptcheck/resolve-conversational.png" data-modal-img-alt="Conversational Fix" data-modal-maxw="max-w-4xl" class="cursor-pointer">
@@ -338,25 +338,25 @@
                 <h2 class="font-heading text-3xl mb-12 pb-12">A New Design Workflow</h2>
 
                 <div class="pb-12">
-                  <p class="text-lg">This project was designed entirely with AI-native tools — no Figma, no handoff specs, no waiting for engineering. Here's how the workflow looked:</p>
+                  <p class="text-lg">I worked entirely with AI tools on this project — no Figma, no spec handoff.</p>
                   <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-8">
                     <div>
                       <h4 class="font-heading text-xl">1. Conversation</h4>
-                      <p>Started with a dialogue with Claude to define the problem space, map issue categories, and generate example prompts. This replaced traditional desk research and stakeholder interviews — the conversation itself was the research artifact.</p>
+                      <p>I started with a structured dialogue with Claude to define the problem space, map issue categories, and generate example prompts. For an early-stage project, the conversation took the place of desk research and interviews.</p>
                     </div>
                     <div>
                       <h4 class="font-heading text-xl">2. Claude Design</h4>
-                      <p>Used Claude Design to rapidly explore ~8 wireframe variants on a single canvas. Evaluated trade-offs, selected a winner, and iterated on the details — all within the same tool, in a single session.</p>
+                      <p>I used Claude Design to explore around eight wireframe variants on a single canvas. Having them side by side made it easier to weigh trade-offs and pick a direction in one session.</p>
                     </div>
                     <div>
                       <h4 class="font-heading text-xl">3. Claude Code</h4>
-                      <p>Handed the refined design to Claude Code for a working prototype. The implementation happened in a conversation — no spec documents, no design tokens, no redlines. Minutes, not days.</p>
+                      <p>I handed the refined design to Claude Code for a working prototype. No specs, no design tokens, no redlines — the conversation was the brief.</p>
                     </div>
                   </div>
                 </div>
 
                 <div class="my-12 py-12 max-w-2xl mx-auto">
-                  <h3 class="font-heading text-2xl pb-3">The Bottleneck Has Shifted</h3>
+                  <h3 class="font-heading text-2xl pb-3">Where the time goes now</h3>
                   <p>With tools like Claude Code, the speed of engineering has increased so dramatically that implementation is no longer the bottleneck. When a working prototype can be generated in minutes, the constraint moves upstream — to ideas, solutions, and talking to users for feedback.</p>
                   <p class="pt-4">Tools like Claude Design keep design aligned with this new pace. Prototypes are concrete, can be created rapidly, and can be interacted with almost immediately — by other designers, developers, and users. They reduce coordination overhead and let everyone move quickly.</p>
                   <p class="pt-4">The design loop to compress: <strong>talk to users → design features → ship code → read feedback → repeat.</strong> The faster each step gets, the more cycles you can run — and the better the product becomes.</p>
@@ -370,11 +370,11 @@
                   <div class="flex flex-wrap">
                     <div class="w-full sm:w-1/2 pr-4">
                       <h3 class="font-heading text-2xl">Result</h3>
-                      <p>PromptCheck went from problem definition to a fully interactive prototype in a single design session using AI-native tools. The inline tooltip pattern provides non-disruptive, contextual feedback that helps users write better prompts — without needing to learn prompt engineering.</p>
+                      <p>PromptCheck went from problem definition to a working interactive prototype in a single design session. The inline tooltip pattern provides contextual feedback that helps users write better prompts — without requiring them to learn prompt engineering.</p>
                     </div>
                     <div class="w-full sm:w-1/2 pl-0 sm:pl-4">
                       <h3 class="font-heading text-2xl">What I Learned</h3>
-                      <p>The biggest shift was not in any single tool but in the pace of iteration. When prototyping is nearly instant, the designer's most valuable skill becomes knowing which ideas to explore and when to move to user feedback. Speed without direction is just velocity; direction without speed is just a plan.</p>
+                      <p>The biggest shift wasn't any one tool — it was the pace of iteration. When prototyping is nearly instant, the most valuable design skill becomes deciding which ideas to explore and when to move to user feedback.</p>
                     </div>
                     <div class="w-full sm:w-1/2 pt-12 pr-4">
                       <h3 class="font-heading text-2xl">Next Steps</h3>
